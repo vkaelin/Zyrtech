@@ -18,3 +18,6 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+
+// PRODUCTS 
+Route::resource('products', 'ProductController');
