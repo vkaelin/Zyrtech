@@ -21,6 +21,11 @@ class Product extends Model
         return $this->hasOne(ProductLabel::class);
     }
 
+    public function star()
+    {
+        return $this->hasMany(Star::class);
+    }
+
     public function getTypeName()
     {
         return $this->type->name;
@@ -38,5 +43,21 @@ class Product extends Model
         }
 
         return 'Sans label';
+    }
+
+    public function getStarAverage()
+    {
+        // A refactoriser
+        $stars = $this->star;
+
+        if ($stars->isNotEmpty()) {
+            $stars = $stars->reduce(function ($carry, $star) {
+                return $carry + $star->value;
+            });
+
+            return $stars / $this->star->count();
+        }
+
+        return 0;
     }
 }

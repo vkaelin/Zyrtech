@@ -8,5 +8,5 @@
 <p>{{$product->getTypeName()}}</p>
 <p>{{$product->getPeriodName()}}</p>
 <p>{{$product->getLabelName()}}</p>
-
+<p>{{$product->getStarAverage()}}</p>
 @endsection
