@@ -23,5 +23,7 @@ class DashboardUserController extends Controller
     public function store()
     {
         $this->authorize('manage', auth()->user()->role);
+
+        
     }
 }
