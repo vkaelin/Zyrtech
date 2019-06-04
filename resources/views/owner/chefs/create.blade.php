@@ -5,7 +5,7 @@
 <h1 class="text-xl font-bold mb-6">Créer un compte chef</h1>
 
 <div class="max-w-lg">
-    <form method="POST" action="/dashboard/users">
+    <form method="POST" action="/dashboard/chefs">
         @csrf
 
         <label class="block mb-4">

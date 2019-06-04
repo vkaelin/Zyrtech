@@ -23,14 +23,20 @@ Route::get('/users/{user}', 'UserController@show');
 // PRODUCTS 
 Route::resource('products', 'ProductController');
 
-// Admin Dashboard
+// Admin/Owner Dashboard
 Route::group(['middleware' => ['web', 'auth']], function () {
-    // Users
-    Route::get('/dashboard/users', 'DashboardUserController@index');
-    Route::get('/dashboard/users/create', 'DashboardUserController@create');
-    Route::post('/dashboard/users/', 'DashboardUserController@store');
-    Route::get('/dashboard/users/{user}/show', 'DashboardUserController@show');
-    Route::get('/dashboard/users/{user}/edit', 'DashboardUserController@edit');
+    // Administrator
+        // Users
+    Route::get('/admin/users', 'AdminUserController@index');
+    Route::get('/admin/users/create', 'AdminUserController@create');
+    Route::post('/admin/users/', 'AdminUserController@store');
+    Route::get('/admin/users/{user}/show', 'AdminUserController@show');
+    Route::get('/admin/users/{user}/edit', 'AdminUserController@edit');
+
+    // Owners
+        // Users
+    Route::get('/dashboard/chefs/create', 'owner\OwnerChefController@create');
+    Route::post('/dashboard/chefs/', 'owner\OwnerChefController@store');
 });
 // /dashboard/users
 // /dashboard/products

@@ -19,9 +19,13 @@ class CreateRolesTable extends Migration
             $table->timestamps();
         });
 
-        // Insert admin role
+        // Insert the roles
         DB::table('roles')->insert(
-            ['name' => 'admin']
+            [
+                ['name' => 'admin'],
+                ['name' => 'owner'],
+                ['name' => 'chef'],
+            ]
         );
     }
 

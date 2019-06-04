@@ -39,4 +39,19 @@ class User extends Authenticatable
 	{
 		return $this->belongsTo(Role::class);
     }
+
+    /**
+     *  Propriétaire d'un chef
+     */
+    public function owner() {
+        return $this->belongsTo(User::class);
+    }
+
+    /**
+     *  Chefs d'un propriétaire
+     */
+    public function chefs()
+    {
+        return $this->hasMany(User::class, 'owner_id');
+    }
 }
