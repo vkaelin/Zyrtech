@@ -35,6 +35,7 @@ Route::group(['middleware' => ['web', 'auth']], function () {
 
     // Owners
         // Users
+    Route::get('/dashboard/chefs/', 'owner\OwnerChefController@index');
     Route::get('/dashboard/chefs/create', 'owner\OwnerChefController@create');
     Route::post('/dashboard/chefs/', 'owner\OwnerChefController@store');
 });

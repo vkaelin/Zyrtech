@@ -30,7 +30,7 @@
                             @endif
                         @else
                             @can('manage', auth()->user()->role)
-                            <a class="text-white" href="/dashboard/users">Dashboard</a>
+                            <a class="text-white" href="/dashboard/chefs">Dashboard</a>
                             @endcan
                             <span class="text-gray-300 text-sm pr-4">{{ Auth::user()->name }}</span>
 

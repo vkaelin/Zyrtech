@@ -7,6 +7,11 @@ use App\Http\Controllers\Controller;
 
 class OwnerChefController extends Controller
 {
+    public function index()
+    {
+        return view('owner.chefs.index');
+    }
+
     public function create()
     {
         $this->authorize('manage', auth()->user()->role);
@@ -23,7 +28,7 @@ class OwnerChefController extends Controller
 
         $chef = auth()->user()->chefs()->create($attributes);
 
-        return redirect('/dashboard/chefs/create');
+        return redirect('/dashboard/chefs/');
     }
 
     protected function validateRequest()
