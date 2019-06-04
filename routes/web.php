@@ -24,10 +24,13 @@ Route::get('/users/{user}', 'UserController@show');
 Route::resource('products', 'ProductController');
 
 // Admin Dashboard
-Route::group(['middleware' => ['groupName']], function () {
+Route::group(['middleware' => ['auth']], function () {
     // Users
-    Route::get('/users/{user}/show', 'UserController@show');
-    Route::get('/users/{user}/edit', 'UserController@edit');
+    Route::get('/dashboard/users', 'DashboardUserController@index');
+    Route::get('/dashboard/users/create', 'DashboardUserController@create');
+    Route::post('/dashboard/users/', 'DashboardUserController@store');
+    Route::get('/dashboard/users/{user}/show', 'DashboardUserController@show');
+    Route::get('/dashboard/users/{user}/edit', 'DashboardUserController@edit');
 });
 // /dashboard/users
 // /dashboard/products
