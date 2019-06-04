@@ -29,6 +29,9 @@
                                 <a class="no-underline hover:underline text-gray-300 text-sm p-3" href="{{ route('register') }}">{{ __('Inscription') }}</a>
                             @endif
                         @else
+                            @can('manage', auth()->user()->role)
+                            <a class="text-white" href="/dashboard/users">Dashboard</a>
+                            @endcan
                             <span class="text-gray-300 text-sm pr-4">{{ Auth::user()->name }}</span>
 
                             <a href="{{ route('logout') }}"
@@ -44,7 +47,9 @@
             </div>
         </nav>
 
-        @yield('content')
+        <div class="container mx-auto">
+            @yield('content')
+        </div>
     </div>
 
     <!-- Scripts -->
