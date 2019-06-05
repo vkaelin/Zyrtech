@@ -26,6 +26,11 @@ class Product extends Model
         return $this->hasMany(Star::class);
     }
 
+    public function rating()
+    {
+        return $this->hasMany(Rating::class);
+    }
+
     public function getTypeName()
     {
         return $this->type->name;
