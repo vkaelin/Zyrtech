@@ -1882,7 +1882,23 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ __webpack_exports__["default"] = ({});
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {};
+  },
+  methods: {//   submit() {
+    //     this.form.submit('/login')
+    //       .then(response => location = response.data.message)
+    //   }
+  }
+});
 
 /***/ }),
 
@@ -2463,7 +2479,54 @@ var render = function() {
         _vm._v("Entrez votre code")
       ]),
       _vm._v(" "),
-      _c("form")
+      _c(
+        "form",
+        {
+          attrs: { method: "POST", action: "" },
+          on: {
+            submit: function($event) {
+              $event.preventDefault()
+              return _vm.submit($event)
+            }
+          }
+        },
+        [
+          _c("label", { staticClass: "block mb-4" }, [
+            _c("span", { staticClass: "text-gray-700" }, [_vm._v("Code")]),
+            _vm._v(" "),
+            _c("input", {
+              staticClass: "form-input mt-1 block w-full",
+              attrs: { type: "text", placeholder: "Ex. 78FH9EF9FB" }
+            })
+          ]),
+          _vm._v(" "),
+          _c("footer", { staticClass: "flex justify-end" }, [
+            _c(
+              "button",
+              {
+                staticClass: "bg-gray-300 px-4 py-2 rounded font-bold mr-4",
+                attrs: { type: "button" },
+                on: {
+                  click: function($event) {
+                    return _vm.$modal.hide("login-chef")
+                  }
+                }
+              },
+              [_vm._v("Annuler")]
+            ),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass:
+                  "bg-green-500 px-4 py-2 rounded font-bold text-white",
+                attrs: { type: "submit" }
+              },
+              [_vm._v("Connexion")]
+            )
+          ])
+        ]
+      )
     ]
   )
 }
