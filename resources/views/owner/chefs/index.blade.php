@@ -8,21 +8,20 @@
 </div>
 
 
-
 <div class="block w-full overflow-x-auto">
     <table class="w-full text-left shadow-md bg-white rounded-lg">
         <thead>
             <tr>
-                <th class="py-4 px-6 bg-gray-100 font-bold uppercase text-sm text-gray-700 border-b border-gray-200">
+                <th class="py-4 px-6 bg-gray-800 font-bold uppercase text-sm text-gray-100 border-r border-white">
                     Prénom
                 </th>
-                <th class="py-4 px-6 bg-gray-100 font-bold uppercase text-sm text-gray-700 border-b border-gray-200">
+                <th class="py-4 px-6 bg-gray-800 font-bold uppercase text-sm text-gray-100 border-r border-white">
                     Nom
                 </th>
-                <th class="py-4 px-6 bg-gray-100 font-bold uppercase text-sm text-gray-700 border-b border-gray-200">
+                <th class="py-4 px-6 bg-gray-800 font-bold uppercase text-sm text-gray-100 border-r border-white">
                     Code
                 </th>
-                <th class="py-4 px-6 bg-gray-100 font-bold uppercase text-sm text-gray-700 border-b border-gray-200">
+                <th class="py-4 px-6 bg-gray-800 font-bold uppercase text-sm text-gray-100">
                     Actions
                 </th>
             </tr>
@@ -32,7 +31,7 @@
             <tr class="hover:bg-gray-300">
                 <td class="py-4 px-6 border-b border-gray-200">{{ $chef->first_name }}</td>
                 <td class="py-4 px-6 border-b border-gray-200">{{ $chef->last_name }}</td>
-                <td class="py-4 px-6 border-b border-gray-200">Aucun code.</td>
+                <td class="py-4 px-6 border-b border-gray-200">{{ $chef->code }}</td>
                 <td class="py-4 px-6 border-b border-gray-200">
                     <a href="#" class="text-gray-300 font-bold py-1 px-3 mr-2 rounded text-xs bg-green-600 hover:bg-green-700">
                         Modifier

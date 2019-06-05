@@ -22,12 +22,14 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique()->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password')->nullable();
+
+            $table->unsignedBigInteger('owner_id')->nullable();
+            $table->string('code')->nullable();
+            $table->unsignedBigInteger('role_id')->nullable();
+
             $table->rememberToken();
             $table->timestamps();
 
-            $table->unsignedBigInteger('owner_id')->nullable();
-
-            $table->unsignedBigInteger('role_id')->nullable();
             $table->foreign('role_id')->references('id')->on('roles')->onDelete('set null');
         });
     }

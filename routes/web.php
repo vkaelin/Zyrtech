@@ -1,8 +1,5 @@
 <?php
 
-
-// dd(Route::is('dashboard/chefs/*'));
-// dd(Route::currentRouteName('dashboard/chefs/*'));
 /*
 |--------------------------------------------------------------------------
 | Web Routes
