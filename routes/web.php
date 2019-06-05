@@ -1,5 +1,8 @@
 <?php
 
+
+// dd(Route::is('dashboard/chefs/*'));
+// dd(Route::currentRouteName('dashboard/chefs/*'));
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -30,10 +33,10 @@ Route::group(['middleware' => ['web', 'auth']], function () {
     Route::get('/admin/users', 'AdminUserController@index');
     Route::get('/admin/users/create', 'AdminUserController@create');
     Route::post('/admin/users/', 'AdminUserController@store');
-    Route::get('/admin/users/{user}/show', 'AdminUserController@show');
+    Route::get('/admin/users/{user}/show', 'admin\AdminUserController@show');
     Route::get('/admin/users/{user}/edit', 'AdminUserController@edit');
 
-    // Owners
+    // Owners (+ Admin)
         // Users
     Route::get('/dashboard/chefs/', 'owner\OwnerChefController@index');
     Route::get('/dashboard/chefs/create', 'owner\OwnerChefController@create');
