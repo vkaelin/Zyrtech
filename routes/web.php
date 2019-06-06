@@ -50,6 +50,16 @@ Route::group(['prefix' => 'dashboard',  'middleware' => 'auth'], function () {
     Route::get('/chefs/', 'Owner\OwnerChefController@index');
     Route::get('/chefs/create', 'Owner\OwnerChefController@create');
     Route::post('/chefs/', 'Owner\OwnerChefController@store');
+
+    // Sets
+    Route::get('/sets/', 'Owner\OwnerSetController@index');
+    Route::get('/sets/create', 'Owner\OwnerSetController@create');
+
+});
+
+// Chefs
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/sets/', 'SetController@index');
 });
 
 Auth::routes();

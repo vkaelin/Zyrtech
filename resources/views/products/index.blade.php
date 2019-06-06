@@ -9,9 +9,6 @@
         <h3>
             Nom : {{$product->name}}
         </h3>
-        <p>
-            Type Id : {{$product->type_id}}
-        </p>
     </li>
     @endforeach
 </ul>

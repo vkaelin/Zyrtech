@@ -35,6 +35,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    /**
+     *  Rôle d'un utilisateur
+     */
     public function role()
 	{
 		return $this->belongsTo(Role::class);
@@ -53,5 +56,24 @@ class User extends Authenticatable
     public function chefs()
     {
         return $this->hasMany(User::class, 'owner_id');
+    }
+
+    /**
+     *  Sets d'un propriétaire
+     */
+    public function sets()
+	{
+		return $this->hasMany(Set::class, 'owner_id');
+    }
+
+    /**
+     *  Sets assignés à un Chef par un propriétaire
+     */
+    public function assignedSets()
+    {
+        return Set::whereHas('chefs', function ($query) {
+            $query->where('user_id', $this->id);
+        })
+        ->get();
     }
 }
