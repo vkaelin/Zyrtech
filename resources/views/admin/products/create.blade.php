@@ -59,7 +59,7 @@
         </div>
         @endif
 
-        <!-- PHOTO -->
+        <!-- IMAGE -->
 
         <label class="block mb-4">
             <span class="text-gray-700">Image</span>

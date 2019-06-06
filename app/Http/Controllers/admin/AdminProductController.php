@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 
 class AdminProductController extends Controller
 {
@@ -79,7 +80,7 @@ class AdminProductController extends Controller
             'types' => $types,
             'periods' => $periods,
             'labels' => $labels,
-            'productLabel' => $productLabel
+            'productLabel' => $productLabel,
         ];
 
         //dd($data[0]->name);
@@ -102,8 +103,18 @@ class AdminProductController extends Controller
         $validatedAttributes = request()->validate([
             'name' => ['required', 'min:3', 'max:255'],
             'type_id' => ['required'],
-            'period_id' => ['required']
+            'period_id' => ['required'],
+            'image_src' => 'image|mimes:jpeg,png,jpg'
         ]);
+
+        if ($request->has('image_src')) {
+            Storage::disk('public')->delete($product->image_src);
+            $imageName = $request->file('image_src')->getClientOriginalName();
+
+            $validatedAttributes['image_src'] = $imageName;
+
+            request()->image_src->move(storage_path('app/public'), $imageName);
+        }
 
 
         //On fera plusieures requêtes via Axios, ce sera plus simple pour les labels.
@@ -125,7 +136,9 @@ class AdminProductController extends Controller
     {
         $this->authorize('administrate', auth()->user()->role);
 
+        Storage::disk('public')->delete($product->image_src);
         $product->delete();
+
 
         return redirect('/admin/products');
     }

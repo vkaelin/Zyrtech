@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="max-w-lg">
-    <form method="POST" action="/admin/products/{{$data['product']->id}}/edit">
+    <form method="POST" action="/admin/products/{{$data['product']->id}}/edit" enctype="multipart/form-data">
         @method("PATCH")
         @csrf
 
@@ -56,6 +56,16 @@
         @if ($errors->has('period_id'))
         <div class="text-red-500 text-xs italic my-4">
             {{ $errors->first('period_id')}}
+        </div>
+        @endif
+
+        <label class="block mb-4">
+            <span class="text-gray-700">Image</span>
+            <input type="file" class="form-input mt-1 block w-full" type="text" name="image_src">
+        </label>
+        @if ($errors->has('image_src'))
+        <div class="text-red-500 text-xs italic my-4">
+            {{ $errors->first('image_src')}}
         </div>
         @endif
 
