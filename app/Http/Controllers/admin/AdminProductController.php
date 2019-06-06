@@ -41,8 +41,11 @@ class AdminProductController extends Controller
     {
         $this->authorize('administrate', auth()->user()->role);
 
+        //On utilisera paginate par la suite.
         $types = \App\Type::all();
+        $periods = \App\Period::all();
         $labels = \App\Label::all();
+        $productLabel = \App\ProductLabel::where('product_id', $product->id)->get();
 
         // $types = $types->reduce(function ($carry, $type) {
         //     return $type->name;
@@ -52,11 +55,12 @@ class AdminProductController extends Controller
         //     return $label->name;
         // });
 
-
         $data = [
             'product' => $product,
             'types' => $types,
-            'labels' => $labels
+            'periods' => $periods,
+            'labels' => $labels,
+            'productLabel' => $productLabel
         ];
 
         //dd($data[0]->name);
@@ -73,7 +77,22 @@ class AdminProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        $product->update(request(['name', 'type_id']));
+        $this->authorize('administrate', auth()->user()->role);
+
+        //Validation de la requête
+        $validatedAttributes = request()->validate([
+            'name' => ['required', 'min:3', 'max:255'],
+            'type_id' => ['required'],
+            'period_id' => ['required']
+        ]);
+
+
+        //On fera plusieures requêtes via Axios, ce sera plus simple pour les labels.
+        // $productLabel = \App\ProductLabel::where('product_id', $product->id)->get();
+        // dd($product->productLabel);
+        // $product->productLabel->update(request(['label_id']));
+
+        $product->update($validatedAttributes);
         return back();
     }
 
