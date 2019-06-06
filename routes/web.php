@@ -54,6 +54,7 @@ Route::group(['prefix' => 'dashboard',  'middleware' => 'auth'], function () {
     // Sets
     Route::get('/sets/', 'Owner\OwnerSetController@index');
     Route::get('/sets/create', 'Owner\OwnerSetController@create');
+    Route::post('/sets/', 'Owner\OwnerSetController@store');
 
 });
 

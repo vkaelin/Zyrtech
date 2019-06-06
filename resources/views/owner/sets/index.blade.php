@@ -15,6 +15,12 @@
                 <th class="py-4 px-6 bg-gray-800 font-bold uppercase text-sm text-gray-100 border-r border-white">
                     Id
                 </th>
+                <th class="py-4 px-6 bg-gray-800 font-bold uppercase text-sm text-gray-100 border-r border-white">
+                    Chefs
+                </th>
+                <th class="py-4 px-6 bg-gray-800 font-bold uppercase text-sm text-gray-100 border-r border-white">
+                    Produits
+                </th>
                 <th class="py-4 px-6 bg-gray-800 font-bold uppercase text-sm text-gray-100">
                     Actions
                 </th>
@@ -23,7 +29,17 @@
         <tbody>
             @forelse (auth()->user()->sets as $set)
             <tr class="hover:bg-gray-300">
-                <td class="py-4 px-6 border-b border-gray-200">{{ $chef->id }}</td>
+                <td class="py-4 px-6 border-b border-gray-200">{{ $set->id }}</td>
+                <td class="py-4 px-6 border-b border-gray-200">
+                    @foreach ($set->chefs as $chef)
+                        {{ $chef->first_name }} {{ $chef->last_name }}, 
+                    @endforeach
+                </td>
+                <td class="py-4 px-6 border-b border-gray-200">
+                    @foreach ($set->products as $product)
+                        {{ $product->name }}, 
+                    @endforeach
+                </td>
                 <td class="py-4 px-6 border-b border-gray-200">
                     <a href="#" class="text-gray-300 font-bold py-1 px-3 mr-2 rounded text-xs bg-green-600 hover:bg-green-700">
                         Modifier
