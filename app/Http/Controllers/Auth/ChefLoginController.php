@@ -14,7 +14,7 @@ class ChefLoginController extends Controller
 
         if(!$owner->isEmpty()) {
             Auth::login($owner->first());
-            return ['message' => '/home'];
+            return ['message' => '/dashboard/chefs'];
         }
 
         return response()->json(['errors' => ['code' => 'Compte non trouvé.']], 404);
