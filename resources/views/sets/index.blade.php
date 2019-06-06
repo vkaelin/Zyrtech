@@ -8,9 +8,12 @@
     <h3>
         Id : {{$set->id}}
     </h3>
-    <p>
-        Produit: {{ $set->products->first()->name }}
-    </p>
+    <p>Produits: </p>
+    <ul>
+        @foreach ($set->products as $product)
+            <li> - {{ $product->name }}</li>
+        @endforeach
+    </ul>
     @empty
     <div>Aucun set ne vous a été assigné.</div>
     @endforelse
