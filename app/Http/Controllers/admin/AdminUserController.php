@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\admin;
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class AdminUserController extends Controller
 {
@@ -23,7 +23,5 @@ class AdminUserController extends Controller
     public function store()
     {
         $this->authorize('administrate', auth()->user()->role);
-
-
     }
 }
