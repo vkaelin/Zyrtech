@@ -10,6 +10,8 @@ class OwnerChefController extends Controller
 {
     public function index()
     {
+        $this->authorize('manage', auth()->user()->role);
+
         return view('owner.chefs.index');
     }
 
@@ -25,7 +27,7 @@ class OwnerChefController extends Controller
         $this->authorize('manage', auth()->user()->role);
 
         $attributes = $this->validateRequest();
-        $attributes['role_id'] = 3;
+        $attributes['role_id'] = 3; // chef
 
         $code = str_random(10);
         do
@@ -36,7 +38,7 @@ class OwnerChefController extends Controller
         while(!$user_code->isEmpty());
         $attributes['code'] = $code;
 
-        $chef = auth()->user()->chefs()->create($attributes);
+        auth()->user()->chefs()->create($attributes);
 
         return redirect('/dashboard/chefs/');
     }

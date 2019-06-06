@@ -22,28 +22,36 @@
             <div class="w-64 p-4 bg-gray-200">
                 <div class="flex items-center mb-4">
                     <h3 class="text-xl font-bold mr-2">Dashboard</h3>
-                    <p class="px-2 py-1 text-xs text-white bg-gray-800 rounded-full">Propriétaires</p>
+                    <p class="px-2 py-1 text-xs text-white bg-gray-800 rounded-full">Admin</p>
                 </div>
                 <nav>
                     <ul>
                         <li class="font-bold py-2 hover:underline">
-                            <a href="/dashboard/chefs"
-                                class="{{ Request::is('dashboard/chefs') ? 'text-green-400' : ''}}">
-                                Chefs
+                            <a href="/admin/users"
+                                class="{{ Request::is('admin/users') ? 'text-green-400' : ''}}">
+                                Utilisateurs
                             </a>
                         </li>
-                        @if (Request::is('dashboard/chefs*'))
+                        @if (Request::is('admin/users*'))
                         <li class="font-bold py-2 hover:underline pl-2">
-                            <a href="/dashboard/chefs/create"
-                                class="{{ Request::is('dashboard/chefs/create') ? 'text-green-400' : ''}}">
-                                Ajouter un Chef
+                            <a href="/admin/users/create"
+                                class="{{ Request::is('admin/users/create') ? 'text-green-400' : ''}}">
+                                Ajouter un utilisateur
                             </a>
                         </li>
                         @endif
                         <li class="font-bold py-2 hover:underline">
-                            <a href="/dashboard/sets"
-                                class="{{ Request::is('dashboard/sets') ? 'text-green-400' : ''}}">Sets</a>
+                            <a href="/admin/products"
+                                class="{{ Request::is('admin/products') ? 'text-green-400' : ''}}">Produits</a>
                         </li>
+                        @if (Request::is('admin/products*'))
+                        <li class="font-bold py-2 hover:underline pl-2">
+                            <a href="/admin/products/create"
+                                class="{{ Request::is('admin/products/create') ? 'text-green-400' : ''}}">
+                                Ajouter un produit
+                            </a>
+                        </li>
+                        @endif
                     </ul>
                 </nav>
             </div>
@@ -57,11 +65,6 @@
                                 <a href="{{ url('/') }}" class="text-lg font-semibold text-gray-100 mr-3">
                                     {{ config('app.name', 'Laravel') }}
                                 </a>
-                                @can('administrate', auth()->user()->role)
-                                <a href="/admin/users" class="text-lg text-gray-100">
-                                    Dashboard Admin
-                                </a>
-                                @endcan
                             </div>
                             <div class="flex-1 text-right">
                                 <a class="text-white" href="/">Retour au site</a>

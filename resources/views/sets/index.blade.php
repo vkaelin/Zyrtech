@@ -1,17 +1,16 @@
 @extends('layouts.app')
 
 @section('content')
-<h1>Vos sets assignés</h1>
+<h1 class="text-2xl font-bold mb-4">Vos sets assignés</h1>
 
 <ul>
     @forelse ($sets as $set)
-    <h3>
-        Id : {{$set->id}}
-    </h3>
     <p>Produits: </p>
-    <ul>
+    <ul class="mb-3">
         @foreach ($set->products as $product)
-            <li> - {{ $product->name }}</li>
+            <li>
+                <a class="hover:font-bold" href="/products/{{ $product->id }}"> - {{ $product->name }}</a>
+            </li>
         @endforeach
     </ul>
     @empty

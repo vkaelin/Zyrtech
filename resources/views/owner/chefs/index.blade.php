@@ -33,10 +33,10 @@
                 <td class="py-4 px-6 border-b border-gray-200">{{ $chef->last_name }}</td>
                 <td class="py-4 px-6 border-b border-gray-200">{{ $chef->code }}</td>
                 <td class="py-4 px-6 border-b border-gray-200">
-                    <a href="#" class="text-gray-300 font-bold py-1 px-3 mr-2 rounded text-xs bg-green-600 hover:bg-green-700">
+                    <a href="#" class="text-white font-bold py-1 px-3 mr-2 rounded text-xs bg-green-600 hover:bg-green-700">
                         Modifier
                     </a>
-                    <a href="#" class="text-gray-300 font-bold py-1 px-3 rounded text-xs bg-red-600 hover:bg-red-700">
+                    <a href="#" class="text-white font-bold py-1 px-3 rounded text-xs bg-red-600 hover:bg-red-700">
                         Supprimer
                     </a>
                 </td>
