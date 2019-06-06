@@ -39,7 +39,7 @@ Route::group(['middleware' => ['web', 'auth']], function () {
     Route::post('/admin/products/', 'admin\AdminProductController@store');
     Route::get('/admin/products/{product}/edit', 'admin\AdminProductController@edit');
     Route::patch('/admin/products/{product}/edit', 'admin\AdminProductController@update');
-    Route::delete('/admin/products', 'admin\AdminProductController@destroy');
+    Route::delete('/admin/products/{product}', 'admin\AdminProductController@destroy');
 
 
     // Owners

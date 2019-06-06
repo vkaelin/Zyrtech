@@ -6,7 +6,7 @@
         @method("PATCH")
         @csrf
 
-        <h3 class="text-2xl mb-4">PRODUCT ID : {{$data['product']->id}}</h3>
+        <h3 class="text-2xl mb-4">PRODUIT ID : {{$data['product']->id}}</h3>
         <!-- NAME -->
         <label class=" block mb-4">
             <span class="text-gray-700">Nom</span>
@@ -21,7 +21,7 @@
 
         <!-- TYPE  -->
         <div class="block mb-4">
-            <span class="text-gray-700">Product Type :</span>
+            <span class="text-gray-700">Type :</span>
             @foreach ($data['types'] as $type)
             <div class="mt-2">
                 <div class="mb-2">
@@ -43,7 +43,7 @@
         <!-- PERIOD  -->
         <div class="block mb-4">
             <label class="block">
-                <span class="text-gray-700">Product Period :</span>
+                <span class="text-gray-700">Période :</span>
                 <select class="form-select block w-full mt-1" name="period_id">
                     @foreach ($data['periods'] as $period)
                     <option {{$period->id === $data['product']->period_id ? 'selected' : ''}} value="{{$period->id}}">
@@ -62,7 +62,7 @@
         <!-- LABEL / VA ETRE GERER AVEC VUE -->
         <div class="block mb-4">
             <label class="block">
-                <span class="text-gray-700">Product Label :</span>
+                <span class="text-gray-700">Label :</span>
                 <select class="form-select block w-full mt-1" value="label_id">
                     @foreach ($data['labels'] as $label)
                     <option {{$label->name === $data['product']->getLabelName() ? 'selected' : ''}}

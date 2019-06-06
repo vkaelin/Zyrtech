@@ -22,13 +22,34 @@ class AdminProductController extends Controller
     {
         $this->authorize('administrate', auth()->user()->role);
 
-        return view('admin.products.create');
+        $types = \App\Type::all();
+        $periods = \App\Period::all();
+        $labels = \App\Label::all();
+
+        $data = [
+            'types' => $types,
+            'periods' => $periods,
+            'labels' => $labels,
+        ];
+
+        return view('admin.products.create', compact('data'));
     }
 
     //Méthode POST pour la création
     public function store()
     {
         $this->authorize('administrate', auth()->user()->role);
+
+        $validatedAttributes = request()->validate([
+            'name' => ['required', 'min:3', 'max:255'],
+            'type_id' => ['required'],
+            'period_id' => ['required'],
+            'photo_src' => ['required', 'min:3', 'max:255']
+        ]);
+
+        Product::create($validatedAttributes);
+
+        return redirect('/admin/products');
     }
 
     /**
@@ -46,14 +67,6 @@ class AdminProductController extends Controller
         $periods = \App\Period::all();
         $labels = \App\Label::all();
         $productLabel = \App\ProductLabel::where('product_id', $product->id)->get();
-
-        // $types = $types->reduce(function ($carry, $type) {
-        //     return $type->name;
-        // });
-
-        // $labels = $labels->reduce(function ($carry, $label) {
-        //     return $label->name;
-        // });
 
         $data = [
             'product' => $product,
@@ -104,6 +117,10 @@ class AdminProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        $this->authorize('administrate', auth()->user()->role);
+
+        $product->delete();
+
+        return redirect('/admin/products');
     }
 }
