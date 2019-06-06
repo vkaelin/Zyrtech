@@ -32,7 +32,9 @@
                             @can('manage', auth()->user()->role)
                             <a class="text-white" href="/dashboard/chefs">Dashboard</a>
                             @endcan
-                            <span class="text-gray-300 text-sm pr-4">{{ Auth::user()->name }}</span>
+                            <span class="text-gray-300 text-sm pr-4">
+                                {{ Auth::user()->first_name . ' ' . Auth::user()->last_name}}
+                            </span>
 
                             <a href="{{ route('logout') }}"
                                class="no-underline hover:underline text-gray-300 text-sm p-3"

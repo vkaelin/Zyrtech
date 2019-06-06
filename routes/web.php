@@ -17,6 +17,9 @@ Route::get('/', function () {
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+// Login Chef
+Route::post('/login/chefs/', 'Auth\ChefLoginController@login');
+
 // Users
 Route::get('/users/{user}', 'UserController@show');
 
@@ -27,11 +30,11 @@ Route::resource('products', 'ProductController');
 Route::group(['middleware' => ['web', 'auth']], function () {
     // Administrator
     // Users
-    Route::get('/admin/users', 'AdminUserController@index');
-    Route::get('/admin/users/create', 'AdminUserController@create');
-    Route::post('/admin/users/', 'AdminUserController@store');
+    Route::get('/admin/users', 'admin\AdminUserController@index');
+    Route::get('/admin/users/create', 'admin\AdminUserController@create');
+    Route::post('/admin/users/', 'admin\AdminUserController@store');
     Route::get('/admin/users/{user}/show', 'admin\AdminUserController@show');
-    Route::get('/admin/users/{user}/edit', 'AdminUserController@edit');
+    Route::get('/admin/users/{user}/edit', 'admin\AdminUserController@edit');
 
     // Products
     Route::get('/admin/products', 'admin\AdminProductController@index');
