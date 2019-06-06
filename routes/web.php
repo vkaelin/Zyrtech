@@ -26,32 +26,30 @@ Route::get('/users/{user}', 'UserController@show');
 // PRODUCTS 
 Route::resource('products', 'ProductController');
 
-// Admin/Owner Dashboard
-Route::group(['middleware' => ['auth']], function () {
-    // Administrator
+// Dashboard for Admins
+Route::group(['prefix' => 'admin',  'middleware' => 'auth'], function () {
     // Users
-    Route::get('/admin/users', 'admin\AdminUserController@index');
-    Route::get('/admin/users/create', 'admin\AdminUserController@create');
-    Route::post('/admin/users/', 'admin\AdminUserController@store');
-    Route::get('/admin/users/{user}/show', 'admin\AdminUserController@show');
-    Route::get('/admin/users/{user}/edit', 'admin\AdminUserController@edit');
+    Route::get('/users', 'Admin\AdminUserController@index');
+    Route::get('/users/create', 'Admin\AdminUserController@create');
+    Route::post('/users/', 'Admin\AdminUserController@store');
+    Route::get('/users/{user}/show', 'Admin\AdminUserController@show');
+    Route::get('/users/{user}/edit', 'Admin\AdminUserController@edit');
 
     // Products
-    Route::get('/admin/products', 'admin\AdminProductController@index');
-    Route::get('/admin/products/create', 'admin\AdminProductController@create');
-    Route::post('/admin/products/', 'admin\AdminProductController@store');
-    Route::get('/admin/products/{product}/edit', 'admin\AdminProductController@edit');
-    Route::patch('/admin/products/{product}/edit', 'admin\AdminProductController@update');
-    Route::delete('/admin/products/{product}', 'admin\AdminProductController@destroy');
-
-
-    // Owners
-    // Users
-    Route::get('/dashboard/chefs/', 'owner\OwnerChefController@index');
-    Route::get('/dashboard/chefs/create', 'owner\OwnerChefController@create');
-    Route::post('/dashboard/chefs/', 'owner\OwnerChefController@store');
+    Route::get('/products', 'Admin\AdminProductController@index');
+    Route::get('/products/create', 'Admin\AdminProductController@create');
+    Route::post('/products/', 'Admin\AdminProductController@store');
+    Route::get('/products/{product}/edit', 'Admin\AdminProductController@edit');
+    Route::patch('/products/{product}/edit', 'Admin\AdminProductController@update');
+    Route::delete('/products/{product}', 'Admin\AdminProductController@destroy');
 });
-// /dashboard/users
-// /dashboard/products
+
+// Dashboard for Owners
+Route::group(['prefix' => 'dashboard',  'middleware' => 'auth'], function () {
+    // Users
+    Route::get('/chefs/', 'Owner\OwnerChefController@index');
+    Route::get('/chefs/create', 'Owner\OwnerChefController@create');
+    Route::post('/chefs/', 'Owner\OwnerChefController@store');
+});
 
 Auth::routes();
