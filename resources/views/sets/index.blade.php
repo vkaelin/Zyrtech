@@ -8,6 +8,9 @@
     <h3>
         Id : {{$set->id}}
     </h3>
+    <p>
+        Produit: {{ $set->products->first()->name }}
+    </p>
     @empty
     <div>Aucun set ne vous a été assigné.</div>
     @endforelse

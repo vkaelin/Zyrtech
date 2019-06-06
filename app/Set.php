@@ -12,4 +12,9 @@ class Set extends Model
     {
         return $this->belongsToMany(User::class, 'set_chefs')->withTimestamps();
     }
+
+    public function products()
+    {
+        return $this->belongsToMany(Product::class, 'set_products')->withTimestamps();
+    }
 }
