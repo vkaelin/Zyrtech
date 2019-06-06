@@ -27,7 +27,7 @@ Route::get('/users/{user}', 'UserController@show');
 Route::resource('products', 'ProductController');
 
 // Admin/Owner Dashboard
-Route::group(['middleware' => ['web', 'auth']], function () {
+Route::group(['middleware' => ['auth']], function () {
     // Administrator
     // Users
     Route::get('/admin/users', 'admin\AdminUserController@index');
