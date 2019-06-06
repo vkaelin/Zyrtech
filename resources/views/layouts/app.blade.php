@@ -4,16 +4,17 @@
     <div class="container mx-auto px-6 md:px-0">
         <div class="flex items-center justify-center">
             <div class="mr-6">
-                <a href="{{ url('/') }}" class="text-lg font-semibold text-gray-100 no-underline">
+                <a href="{{ url('/') }}" class="text-lg font-semibold text-gray-100 mr-4">
                     {{ config('app.name', 'Laravel') }}
                 </a>
+                <a class="text-gray-100" href="/products">Produits</a>
             </div>
             <div class="flex-1 text-right">
                 @guest
-                <a class="no-underline hover:underline text-gray-300 text-sm p-3"
+                <a class="hover:underline text-gray-300 text-sm p-3"
                     href="{{ route('login') }}">{{ __('Connexion') }}</a>
                 @if (Route::has('register'))
-                <a class="no-underline hover:underline text-gray-300 text-sm p-3"
+                <a class=" hover:underline text-gray-300 text-sm p-3"
                     href="{{ route('register') }}">{{ __('Inscription') }}</a>
                 @endif
                 @else
@@ -24,7 +25,7 @@
                     {{ Auth::user()->first_name . ' ' . Auth::user()->last_name}}
                 </span>
 
-                <a href="{{ route('logout') }}" class="no-underline hover:underline text-gray-300 text-sm p-3" onclick="event.preventDefault();
+                <a href="{{ route('logout') }}" class="hover:underline text-gray-300 text-sm p-3" onclick="event.preventDefault();
                                     document.getElementById('logout-form').submit();">{{ __('Déconnexion') }}</a>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
                     {{ csrf_field() }}

@@ -11,11 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/home', 'HomeController@index')->name('home');
+// Homepage
+Route::get('/', 'HomeController@index');
 
 // Login Chef
 Route::post('/login/chefs/', 'Auth\ChefLoginController@login');
