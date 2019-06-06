@@ -6,6 +6,7 @@
 <ul>
     @foreach ($products as $product)
     <li>
+        <img src="{{$product->getImage()}}" alt="{{$product->name}}">
         <h3>
             Nom : {{$product->name}}
         </h3>

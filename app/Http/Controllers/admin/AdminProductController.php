@@ -36,7 +36,7 @@ class AdminProductController extends Controller
     }
 
     //Méthode POST pour la création
-    public function store()
+    public function store(Request $request)
     {
         $this->authorize('administrate', auth()->user()->role);
 
@@ -44,8 +44,14 @@ class AdminProductController extends Controller
             'name' => ['required', 'min:3', 'max:255'],
             'type_id' => ['required'],
             'period_id' => ['required'],
-            'photo_src' => ['required', 'min:3', 'max:255']
+            'image_src' => 'required|image|mimes:jpeg,png,jpg'
         ]);
+
+        $imageName = $request->file('image_src')->getClientOriginalName();
+
+        $validatedAttributes['image_src'] = $imageName;
+
+        request()->image_src->move(storage_path('app/public'), $imageName);
 
         Product::create($validatedAttributes);
 

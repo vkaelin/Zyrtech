@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class Product extends Model
 {
@@ -66,5 +67,11 @@ class Product extends Model
         }
 
         return 0;
+    }
+
+    public function getImage()
+    {
+        $this->image_src === 'no-src' ? $image = Storage::url('placeholder.jpg') : $image = Storage::url($this->image_src);
+        return $image;
     }
 }

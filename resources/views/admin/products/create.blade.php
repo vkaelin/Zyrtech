@@ -5,7 +5,7 @@
 <h1 class="text-xl font-bold mb-6">Créer un produit</h1>
 
 <div class="max-w-lg">
-    <form method="POST" action="/admin/products/">
+    <form method="POST" action="/admin/products/" enctype="multipart/form-data">
         @csrf
 
         <!-- NAME -->
@@ -60,13 +60,14 @@
         @endif
 
         <!-- PHOTO -->
+
         <label class="block mb-4">
             <span class="text-gray-700">Image</span>
-            <input class="form-input mt-1 block w-full" required type="text" name="photo_src">
+            <input type="file" class="form-input mt-1 block w-full" required type="text" name="image_src">
         </label>
-        @if ($errors->has('photo_src'))
+        @if ($errors->has('image_src'))
         <div class="text-red-500 text-xs italic my-4">
-            {{ $errors->first('photo_src')}}
+            {{ $errors->first('image_src')}}
         </div>
         @endif
 
