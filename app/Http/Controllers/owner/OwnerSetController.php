@@ -38,13 +38,9 @@ class OwnerSetController extends Controller
 
         $set = auth()->user()->sets()->create();
 
-        foreach ($attributes['chefs'] as $chef) {
-            $set->chefs()->attach(['id' => $chef]);
-        }
+        $set->chefs()->attach($attributes['chefs']);
 
-        foreach ($attributes['products'] as $product) {
-            $set->products()->attach(['id' => $product]);
-        }
+        $set->products()->attach($attributes['products']);
 
         return redirect('/dashboard/sets');
     }
