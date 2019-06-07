@@ -74,11 +74,11 @@
             <label class="block">
                 <span class="text-gray-700">Label :</span>
                 <select class="form-select block w-full mt-1" value="label_id">
-                    @foreach ($data['labels'] as $label)
-                    <option {{$label->name === $data['product']->getLabelName() ? 'selected' : ''}}
-                        value="{{$label->id}}">
-                        {{$label->name}}</option>
-                    @endforeach
+                    {{-- @foreach ($data['labels'] as $label)
+                    <option {{$label->name === $data['product']->getLabels() ? 'selected' : ''}}
+                    value="{{$label->id}}">
+                    {{$label->name}}</option>
+                    @endforeach --}}
                 </select>
             </label>
         </div>

@@ -39,7 +39,11 @@
                 <td class="py-4 px-6 border-b border-gray-200">Lorem ipsum ....</td>
                 <td class="py-4 px-6 border-b border-gray-200">{{ $product->getTypeName() }}</td>
                 <td class="py-4 px-6 border-b border-gray-200">{{ $product->getPeriodName() }}</td>
-                <td class="py-4 px-6 border-b border-gray-200">{{ $product->getLabelName() }}</td>
+                <td class="py-4 px-6 border-b border-gray-200">
+                    @foreach ($product->labels as $label)
+                    {{$label->name}},
+                    @endforeach
+                </td>
                 <td class="py-4 px-6 border-b border-gray-200">
                     <form method="GET" action="/admin/products/{{$product->id}}/edit" class="inline-block">
                         @csrf

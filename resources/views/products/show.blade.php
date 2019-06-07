@@ -7,6 +7,8 @@
 <p>{{$product->name}}</p>
 <p>{{$product->getTypeName()}}</p>
 <p>{{$product->getPeriodName()}}</p>
-<p>{{$product->getLabelName()}}</p>
+@foreach ($product->labels as $label)
+<p>{{$label->name}}</p>
+@endforeach
 <p>{{$product->getStarAverage()}}</p>
 @endsection

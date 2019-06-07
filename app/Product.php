@@ -19,17 +19,22 @@ class Product extends Model
         return $this->belongsTo(Period::class);
     }
 
-    public function productLabel()
+    public function labels()
     {
-        return $this->hasOne(ProductLabel::class);
+        return $this->belongsToMany(Label::class, 'product_labels');
     }
 
-    public function star()
+    // public function productLabel()
+    // {
+    //     return $this->hasOne(ProductLabel::class);
+    // }
+
+    public function stars()
     {
         return $this->hasMany(Star::class);
     }
 
-    public function rating()
+    public function ratings()
     {
         return $this->hasMany(Rating::class);
     }
@@ -44,26 +49,17 @@ class Product extends Model
         return $this->period->name;
     }
 
-    public function getLabelName()
-    {
-        if ($this->productLabel != null) {
-            return $this->productLabel->label->name;
-        }
-
-        return 'Sans label';
-    }
-
     public function getStarAverage()
     {
         // A refactoriser
-        $stars = $this->star;
+        $stars = $this->stars;
 
         if ($stars->isNotEmpty()) {
             $stars = $stars->reduce(function ($carry, $star) {
                 return $carry + $star->value;
             });
 
-            return $stars / $this->star->count();
+            return $stars / $this->stars->count();
         }
 
         return 0;
