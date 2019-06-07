@@ -12,15 +12,11 @@ class OwnerSetController extends Controller
 {
     public function index()
     {
-        $this->authorize('manage', auth()->user()->role);
-
         return view('owner.sets.index');
     }
 
     public function create()
     {
-        $this->authorize('manage', auth()->user()->role);
-
         $chefs = auth()->user()->chefs;
         $products = Product::all();
 
@@ -29,8 +25,6 @@ class OwnerSetController extends Controller
 
     public function store()
     {
-        $this->authorize('manage', auth()->user()->role);
-
         $attributes = request()->validate([
             'chefs' => 'required|array|min:1',
             'products' => 'required|array|min:1'

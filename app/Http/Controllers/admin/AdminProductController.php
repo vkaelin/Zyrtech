@@ -11,8 +11,6 @@ class AdminProductController extends Controller
 {
     public function index()
     {
-        $this->authorize('administrate', auth()->user()->role);
-
         $products = \App\Product::all();
 
         return view('admin.products.index', compact('products'));
@@ -21,8 +19,6 @@ class AdminProductController extends Controller
     //GET la page de création
     public function create()
     {
-        $this->authorize('administrate', auth()->user()->role);
-
         $types = \App\Type::all();
         $periods = \App\Period::all();
         $labels = \App\Label::all();
@@ -39,8 +35,6 @@ class AdminProductController extends Controller
     //Méthode POST pour la création
     public function store(Request $request)
     {
-        $this->authorize('administrate', auth()->user()->role);
-
         $validatedAttributes = request()->validate([
             'name' => ['required', 'min:3', 'max:255'],
             'type_id' => ['required'],
@@ -67,8 +61,6 @@ class AdminProductController extends Controller
      */
     public function edit(Product $product)
     {
-        $this->authorize('administrate', auth()->user()->role);
-
         //On utilisera paginate par la suite.
         $types = \App\Type::all();
         $periods = \App\Period::all();
@@ -97,8 +89,6 @@ class AdminProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        $this->authorize('administrate', auth()->user()->role);
-
         //Validation de la requête
         $validatedAttributes = request()->validate([
             'name' => ['required', 'min:3', 'max:255'],
@@ -134,11 +124,8 @@ class AdminProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        $this->authorize('administrate', auth()->user()->role);
-
         Storage::disk('public')->delete($product->image_src);
         $product->delete();
-
 
         return redirect('/admin/products');
     }

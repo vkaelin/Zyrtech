@@ -10,22 +10,16 @@ class OwnerChefController extends Controller
 {
     public function index()
     {
-        $this->authorize('manage', auth()->user()->role);
-
         return view('owner.chefs.index');
     }
 
     public function create()
     {
-        $this->authorize('manage', auth()->user()->role);
-
         return view('owner.chefs.create');
     }
 
     public function store()
     {
-        $this->authorize('manage', auth()->user()->role);
-
         $attributes = $this->validateRequest();
         $attributes['role_id'] = 3; // chef
 
