@@ -42,6 +42,11 @@ class OwnerSetController extends Controller
     public function edit(Set $set)
     {
         $this->authorize('update', $set);
+
+        $chefs = auth()->user()->chefs;
+        $products = Product::all();
+
+        return view('owner.sets.edit', compact('set', 'chefs', 'products'));
     }
 
     public function update(Set $set)

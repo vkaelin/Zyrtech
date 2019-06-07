@@ -41,7 +41,7 @@
                     @endforeach
                 </td>
                 <td class="py-4 px-6 border-b border-gray-200">
-                    <a href="#"
+                    <a href="{{ $set->path() . '/edit' }}"
                         class="inline-block text-white font-bold py-2 px-3 mr-2 rounded text-xs bg-green-600 hover:bg-green-700">
                         Modifier
                     </a>
