@@ -1,16 +1,5 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 // Homepage
 Route::get('/', 'HomeController@index');
 
@@ -20,11 +9,11 @@ Route::post('/login/chefs/', 'Auth\ChefLoginController@login');
 // Users
 Route::get('/users/{user}', 'UserController@show');
 
-// PRODUCTS 
+// Products 
 Route::resource('products', 'ProductController');
 
 // Dashboard for Admins
-Route::group(['prefix' => 'admin',  'middleware' => 'auth'], function () {
+Route::group(['prefix' => 'admin',  'middleware' => ['auth', 'role:admin']], function () {
     // Users
     Route::get('/users', 'Admin\AdminUserController@index');
     Route::get('/users/create', 'Admin\AdminUserController@create');
@@ -66,7 +55,7 @@ Route::group(['prefix' => 'admin',  'middleware' => 'auth'], function () {
 });
 
 // Dashboard for Owners
-Route::group(['prefix' => 'dashboard',  'middleware' => 'auth'], function () {
+Route::group(['prefix' => 'dashboard',  'middleware' => ['auth', 'role:owner']], function () {
     // Users
     Route::get('/chefs/', 'Owner\OwnerChefController@index');
     Route::get('/chefs/create', 'Owner\OwnerChefController@create');
