@@ -52,5 +52,9 @@ class OwnerSetController extends Controller
     public function destroy(Set $set)
     {
         $this->authorize('update', $set);
+
+        $set->delete();
+
+        return redirect('/dashboard/sets');
     }
 }

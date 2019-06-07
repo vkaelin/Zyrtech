@@ -32,21 +32,28 @@
                 <td class="py-4 px-6 border-b border-gray-200">{{ $set->id }}</td>
                 <td class="py-4 px-6 border-b border-gray-200">
                     @foreach ($set->chefs as $chef)
-                        {{ $chef->first_name }} {{ $chef->last_name }}, 
+                    {{ $chef->first_name }} {{ $chef->last_name }},
                     @endforeach
                 </td>
                 <td class="py-4 px-6 border-b border-gray-200">
                     @foreach ($set->products as $product)
-                        {{ $product->name }}, 
+                    {{ $product->name }},
                     @endforeach
                 </td>
                 <td class="py-4 px-6 border-b border-gray-200">
-                    <a href="#" class="text-white font-bold py-1 px-3 mr-2 rounded text-xs bg-green-600 hover:bg-green-700">
+                    <a href="#"
+                        class="inline-block text-white font-bold py-2 px-3 mr-2 rounded text-xs bg-green-600 hover:bg-green-700">
                         Modifier
                     </a>
-                    <a href="#" class="text-white font-bold py-1 px-3 rounded text-xs bg-red-600 hover:bg-red-700">
-                        Supprimer
-                    </a>
+                    <form class="inline-block" method="POST" action="{{ $set->path() }}">
+                        @csrf
+                        @method('DELETE')
+
+                        <button class="text-white font-bold py-2 px-3 rounded text-xs bg-red-600 hover:bg-red-700"
+                            type="submit">
+                            Supprimer
+                        </button>
+                    </form>
                 </td>
             </tr>
             @empty
