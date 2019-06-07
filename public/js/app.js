@@ -1964,12 +1964,9 @@ __webpack_require__.r(__webpack_exports__);
     },
     submit: function submit() {
       var setId = this.set.id;
-      this.form.submit("/dashboard/sets/".concat(setId), 'patch') // .then(response => location = response.data.message)
-      .then(function (response) {
-        return console.log(response);
-      })["catch"](function (err) {
-        return console.log(err);
-      });
+      this.form.submit("/dashboard/sets/".concat(setId), 'patch').then(function (response) {
+        return location = response.data.message;
+      })["catch"](function (err) {});
     }
   }
 });

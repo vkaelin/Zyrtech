@@ -66,6 +66,8 @@ class OwnerSetController extends Controller
 
         $set->chefs()->attach($idChefs);
         $set->products()->attach($idProducts);
+
+        return ['message' => '/dashboard/sets'];
     }
 
     public function destroy(Set $set)

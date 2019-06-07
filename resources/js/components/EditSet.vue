@@ -120,9 +120,8 @@ export default {
     submit() {
       const setId = this.set.id;
       this.form.submit(`/dashboard/sets/${setId}`, 'patch')
-        // .then(response => location = response.data.message)
-        .then(response => console.log(response))
-        .catch(err => console.log(err))
+        .then(response => location = response.data.message)
+        .catch(err => {})
     }
   }
 }
