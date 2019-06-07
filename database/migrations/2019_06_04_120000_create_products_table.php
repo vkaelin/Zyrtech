@@ -19,8 +19,8 @@ class CreateProductsTable extends Migration
             $table->string('image_src')->default('no-src');
             $table->string('video_link')->nullable();
             $table->string('pdf_src')->nullable();
-            $table->unsignedBigInteger('type_id');
-            $table->unsignedBigInteger('period_id');
+            $table->unsignedBigInteger('type_id')->nullable();
+            $table->unsignedBigInteger('period_id')->nullable();
             $table->timestamps();
 
             $table->foreign('type_id')->references('id')->on('types')->onDelete('set null');

@@ -15,8 +15,8 @@ class CreateProductLabelsTable extends Migration
     {
         Schema::create('product_labels', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('product_id');
-            $table->unsignedBigInteger('label_id');
+            $table->unsignedBigInteger('product_id')->nullable();
+            $table->unsignedBigInteger('label_id')->nullable();
             $table->timestamps();
 
             $table->foreign('product_id')->references('id')->on('products')->onDelete('set null');
