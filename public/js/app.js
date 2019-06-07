@@ -1838,6 +1838,7 @@ module.exports = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ZyrtechForm__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ZyrtechForm */ "./resources/js/components/ZyrtechForm.js");
 //
 //
 //
@@ -1896,6 +1897,34 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     'set': Object,
@@ -1904,9 +1933,44 @@ __webpack_require__.r(__webpack_exports__);
     'chefs': Array,
     'products': Array
   },
-  // props: ['set', 'selected-products', 'selected-chefs', 'chefs', 'products'],
-  mounted: function mounted() {
-    console.log(this);
+  data: function data() {
+    return {
+      form: new _ZyrtechForm__WEBPACK_IMPORTED_MODULE_0__["default"]({
+        chefs: this.selectedChefs,
+        products: this.selectedProducts
+      })
+    };
+  },
+  methods: {
+    addChef: function addChef(id) {
+      this.form.chefs.push(this.chefs.find(function (item) {
+        return item.id === id;
+      }));
+    },
+    addProduct: function addProduct(id) {
+      this.form.products.push(this.products.find(function (item) {
+        return item.id === id;
+      }));
+    },
+    removeChef: function removeChef(id) {
+      this.form.chefs = this.form.chefs.filter(function (item) {
+        return item.id !== id;
+      });
+    },
+    removeProduct: function removeProduct(id) {
+      this.form.products = this.form.products.filter(function (item) {
+        return item.id !== id;
+      });
+    },
+    submit: function submit() {
+      var setId = this.set.id;
+      this.form.submit("/dashboard/sets/".concat(setId), 'patch') // .then(response => location = response.data.message)
+      .then(function (response) {
+        return console.log(response);
+      })["catch"](function (err) {
+        return console.log(err);
+      });
+    }
   }
 });
 
@@ -2523,54 +2587,43 @@ var render = function() {
   return _c("div", { staticClass: "max-w-lg" }, [
     _c(
       "form",
-      { attrs: { method: "POST", action: "" } },
+      {
+        attrs: { method: "POST" },
+        on: {
+          submit: function($event) {
+            $event.preventDefault()
+            return _vm.submit($event)
+          }
+        }
+      },
       [
-        _c("h3", { staticClass: "text-lg font-bold mb-3" }, [
-          _vm._v("Chefs dans le set")
-        ]),
-        _vm._v(" "),
-        _vm._l(_vm.selectedChefs, function(chef) {
-          return _c(
-            "div",
-            {
-              key: "selected" + chef.id,
-              staticClass:
-                "inline-flex items-center bg-green-500 px-2 py-1 mb-2 mr-1 text-xs text-white rounded-full cursor-pointer",
-              attrs: { id: chef.id }
-            },
-            [
-              _c("div", [
-                _c("span", [
-                  _vm._v(_vm._s(chef.first_name) + " " + _vm._s(chef.last_name))
-                ]),
-                _vm._v(" "),
-                _c("span", { staticClass: "ml-2 font-bold" }, [_vm._v("x")])
-              ])
-            ]
-          )
-        }),
-        _vm._v(" "),
-        _c("h3", { staticClass: "text-lg font-bold mb-3" }, [
-          _vm._v("Chefs pas dans le set")
-        ]),
-        _vm._v(" "),
-        _vm._l(_vm.chefs, function(chef) {
-          return _c(
-            "div",
-            {
-              key: chef.id,
-              staticClass: "inline-flex",
-              attrs: { id: chef.id }
-            },
-            [
-              !_vm.selectedChefs.some(function(c) {
-                return c.code === chef.code
-              })
-                ? _c(
+        _c(
+          "div",
+          { staticClass: "mb-6" },
+          [
+            _c("h3", { staticClass: "text-lg font-bold mb-3" }, [
+              _vm._v("Chefs dans le set")
+            ]),
+            _vm._v(" "),
+            _vm._l(_vm.form.chefs, function(chef) {
+              return _c(
+                "div",
+                {
+                  key: "selected-" + chef.id,
+                  staticClass: "inline-block",
+                  attrs: { id: "selected-" + chef.id },
+                  on: {
+                    click: function($event) {
+                      return _vm.removeChef(chef.id)
+                    }
+                  }
+                },
+                [
+                  _c(
                     "div",
                     {
                       staticClass:
-                        "inline-flex items-center bg-green-500 px-2 py-1 mb-2 mr-1 text-xs text-white rounded-full cursor-pointer"
+                        "group label-edit bg-green-500 hover:bg-red-500"
                     },
                     [
                       _c("span", [
@@ -2579,25 +2632,244 @@ var render = function() {
                         )
                       ]),
                       _vm._v(" "),
-                      _c("span", { staticClass: "ml-2 font-bold" }, [
-                        _vm._v("x")
-                      ])
+                      _c(
+                        "span",
+                        {
+                          staticClass: "ml-2 opacity-0 group-hover:opacity-100"
+                        },
+                        [
+                          _c(
+                            "svg",
+                            {
+                              staticClass: "fill-current w-2",
+                              attrs: { viewBox: "0 0 20 20" }
+                            },
+                            [
+                              _c("path", {
+                                attrs: {
+                                  d:
+                                    "M10 8.586L2.929 1.515 1.515 2.929 8.586 10l-7.071 7.071 1.414 1.414L10 11.414l7.071 7.071 1.414-1.414L11.414 10l7.071-7.071-1.414-1.414L10 8.586z"
+                                }
+                              })
+                            ]
+                          )
+                        ]
+                      )
                     ]
                   )
-                : _vm._e()
-            ]
-          )
-        }),
+                ]
+              )
+            })
+          ],
+          2
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "mb-6" },
+          [
+            _c("h3", { staticClass: "text-lg font-bold mb-3" }, [
+              _vm._v("Chefs pas dans le set")
+            ]),
+            _vm._v(" "),
+            _vm._l(_vm.chefs, function(chef) {
+              return _c(
+                "div",
+                {
+                  key: chef.id,
+                  staticClass: "inline-block",
+                  attrs: { id: chef.id },
+                  on: {
+                    click: function($event) {
+                      return _vm.addChef(chef.id)
+                    }
+                  }
+                },
+                [
+                  !_vm.form.chefs.some(function(c) {
+                    return c.code === chef.code
+                  })
+                    ? _c(
+                        "div",
+                        {
+                          staticClass:
+                            "group label-edit bg-red-500 hover:bg-green-500"
+                        },
+                        [
+                          _c("span", [
+                            _vm._v(
+                              _vm._s(chef.first_name) +
+                                " " +
+                                _vm._s(chef.last_name)
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "span",
+                            {
+                              staticClass:
+                                "ml-2 opacity-0 group-hover:opacity-100"
+                            },
+                            [
+                              _c(
+                                "svg",
+                                {
+                                  staticClass: "fill-current w-2",
+                                  attrs: { viewBox: "0 0 20 20" }
+                                },
+                                [
+                                  _c("path", {
+                                    attrs: { d: "M0 11l2-2 5 5L18 3l2 2L7 18z" }
+                                  })
+                                ]
+                              )
+                            ]
+                          )
+                        ]
+                      )
+                    : _vm._e()
+                ]
+              )
+            })
+          ],
+          2
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "mb-6" },
+          [
+            _c("h3", { staticClass: "text-lg font-bold mb-3" }, [
+              _vm._v("Produits dans le set")
+            ]),
+            _vm._v(" "),
+            _vm._l(_vm.form.products, function(product) {
+              return _c(
+                "div",
+                {
+                  key: "selected-" + product.id,
+                  staticClass: "inline-block",
+                  on: {
+                    click: function($event) {
+                      return _vm.removeProduct(product.id)
+                    }
+                  }
+                },
+                [
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "group label-edit bg-green-500 hover:bg-red-500"
+                    },
+                    [
+                      _c("span", [_vm._v(_vm._s(product.name))]),
+                      _vm._v(" "),
+                      _c(
+                        "span",
+                        {
+                          staticClass: "ml-2 opacity-0 group-hover:opacity-100"
+                        },
+                        [
+                          _c(
+                            "svg",
+                            {
+                              staticClass: "fill-current w-2",
+                              attrs: { viewBox: "0 0 20 20" }
+                            },
+                            [
+                              _c("path", {
+                                attrs: {
+                                  d:
+                                    "M10 8.586L2.929 1.515 1.515 2.929 8.586 10l-7.071 7.071 1.414 1.414L10 11.414l7.071 7.071 1.414-1.414L11.414 10l7.071-7.071-1.414-1.414L10 8.586z"
+                                }
+                              })
+                            ]
+                          )
+                        ]
+                      )
+                    ]
+                  )
+                ]
+              )
+            })
+          ],
+          2
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "mb-6" },
+          [
+            _c("h3", { staticClass: "text-lg font-bold mb-3" }, [
+              _vm._v("Produits pas dans le set")
+            ]),
+            _vm._v(" "),
+            _vm._l(_vm.products, function(product) {
+              return _c(
+                "div",
+                {
+                  key: product.id,
+                  staticClass: "inline-block",
+                  on: {
+                    click: function($event) {
+                      return _vm.addProduct(product.id)
+                    }
+                  }
+                },
+                [
+                  !_vm.form.products.some(function(c) {
+                    return c.id === product.id
+                  })
+                    ? _c(
+                        "div",
+                        {
+                          staticClass:
+                            "group label-edit bg-red-500 hover:bg-green-500"
+                        },
+                        [
+                          _c("span", [_vm._v(_vm._s(product.name))]),
+                          _vm._v(" "),
+                          _c(
+                            "span",
+                            {
+                              staticClass:
+                                "ml-2 opacity-0 group-hover:opacity-100"
+                            },
+                            [
+                              _c(
+                                "svg",
+                                {
+                                  staticClass: "fill-current w-2",
+                                  attrs: { viewBox: "0 0 20 20" }
+                                },
+                                [
+                                  _c("path", {
+                                    attrs: { d: "M0 11l2-2 5 5L18 3l2 2L7 18z" }
+                                  })
+                                ]
+                              )
+                            ]
+                          )
+                        ]
+                      )
+                    : _vm._e()
+                ]
+              )
+            })
+          ],
+          2
+        ),
         _vm._v(" "),
         _c(
           "button",
           {
-            staticClass: "block bg-green-400 rounded py-2 px-4 text-white mt-8"
+            staticClass: "block bg-green-400 rounded py-2 px-4 text-white mt-8",
+            attrs: { type: "submit" }
           },
-          [_vm._v("Modifier")]
+          [_vm._v("Valider les modifications")]
         )
-      ],
-      2
+      ]
     )
   ])
 }
@@ -2687,7 +2959,7 @@ var render = function() {
       _c(
         "form",
         {
-          attrs: { method: "POST", action: "" },
+          attrs: { method: "POST" },
           on: {
             submit: function($event) {
               $event.preventDefault()
@@ -15201,6 +15473,7 @@ function () {
   }, {
     key: "onFail",
     value: function onFail(error) {
+      console.log(error);
       this.errors = error.response.data.errors;
       this.submitted = false;
       throw error;

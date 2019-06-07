@@ -63,7 +63,7 @@ class User extends Authenticatable
      */
     public function sets()
 	{
-		return $this->hasMany(Set::class, 'owner_id');
+		return $this->belongsToMany(Set::class, 'owner_id');
     }
 
     /**

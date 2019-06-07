@@ -20,7 +20,7 @@ class OwnerSetController extends Controller
         $chefs = auth()->user()->chefs;
         $products = Product::all();
 
-        return view('owner.sets.create', compact('chefs','products'));
+        return view('owner.sets.create', compact('chefs', 'products'));
     }
 
     public function store()
@@ -52,6 +52,20 @@ class OwnerSetController extends Controller
     public function update(Set $set)
     {
         $this->authorize('update', $set);
+
+        $attributes = request()->validate([
+            'chefs' => 'required|array|min:1',
+            'products' => 'required|array|min:1'
+        ]);
+
+        $idChefs= array_column($attributes['chefs'], 'id');
+        $idProducts= array_column($attributes['products'], 'id');
+
+        $set->chefs()->detach();
+        $set->products()->detach();
+
+        $set->chefs()->attach($idChefs);
+        $set->products()->attach($idProducts);
     }
 
     public function destroy(Set $set)

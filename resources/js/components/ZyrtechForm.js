@@ -42,6 +42,7 @@ class ZyrtechForm {
   }
 
   onFail(error) {
+    console.log(error)
     this.errors = error.response.data.errors
     this.submitted = false
 
