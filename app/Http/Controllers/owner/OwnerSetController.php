@@ -38,4 +38,19 @@ class OwnerSetController extends Controller
 
         return redirect('/dashboard/sets');
     }
+
+    public function edit(Set $set)
+    {
+        $this->authorize('update', $set);
+    }
+
+    public function update(Set $set)
+    {
+        $this->authorize('update', $set);
+    }
+
+    public function destroy(Set $set)
+    {
+        $this->authorize('update', $set);
+    }
 }
