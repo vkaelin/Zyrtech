@@ -37,6 +37,7 @@ class AdminProductController extends Controller
     {
         $validatedAttributes = request()->validate([
             'name' => ['required', 'min:3', 'max:255'],
+            'description' => ['required', 'min:3'],
             'type_id' => ['required'],
             'period_id' => ['required'],
             'image_src' => 'required|image|mimes:jpeg,png,jpg'
@@ -92,6 +93,7 @@ class AdminProductController extends Controller
         //Validation de la requête
         $validatedAttributes = request()->validate([
             'name' => ['required', 'min:3', 'max:255'],
+            'description' => ['required', 'min:3'],
             'type_id' => ['required'],
             'period_id' => ['required'],
             'image_src' => 'image|mimes:jpeg,png,jpg'

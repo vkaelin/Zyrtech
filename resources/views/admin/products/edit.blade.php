@@ -19,6 +19,18 @@
         </div>
         @endif
 
+        <!-- DESCRIPTION -->
+        <label class="block mb-4">
+            <span class="text-gray-700">Description</span>
+            <textarea class="form-input mt-1 block w-full" required cols="30" rows="10"
+                name="description">{{$data['product']->description}}</textarea>
+        </label>
+        @if ($errors->has('description'))
+        <div class="text-red-500 text-xs italic my-4">
+            {{ $errors->first('description')}}
+        </div>
+        @endif
+
         <!-- TYPE  -->
         <div class="block mb-4">
             <span class="text-gray-700">Type :</span>
