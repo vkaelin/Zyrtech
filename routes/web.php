@@ -34,7 +34,7 @@ Route::group(['prefix' => 'admin',  'middleware' => ['auth', 'role:admin']], fun
 
     //Types
     Route::get('/products/attributes/types/create', 'Admin\AdminTypeController@create');
-    Route::post('/products/attributes/types/', 'Admin\AdminAttributeController@store');
+    Route::post('/products/attributes/types/', 'Admin\AdminTypeController@store');
     Route::get('/products/attributes/types/{type}/edit', 'Admin\AdminTypeController@edit');
     Route::patch('/products/attributes/types/{type}/edit', 'Admin\AdminTypeController@update');
     Route::delete('/products/attributes/types/{type}', 'Admin\AdminTypeController@destroy');

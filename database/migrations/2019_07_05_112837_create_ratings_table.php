@@ -20,7 +20,7 @@ class CreateRatingsTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
 
-            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('set null');
             //$table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }

@@ -35,6 +35,32 @@
                             Ajouter un produit
                         </a>
                     </li>
+                    <li class="font-bold py-2 hover:underline pl-2">
+                        <a href="/admin/products/attributes"
+                            class="{{ Request::is('admin/products/attributes') ? 'text-green-400' : ''}}">
+                            Lister les attributs
+                        </a>
+                    </li>
+                    @endif
+                    @if (Request::is('admin/products/attributes*'))
+                    <li class="font-bold py-2 hover:underline pl-6">
+                        <a href="/admin/products/attributes/types/create"
+                            class="{{ Request::is('admin/products/attributes/types/create') ? 'text-green-400' : ''}}">
+                            Ajouter un type
+                        </a>
+                    </li>
+                    <li class="font-bold py-2 hover:underline pl-6">
+                        <a href="/admin/products/attributes/periods/create"
+                            class="{{ Request::is('admin/products/attributes/periods/create') ? 'text-green-400' : ''}}">
+                            Ajouter une période
+                        </a>
+                    </li>
+                    <li class="font-bold py-2 hover:underline pl-6">
+                        <a href="/admin/products/attributes/labels/create"
+                            class="{{ Request::is('admin/products/attributes/labels/create') ? 'text-green-400' : ''}}">
+                            Ajouter un label
+                        </a>
+                    </li>
                     @endif
                 </ul>
             </nav>

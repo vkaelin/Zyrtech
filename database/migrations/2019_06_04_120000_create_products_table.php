@@ -23,8 +23,8 @@ class CreateProductsTable extends Migration
             $table->unsignedBigInteger('period_id');
             $table->timestamps();
 
-            $table->foreign('type_id')->references('id')->on('types')->onDelete('cascade');
-            $table->foreign('period_id')->references('id')->on('periods')->onDelete('cascade');
+            $table->foreign('type_id')->references('id')->on('types')->onDelete('set null');
+            $table->foreign('period_id')->references('id')->on('periods')->onDelete('set null');
         });
     }
 
