@@ -39,6 +39,14 @@ Route::group(['prefix' => 'admin',  'middleware' => 'auth'], function () {
     Route::get('/products/{product}/edit', 'Admin\AdminProductController@edit');
     Route::patch('/products/{product}/edit', 'Admin\AdminProductController@update');
     Route::delete('/products/{product}', 'Admin\AdminProductController@destroy');
+
+    //Types
+    Route::get('/attributes', 'Admin\AdminAttributeController@index');
+    Route::get('/attributes/create', 'Admin\AdminAttributeController@create');
+    Route::post('/attributes/', 'Admin\AdminAttributeController@store');
+    Route::get('/attributes/{attribute}/edit', 'Admin\AdminAttributeController@edit');
+    Route::patch('/attributes/{attribute}/edit', 'Admin\AdminAttributeController@update');
+    Route::delete('/attributes/{attribute}', 'Admin\AdminAttributeController@destroy');
 });
 
 // Dashboard for Owners
@@ -52,7 +60,6 @@ Route::group(['prefix' => 'dashboard',  'middleware' => 'auth'], function () {
     Route::get('/sets/', 'Owner\OwnerSetController@index');
     Route::get('/sets/create', 'Owner\OwnerSetController@create');
     Route::post('/sets/', 'Owner\OwnerSetController@store');
-
 });
 
 // Chefs
