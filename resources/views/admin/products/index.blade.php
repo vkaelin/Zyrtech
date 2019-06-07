@@ -60,7 +60,7 @@
             </tr>
             @empty
             <tr class="hover:bg-gray-300">
-                <td>Vous n'avez pas de chefs.</td>
+                <td>Vous n'avez pas de produits.</td>
             </tr>
             @endforelse
         </tbody>
