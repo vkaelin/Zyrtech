@@ -21,6 +21,9 @@
                 <th class="py-4 px-6 bg-gray-800 font-bold uppercase text-sm text-gray-100 border-r border-white">
                     Produits
                 </th>
+                <th class="py-4 px-6 bg-gray-800 font-bold uppercase text-sm text-gray-100 border-r border-white">
+                    Code
+                </th>
                 <th class="py-4 px-6 bg-gray-800 font-bold uppercase text-sm text-gray-100">
                     Actions
                 </th>
@@ -37,6 +40,9 @@
                     @foreach ($set->products as $product)
                     {{ $product->name }},
                     @endforeach
+                </td>
+                <td class="py-4 px-6 border-b border-gray-200">
+                    {{ $set->code }}
                 </td>
                 <td class="py-4 px-6 border-b border-gray-200">
                     <a href="{{ $set->path() . '/edit' }}"
