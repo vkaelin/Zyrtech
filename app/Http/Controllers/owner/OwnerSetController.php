@@ -26,13 +26,20 @@ class OwnerSetController extends Controller
     public function store()
     {
         $attributes = request()->validate([
-            'chefs' => 'required|array|min:1',
+            'chef' => 'required',
             'products' => 'required|array|min:1'
         ]);
 
-        $set = auth()->user()->sets()->create();
+        $code = str_random(10);
+        do {
+            $code = str_random(10);
+            $set_code = Set::where('code', $code)->get();
+        } while (!$set_code->isEmpty());
 
-        $set->chefs()->attach($attributes['chefs']);
+        $set = auth()->user()->sets()->create([
+            'chef_id' => $attributes['chef'],
+            'code' => $code
+        ]);
 
         $set->products()->attach($attributes['products']);
 
@@ -42,6 +49,8 @@ class OwnerSetController extends Controller
     public function edit(Set $set)
     {
         $this->authorize('update', $set);
+
+        $set->loadMissing('chef');
 
         $chefs = auth()->user()->chefs;
         $products = Product::all();
@@ -54,17 +63,15 @@ class OwnerSetController extends Controller
         $this->authorize('update', $set);
 
         $attributes = request()->validate([
-            'chefs' => 'required|array|min:1',
+            'chef' => 'required',
             'products' => 'required|array|min:1'
         ]);
 
-        $idChefs= array_column($attributes['chefs'], 'id');
-        $idProducts= array_column($attributes['products'], 'id');
+        $chef = User::find(request('chef'));
+        $set->chef()->associate($chef)->save();
 
-        $set->chefs()->detach();
+        $idProducts = array_column($attributes['products'], 'id');
         $set->products()->detach();
-
-        $set->chefs()->attach($idChefs);
         $set->products()->attach($idProducts);
 
         return ['message' => '/dashboard/sets'];

@@ -16,7 +16,7 @@
                     Id
                 </th>
                 <th class="py-4 px-6 bg-gray-800 font-bold uppercase text-sm text-gray-100 border-r border-white">
-                    Chefs
+                    Chef / Groupe
                 </th>
                 <th class="py-4 px-6 bg-gray-800 font-bold uppercase text-sm text-gray-100 border-r border-white">
                     Produits
@@ -31,9 +31,7 @@
             <tr class="hover:bg-gray-300">
                 <td class="py-4 px-6 border-b border-gray-200">{{ $set->id }}</td>
                 <td class="py-4 px-6 border-b border-gray-200">
-                    @foreach ($set->chefs as $chef)
-                    {{ $chef->first_name }} {{ $chef->last_name }},
-                    @endforeach
+                    {{ $set->chef->first_name }} {{ $set->chef->last_name }}
                 </td>
                 <td class="py-4 px-6 border-b border-gray-200">
                     @foreach ($set->products as $product)

@@ -2,44 +2,23 @@
   <div class="max-w-lg">
     <form @submit.prevent="submit" method="POST">
 
-        <div class="mb-6">
-          <h3 class="text-lg font-bold mb-3">Chefs dans le set</h3>
-          <div
-              v-for="(chef) in form.chefs"
-              :key="'selected-'+chef.id"
-              @click="removeChef(chef.id)"
-              class="inline-block"
-              :id="'selected-'+chef.id"
+        <label class="block mb-4">
+          <span class="text-gray-700">Chef / Groupe</span>
+          <select
+            v-model="form.chef"
+            class="form-multiselect block w-full mt-1"
+            name="chef"
           >
-              <div class="group label-edit bg-green-500 hover:bg-red-500">
-                <span>{{ chef.first_name }} {{ chef.last_name }}</span>
-                <span class="ml-2 opacity-0 group-hover:opacity-100">
-                  <svg class="fill-current w-2" viewBox="0 0 20 20"><path d="M10 8.586L2.929 1.515 1.515 2.929 8.586 10l-7.071 7.071 1.414 1.414L10 11.414l7.071 7.071 1.414-1.414L11.414 10l7.071-7.071-1.414-1.414L10 8.586z"/></svg>
-                </span>
-              </div>
-          </div>
-        </div>
-
-        <div class="mb-6">
-          <h3 class="text-lg font-bold mb-3">Chefs pas dans le set</h3>
-          <div
+            <option
               v-for="(chef) in chefs"
               :key="chef.id"
-              @click="addChef(chef.id)"
-              :id="chef.id"
-              class="inline-block"
-          >
-              <div
-                v-if="! form.chefs.some(c => c.code === chef.code)"
-                class="group label-edit bg-red-500 hover:bg-green-500"
-              >
-                <span>{{ chef.first_name }} {{ chef.last_name }}</span>
-                <span class="ml-2 opacity-0 group-hover:opacity-100">
-                  <svg class="fill-current w-2" viewBox="0 0 20 20"><path d="M0 11l2-2 5 5L18 3l2 2L7 18z"/></svg>
-                </span>
-              </div>
-          </div>
-        </div>
+              :value="chef.id"
+              :selected="chef.id === set.chef.id"
+            >
+              {{ chef.first_name }} {{ chef.last_name }}
+            </option>
+          </select>
+        </label>
 
         <div class="mb-6">
           <h3 class="text-lg font-bold mb-3">Produits dans le set</h3>
@@ -90,7 +69,6 @@ export default {
   props: {
     'set': Object,
     'selected-products': Array,
-    'selected-chefs': Array,
     'chefs': Array,
     'products': Array
   },
@@ -98,21 +76,15 @@ export default {
   data() {
     return {
       form: new ZyrtechForm({
-        chefs: this.selectedChefs,
+        chef: this.set.chef.id,
         products: this.selectedProducts
       })
     }
   },
 
   methods: {
-    addChef(id) {
-      this.form.chefs.push(this.chefs.find(item => item.id === id));
-    },
     addProduct(id) {
       this.form.products.push(this.products.find(item => item.id === id));
-    },
-    removeChef(id) {
-      this.form.chefs = this.form.chefs.filter(item => item.id !== id)
     },
     removeProduct(id) {
       this.form.products = this.form.products.filter(item => item.id !== id)

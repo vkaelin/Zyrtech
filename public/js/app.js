@@ -1903,59 +1903,27 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     'set': Object,
     'selected-products': Array,
-    'selected-chefs': Array,
     'chefs': Array,
     'products': Array
   },
   data: function data() {
     return {
       form: new _ZyrtechForm__WEBPACK_IMPORTED_MODULE_0__["default"]({
-        chefs: this.selectedChefs,
+        chef: this.set.chef.id,
         products: this.selectedProducts
       })
     };
   },
   methods: {
-    addChef: function addChef(id) {
-      this.form.chefs.push(this.chefs.find(function (item) {
-        return item.id === id;
-      }));
-    },
     addProduct: function addProduct(id) {
       this.form.products.push(this.products.find(function (item) {
         return item.id === id;
       }));
-    },
-    removeChef: function removeChef(id) {
-      this.form.chefs = this.form.chefs.filter(function (item) {
-        return item.id !== id;
-      });
     },
     removeProduct: function removeProduct(id) {
       this.form.products = this.form.products.filter(function (item) {
@@ -2594,143 +2562,66 @@ var render = function() {
         }
       },
       [
-        _c(
-          "div",
-          { staticClass: "mb-6" },
-          [
-            _c("h3", { staticClass: "text-lg font-bold mb-3" }, [
-              _vm._v("Chefs dans le set")
-            ]),
-            _vm._v(" "),
-            _vm._l(_vm.form.chefs, function(chef) {
-              return _c(
-                "div",
+        _c("label", { staticClass: "block mb-4" }, [
+          _c("span", { staticClass: "text-gray-700" }, [
+            _vm._v("Chef / Groupe")
+          ]),
+          _vm._v(" "),
+          _c(
+            "select",
+            {
+              directives: [
                 {
-                  key: "selected-" + chef.id,
-                  staticClass: "inline-block",
-                  attrs: { id: "selected-" + chef.id },
-                  on: {
-                    click: function($event) {
-                      return _vm.removeChef(chef.id)
-                    }
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.form.chef,
+                  expression: "form.chef"
+                }
+              ],
+              staticClass: "form-multiselect block w-full mt-1",
+              attrs: { name: "chef" },
+              on: {
+                change: function($event) {
+                  var $$selectedVal = Array.prototype.filter
+                    .call($event.target.options, function(o) {
+                      return o.selected
+                    })
+                    .map(function(o) {
+                      var val = "_value" in o ? o._value : o.value
+                      return val
+                    })
+                  _vm.$set(
+                    _vm.form,
+                    "chef",
+                    $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+                  )
+                }
+              }
+            },
+            _vm._l(_vm.chefs, function(chef) {
+              return _c(
+                "option",
+                {
+                  key: chef.id,
+                  domProps: {
+                    value: chef.id,
+                    selected: chef.id === _vm.set.chef.id
                   }
                 },
                 [
-                  _c(
-                    "div",
-                    {
-                      staticClass:
-                        "group label-edit bg-green-500 hover:bg-red-500"
-                    },
-                    [
-                      _c("span", [
-                        _vm._v(
-                          _vm._s(chef.first_name) + " " + _vm._s(chef.last_name)
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "span",
-                        {
-                          staticClass: "ml-2 opacity-0 group-hover:opacity-100"
-                        },
-                        [
-                          _c(
-                            "svg",
-                            {
-                              staticClass: "fill-current w-2",
-                              attrs: { viewBox: "0 0 20 20" }
-                            },
-                            [
-                              _c("path", {
-                                attrs: {
-                                  d:
-                                    "M10 8.586L2.929 1.515 1.515 2.929 8.586 10l-7.071 7.071 1.414 1.414L10 11.414l7.071 7.071 1.414-1.414L11.414 10l7.071-7.071-1.414-1.414L10 8.586z"
-                                }
-                              })
-                            ]
-                          )
-                        ]
-                      )
-                    ]
+                  _vm._v(
+                    "\n              " +
+                      _vm._s(chef.first_name) +
+                      " " +
+                      _vm._s(chef.last_name) +
+                      "\n            "
                   )
                 ]
               )
-            })
-          ],
-          2
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "mb-6" },
-          [
-            _c("h3", { staticClass: "text-lg font-bold mb-3" }, [
-              _vm._v("Chefs pas dans le set")
-            ]),
-            _vm._v(" "),
-            _vm._l(_vm.chefs, function(chef) {
-              return _c(
-                "div",
-                {
-                  key: chef.id,
-                  staticClass: "inline-block",
-                  attrs: { id: chef.id },
-                  on: {
-                    click: function($event) {
-                      return _vm.addChef(chef.id)
-                    }
-                  }
-                },
-                [
-                  !_vm.form.chefs.some(function(c) {
-                    return c.code === chef.code
-                  })
-                    ? _c(
-                        "div",
-                        {
-                          staticClass:
-                            "group label-edit bg-red-500 hover:bg-green-500"
-                        },
-                        [
-                          _c("span", [
-                            _vm._v(
-                              _vm._s(chef.first_name) +
-                                " " +
-                                _vm._s(chef.last_name)
-                            )
-                          ]),
-                          _vm._v(" "),
-                          _c(
-                            "span",
-                            {
-                              staticClass:
-                                "ml-2 opacity-0 group-hover:opacity-100"
-                            },
-                            [
-                              _c(
-                                "svg",
-                                {
-                                  staticClass: "fill-current w-2",
-                                  attrs: { viewBox: "0 0 20 20" }
-                                },
-                                [
-                                  _c("path", {
-                                    attrs: { d: "M0 11l2-2 5 5L18 3l2 2L7 18z" }
-                                  })
-                                ]
-                              )
-                            ]
-                          )
-                        ]
-                      )
-                    : _vm._e()
-                ]
-              )
-            })
-          ],
-          2
-        ),
+            }),
+            0
+          )
+        ]),
         _vm._v(" "),
         _c(
           "div",

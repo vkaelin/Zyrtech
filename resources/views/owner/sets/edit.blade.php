@@ -7,7 +7,6 @@
 <edit-set
     :set="{{ $set->toJson() }}"
     :selected-products="{{ $set->products->toJson() }}"
-    :selected-chefs="{{ $set->chefs->toJson() }}"
     :chefs="{{ $chefs->toJson() }}"
     :products="{{ $products->toJson() }}"
 >

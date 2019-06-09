@@ -10,7 +10,7 @@
 
         <label class="block mb-4">
             <span class="text-gray-700">Chef(s)</span>
-            <select class="form-multiselect block w-full mt-1" name="chefs[]" multiple>
+            <select class="form-multiselect block w-full mt-1" name="chef">
                 @foreach ($chefs as $chef)
                 <option value="{{ $chef->id }}">{{ $chef->first_name }} {{ $chef->last_name }}</option>
                 @endforeach

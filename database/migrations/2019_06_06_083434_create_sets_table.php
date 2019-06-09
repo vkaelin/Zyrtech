@@ -16,9 +16,12 @@ class CreateSetsTable extends Migration
         Schema::create('sets', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('owner_id');
+            $table->unsignedBigInteger('chef_id');
+            $table->string('code');
             $table->timestamps();
 
             $table->foreign('owner_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('chef_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

@@ -13,9 +13,9 @@ class Set extends Model
         return $this->belongsTo(User::class, 'owner_id');
     }
 
-    public function chefs()
+    public function chef()
     {
-        return $this->belongsToMany(User::class, 'set_chefs')->withTimestamps();
+        return $this->belongsTo(User::class, 'chef_id');
     }
 
     public function products()

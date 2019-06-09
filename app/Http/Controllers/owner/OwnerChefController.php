@@ -23,15 +23,6 @@ class OwnerChefController extends Controller
         $attributes = $this->validateRequest();
         $attributes['role_id'] = 3; // chef
 
-        $code = str_random(10);
-        do
-        {
-            $code = str_random(10);
-            $user_code = User::where('code', $code)->get();
-        }
-        while(!$user_code->isEmpty());
-        $attributes['code'] = $code;
-
         auth()->user()->chefs()->create($attributes);
 
         return redirect('/dashboard/chefs/');

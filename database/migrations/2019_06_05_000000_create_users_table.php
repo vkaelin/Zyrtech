@@ -24,7 +24,6 @@ class CreateUsersTable extends Migration
             $table->string('password')->nullable();
 
             $table->unsignedBigInteger('owner_id')->nullable();
-            $table->string('code')->nullable();
             $table->unsignedBigInteger('role_id')->nullable();
 
             $table->rememberToken();
