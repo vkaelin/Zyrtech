@@ -71,11 +71,6 @@ class User extends Authenticatable
      */
     public function assignedSets()
     {
-        // return Set::whereHas('chefs', function ($query) {
-        //     $query->where('user_id', $this->id);
-        // })
-        // ->get();
-
         return $this->hasMany(Set::class, 'chef_id');
     }
 }

@@ -8,7 +8,7 @@ class SetController extends Controller
 {
     public function index()
     {
-        $sets = auth()->user()->assignedSets();
+        $sets = auth()->user()->assignedSets;
 
         return view('sets.index', compact('sets'));
     }
