@@ -9,7 +9,7 @@
 
 
 <div class="block w-full overflow-x-auto">
-    <table class="w-full text-left shadow-md bg-white rounded-lg">
+    <table class="w-full text-left shadow-md bg-white rounded-lg overflow-hidden">
         <thead>
             <tr>
                 <th class="py-4 px-6 bg-gray-800 font-bold uppercase text-sm text-gray-100 border-r border-white">
@@ -57,19 +57,21 @@
                     {{ $set->code }}
                 </td>
                 <td class="py-4 px-6 border-b border-gray-200">
-                    <a href="{{ $set->path() . '/edit' }}"
-                        class="inline-block text-white font-bold py-2 px-3 mr-2 rounded text-xs bg-green-600 hover:bg-green-700">
-                        Modifier
-                    </a>
-                    <form class="inline-block" method="POST" action="{{ $set->path() }}">
-                        @csrf
-                        @method('DELETE')
+                    <div class="flex">
+                        <a href="{{ $set->path() . '/edit' }}"
+                            class="inline-block text-white font-bold py-2 px-3 mr-2 rounded text-xs bg-green-600 hover:bg-green-700">
+                            Modifier
+                        </a>
+                        <form class="inline-block" method="POST" action="{{ $set->path() }}">
+                            @csrf
+                            @method('DELETE')
 
-                        <button class="text-white font-bold py-2 px-3 rounded text-xs bg-red-600 hover:bg-red-700"
-                            type="submit">
-                            Supprimer
-                        </button>
-                    </form>
+                            <button class="text-white font-bold py-2 px-3 rounded text-xs bg-red-600 hover:bg-red-700"
+                                type="submit">
+                                Supprimer
+                            </button>
+                        </form>
+                    </div>
                 </td>
             </tr>
             @empty
