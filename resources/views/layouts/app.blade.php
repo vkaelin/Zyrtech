@@ -22,7 +22,7 @@
                 <a class="text-white" href="/dashboard/chefs">Dashboard</a>
                 @endcan
                 <span class="text-gray-300 text-sm pr-4">
-                    {{ Auth::user()->first_name . ' ' . Auth::user()->last_name}}
+                    {{ Auth::user()->full_name }}
                 </span>
 
                 <a href="{{ route('logout') }}" class="hover:underline text-gray-300 text-sm p-3" onclick="event.preventDefault();

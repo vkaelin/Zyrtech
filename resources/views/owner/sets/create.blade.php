@@ -12,7 +12,7 @@
             <span class="text-gray-700">Chef / Groupe</span>
             <select class="form-multiselect block w-full mt-1" name="chef">
                 @foreach ($chefs as $chef)
-                <option value="{{ $chef->id }}">{{ $chef->first_name }} {{ $chef->last_name }}</option>
+                <option value="{{ $chef->id }}">{{ $chef->full_name }}</option>
                 @endforeach
             </select>
         </label>
