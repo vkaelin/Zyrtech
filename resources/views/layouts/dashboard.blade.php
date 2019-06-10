@@ -35,14 +35,14 @@
         <div class="flex-1">
             {{-- Nav --}}
             <nav class="bg-blue-900 shadow py-6">
-                <div class="container mx-auto px-6 md:px-0">
+                <div class="px-6">
                     <div class="flex items-center justify-center">
                         <div class="mr-6">
                             <a href="{{ url('/') }}" class="text-lg font-semibold text-gray-100 mr-3">
                                 {{ config('app.name', 'Laravel') }}
                             </a>
                             @can('administrate', auth()->user()->role)
-                            <a href="/admin/users" class="text-lg text-gray-100">
+                            <a href="/admin/users" class="text-lg text-gray-100 hover:underline">
                                 Dashboard Admin
                             </a>
                             @endcan

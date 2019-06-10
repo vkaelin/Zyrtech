@@ -20,8 +20,16 @@ class OwnerChefController extends Controller
 
     public function store()
     {
-        $attributes = $this->validateRequest();
+        $attributes = request()->validate([
+            'name' => 'required',
+            'group' => 'required'
+        ]);
         $attributes['role_id'] = 3; // chef
+
+        $names = explode(' ', $attributes['name'], 2);
+        unset($attributes['name']);
+        $attributes['first_name'] = $names[0];
+        $attributes['last_name'] = $names[1] ?? '';
 
         auth()->user()->chefs()->create($attributes);
 
