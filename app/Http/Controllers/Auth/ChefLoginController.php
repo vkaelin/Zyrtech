@@ -3,18 +3,18 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\User;
 use Illuminate\Support\Facades\Auth;
+use App\Set;
 
 class ChefLoginController extends Controller
 {
     public function login()
     {
-        $owner = User::where('code', request('code'))->get();
+        $chefSet = Set::where('code', request('code'))->get();
 
-        if(!$owner->isEmpty()) {
-            Auth::login($owner->first());
-            return ['message' => '/dashboard/chefs'];
+        if(!$chefSet->isEmpty()) {
+            Auth::login($chefSet->first()->chef);
+            return ['message' => '/sets'];
         }
 
         return response()->json(['errors' => ['code' => 'Compte non trouvé.']], 404);
