@@ -4,7 +4,7 @@
     </a>
 </li>
 @if (Request::is('dashboard/chefs*'))
-<li class="font-bold px-4 py-2 hover:underline pl-2">
+<li class="font-bold px-4 py-2 hover:underline pl-6">
     <a href="/dashboard/chefs/create" class="{{ Request::is('dashboard/chefs/create') ? 'text-green-400' : ''}}">
         Ajouter un Chef
     </a>

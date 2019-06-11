@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.admin.layout')
 
 @section('content')
 <h1 class="text-2xl font-bold">Ajouter un type</h1>
