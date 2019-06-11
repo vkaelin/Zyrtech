@@ -81,19 +81,21 @@
         </div>
         @endif
 
-        <!-- LABEL / VA ETRE GERER AVEC VUE -->
-        <div class="block mb-4">
+        <!-- LABEL -->
+
+        <div class="block pb-8">
             <label class="block">
-                <span class="text-gray-700">Label :</span>
-                <select class="form-select block w-full mt-1" value="label_id">
-                    {{-- @foreach ($data['labels'] as $label)
-                    <option {{$label->name === $data['product']->getLabels() ? 'selected' : ''}}
-                    value="{{$label->id}}">
-                    {{$label->name}}</option>
-                    @endforeach --}}
+                <span class="text-gray-700">Labels</span>
+                <select class="form-multiselect block w-full mt-1" multiple name="multiLabels[]" id="multiLabels">
+                    @foreach ($data['labels'] as $label)
+                    <option value="{{$label->id}}" {{$data['product']->labels->contains($label) ? 'selected' : ''}}>
+                        {{$label->name}}
+                    </option>
+                    @endforeach
                 </select>
             </label>
         </div>
+
         <button type="submit" class="bg-green-400 rounded py-2 px-4 text-white">Editer</button>
     </form>
     @if ($errors->any())

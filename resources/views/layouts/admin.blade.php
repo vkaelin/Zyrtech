@@ -2,7 +2,7 @@
 
 <div class="flex flex-col h-full">
 
-    <div class="flex h-full overflow-hidden">
+    <div class="flex h-full">
         {{-- Sidenav --}}
         <div class="w-64 p-4 bg-gray-200">
             <div class="flex items-center mb-4">

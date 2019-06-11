@@ -49,7 +49,11 @@ class AdminProductController extends Controller
 
         request()->image_src->move(storage_path('app/public'), $imageName);
 
-        Product::create($validatedAttributes);
+        $product = Product::create($validatedAttributes);
+
+        if (request('multiLabels') != null) {
+            $product->labels()->attach(array_values(request('multiLabels')));
+        }
 
         return redirect('/admin/products');
     }
@@ -66,17 +70,15 @@ class AdminProductController extends Controller
         $types = \App\Type::all();
         $periods = \App\Period::all();
         $labels = \App\Label::all();
-        $productLabel = \App\ProductLabel::where('product_id', $product->id)->get();
+        $productLabels = \App\ProductLabel::where('product_id', $product->id)->get();
 
         $data = [
             'product' => $product,
             'types' => $types,
             'periods' => $periods,
             'labels' => $labels,
-            'productLabel' => $productLabel,
+            'productLabels' => $productLabels,
         ];
-
-        //dd($data[0]->name);
 
         return view('admin.products.edit', compact('data'));
     }
@@ -108,11 +110,11 @@ class AdminProductController extends Controller
             request()->image_src->move(storage_path('app/public'), $imageName);
         }
 
+        $product->labels()->detach();
 
-        //On fera plusieures requêtes via Axios, ce sera plus simple pour les labels.
-        // $productLabel = \App\ProductLabel::where('product_id', $product->id)->get();
-        // dd($product->productLabel);
-        // $product->productLabel->update(request(['label_id']));
+        if (request('multiLabels') != null) {
+            $product->labels()->attach(array_values(request('multiLabels')));
+        }
 
         $product->update($validatedAttributes);
         return back();

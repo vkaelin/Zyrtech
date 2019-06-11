@@ -19,8 +19,8 @@ class CreateProductLabelsTable extends Migration
             $table->unsignedBigInteger('label_id')->nullable();
             $table->timestamps();
 
-            $table->foreign('product_id')->references('id')->on('products')->onDelete('set null');
-            $table->foreign('label_id')->references('id')->on('labels')->onDelete('set null');
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
+            $table->foreign('label_id')->references('id')->on('labels')->onDelete('cascade');
         });
     }
 

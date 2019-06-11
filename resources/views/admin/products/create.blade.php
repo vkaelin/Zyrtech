@@ -82,6 +82,18 @@
         </div>
         @endif
 
+        <!-- LABEL -->
+
+        <div class="block pb-8">
+            <label class="block">
+                <span class="text-gray-700">Labels</span>
+                <select class="form-multiselect block w-full mt-1" multiple name="multiLabels[]" id="multiLabels">
+                    @foreach ($data['labels'] as $label)
+                    <option value="{{$label->id}}"> {{$label->name}} </option>
+                    @endforeach
+                </select>
+            </label>
+        </div>
         <button class="bg-green-400 rounded py-2 px-4 text-white">Créer</button>
     </form>
 </div>
