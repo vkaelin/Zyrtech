@@ -1,0 +1,47 @@
+<template>
+  <div class="relative text-white">
+    <div @click="openNav = !openNav" class="absolute right-0 top-0 mr-4">
+      <svg class="fill-current w-4" viewBox="0 0 20 20">
+        <path
+          v-if="openNav"
+          d="M10 8.586L2.929 1.515 1.515 2.929 8.586 10l-7.071 7.071 1.414 1.414L10 11.414l7.071 7.071 1.414-1.414L11.414 10l7.071-7.071-1.414-1.414L10 8.586z"
+        ></path>
+        <path v-else d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
+      </svg>
+    </div>
+
+    <div class="flex items-center px-4 mb-4">
+      <h3 class="text-xl font-bold mr-2">{{ title }}</h3>
+      <p class="px-2 py-1 text-xs text-white bg-gray-800 rounded-full">{{ tag }}</p>
+    </div>
+    <nav :class="[openNav ? 'open' : 'close']">
+      <ul>
+        <slot></slot>
+      </ul>
+    </nav>
+  </div>
+</template>
+
+<script>
+export default {
+  props: ['title', 'tag'],
+
+  data() {
+    return {
+      openNav: true
+    }
+  },
+}
+</script>
+
+<style scoped>
+.open {
+  height: auto;
+}
+
+.close {
+  height: 0;
+  overflow: hidden;
+}
+</style>
+
