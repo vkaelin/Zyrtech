@@ -61,7 +61,6 @@ class Product extends Model
 
             return $stars / $this->stars->count();
         }
-
         return 0;
     }
 
