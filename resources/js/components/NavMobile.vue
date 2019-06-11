@@ -10,11 +10,16 @@
       </svg>
     </div>
 
-    <div class="flex items-center px-4 mb-4">
-      <h3 class="text-xl font-bold mr-2">{{ title }}</h3>
-      <p class="px-2 py-1 text-xs text-white bg-gray-800 rounded-full">{{ tag }}</p>
+    <div class="flex items-center justify-between pl-4 pr-10">
+      <h2>
+        <a class="text-lg sm:text-xl font-bold" href="/">Zyrtech SA</a>
+      </h2>
+      <div class="flex items-center">
+        <h3 class="text-base font-bold mr-1">{{ title }}</h3>
+        <p class="px-2 py-1 text-xs text-white bg-green-500 rounded-full">{{ tag }}</p>
+      </div>
     </div>
-    <nav :class="[openNav ? 'open' : 'close']">
+    <nav :class="[openNav ? 'open pt-8' : 'close']">
       <ul>
         <slot></slot>
       </ul>
