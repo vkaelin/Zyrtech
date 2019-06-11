@@ -3,19 +3,24 @@
 <div class="flex h-full w-full bg-gray-300">
 
     {{-- Sidenav Desktop --}}
-    <div class="hidden bg-blue-900 text-gray-100 lg:block lg:w-64 lg:shrink-0 lg:text-left">
-        <h2 class="bg-gray-900 p-4 mb-4">
-            <a class="text-xl font-bold" href="/">Zyrtech SA</a>
-        </h2>
-        <div class="flex items-center px-4 mb-4">
-            <h3 class="text-xl font-bold mr-2">Dashboard</h3>
-            <p class="px-2 py-1 text-xs text-white bg-green-500 rounded-full">{{ $user_fr }}</p>
+    <div class="hidden bg-blue-900 text-gray-100 lg:flex lg:flex-col lg:justify-between lg:w-64 lg:shrink-0 lg:text-left">
+        <div>
+            <h2 class="bg-gray-900 p-4 mb-4">
+                <a class="text-xl font-bold" href="/">Zyrtech SA</a>
+            </h2>
+            <div class="flex items-center px-4 mb-4">
+                <h3 class="text-xl font-bold mr-2">Dashboard</h3>
+                <p class="px-2 py-1 text-xs text-white bg-green-500 rounded-full">{{ $user_fr }}</p>
+            </div>
+            <nav>
+                <ul>
+                    @include("layouts.{$user}.side-links")
+                </ul>
+            </nav>
         </div>
-        <nav>
-            <ul>
-                @include("layouts.{$user}.side-links")
-            </ul>
-        </nav>
+        <div class="flex justify-center bg-gray-900 p-4">
+            <a class="bg-green-500 w-full text-center py-2 rounded hover:bg-green-400" href="/">Retour au site</a>
+        </div>
     </div>
 
     {{-- Main Content --}}
