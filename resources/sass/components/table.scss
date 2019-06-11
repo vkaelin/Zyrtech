@@ -1,7 +1,11 @@
 .table-container {
-    @apply block w-full overflow-x-auto;
+    @apply block w-full overflow-x-auto rounded-lg shadow-md;
 }
 
 .table {
-    @apply w-full text-left shadow-md bg-white rounded-lg overflow-hidden;
+    @apply w-full text-left bg-white rounded-lg overflow-hidden;
+}
+
+.table tr:hover {
+    @apply bg-gray-200;
 }

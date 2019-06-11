@@ -8,8 +8,8 @@
 </div>
 
 
-<div class="block w-full overflow-x-auto">
-    <table class="w-full text-left shadow-md bg-white rounded-lg">
+<div class="table-container">
+    <table class="table">
         <thead>
             <tr>
                 <th class="py-4 px-6 bg-gray-800 font-bold uppercase text-sm text-gray-100 border-r border-white">
@@ -25,7 +25,7 @@
         </thead>
         <tbody>
             @forelse (auth()->user()->chefs as $chef)
-            <tr class="hover:bg-gray-300">
+            <tr>
                 <td class="py-4 px-6 border-b border-gray-200">
                     @if ($chef->group)
                     <svg class="fill-current w-4" viewBox="0 0 20 20">
@@ -41,13 +41,15 @@
                 </td>
                 <td class="py-4 px-6 border-b border-gray-200">{{ $chef->full_name }}</td>
                 <td class="py-4 px-6 border-b border-gray-200">
-                    <a href="#"
-                        class="text-white font-bold py-1 px-3 mr-2 rounded text-xs bg-green-600 hover:bg-green-700">
-                        Modifier
-                    </a>
-                    <a href="#" class="text-white font-bold py-1 px-3 rounded text-xs bg-red-600 hover:bg-red-700">
-                        Supprimer
-                    </a>
+                    <div class="flex">
+                        <a href="#"
+                            class="text-white font-bold py-1 px-3 mr-2 rounded text-xs bg-green-600 hover:bg-green-700">
+                            Modifier
+                        </a>
+                        <a href="#" class="text-white font-bold py-1 px-3 rounded text-xs bg-red-600 hover:bg-red-700">
+                            Supprimer
+                        </a>
+                    </div>
                 </td>
             </tr>
             @empty

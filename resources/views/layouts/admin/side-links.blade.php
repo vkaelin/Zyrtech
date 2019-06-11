@@ -21,7 +21,7 @@
 </li>
 <li class="px-4 py-2 hover:underline pl-6">
     <a href="/admin/products/attributes" class="{{ Request::is('admin/products/attributes') ? 'text-green-400' : ''}}">
-        Lister les attributs
+        Lister les catégories
     </a>
 </li>
 @endif

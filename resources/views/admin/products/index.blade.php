@@ -8,8 +8,8 @@
         produit</a>
 </div>
 
-<div class="block w-full overflow-x-auto">
-    <table class="w-full text-left shadow-md bg-white rounded-lg">
+<div class="table-container">
+    <table class="table">
         <thead>
             <tr>
                 <th class="py-4 px-6 bg-gray-800 font-bold uppercase text-sm text-gray-100 border-r border-white">
@@ -68,21 +68,23 @@
                     pdf
                 </td>
                 <td class="py-4 px-6 border-b border-gray-200">
-                    <form method="GET" action="/admin/products/{{$product->id}}/edit" class="inline-block">
-                        @csrf
-                        <button
-                            class="inline-block text-white font-bold py-2 px-3 mr-2 rounded text-xs bg-green-600 hover:bg-green-700">
-                            Modifier
-                        </button>
-                    </form>
-                    <form method="POST" action="/admin/products/{{$product->id}}" class="inline-block">
-                        @method('DELETE')
-                        @csrf
-                        <button
-                            class="inline-block text-white font-bold py-2 px-3 mr-2 rounded text-xs bg-red-600 hover:bg-red-700">
-                            Supprimer
-                        </button>
-                    </form>
+                    <div class="flex">
+                        <form method="GET" action="/admin/products/{{$product->id}}/edit" class="inline-block">
+                            @csrf
+                            <button
+                                class="inline-block text-white font-bold py-2 px-3 mr-2 rounded text-xs bg-green-600 hover:bg-green-700">
+                                Modifier
+                            </button>
+                        </form>
+                        <form method="POST" action="/admin/products/{{$product->id}}" class="inline-block">
+                            @method('DELETE')
+                            @csrf
+                            <button
+                                class="inline-block text-white font-bold py-2 px-3 mr-2 rounded text-xs bg-red-600 hover:bg-red-700">
+                                Supprimer
+                            </button>
+                        </form>
+                    </div>
                 </td>
             </tr>
             @empty
