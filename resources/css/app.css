@@ -1,9 +1,0 @@
-@tailwind base;
-
-@tailwind components;
-
-.label-edit {
-  @apply flex items-center px-2 py-1 mb-2 mr-1 text-xs text-white rounded-full cursor-pointer;
-}
-
-@tailwind utilities;

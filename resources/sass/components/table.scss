@@ -1,0 +1,7 @@
+.table-container {
+    @apply block w-full overflow-x-auto;
+}
+
+.table {
+    @apply w-full text-left shadow-md bg-white rounded-lg overflow-hidden;
+}

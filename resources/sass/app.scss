@@ -1,0 +1,8 @@
+@tailwind base;
+
+@tailwind components;
+
+@import 'components/form';
+@import 'components/table';
+
+@tailwind utilities;

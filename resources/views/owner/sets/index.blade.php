@@ -8,8 +8,8 @@
 </div>
 
 
-<div class="block w-full overflow-x-auto">
-    <table class="w-full text-left shadow-md bg-white rounded-lg overflow-hidden">
+<div class="table-container">
+    <table class="table">
         <thead>
             <tr>
                 <th class="py-4 px-6 bg-gray-800 font-bold uppercase text-sm text-gray-100 border-r border-white">

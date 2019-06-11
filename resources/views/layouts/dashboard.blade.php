@@ -1,6 +1,6 @@
 @include('layouts.header')
 
-<div class="flex h-full w-full bg-gray-300">
+<div class="flex h-full min-h-screen w-full bg-gray-300">
 
     {{-- Sidenav Desktop --}}
     <div class="hidden bg-blue-900 text-gray-100 lg:flex lg:flex-col lg:justify-between lg:w-64 lg:shrink-0 lg:text-left">
