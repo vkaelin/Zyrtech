@@ -4,7 +4,7 @@
 
     {{-- Sidenav Desktop --}}
     <div class="hidden bg-gray-200 lg:block lg:w-64 lg:shrink-0 lg:py-4 lg:text-left">
-        <div class="flex items-center justify-center mb-4">
+        <div class="flex items-center px-4 mb-4">
             <h3 class="text-xl font-bold mr-2">Dashboard</h3>
             <p class="px-2 py-1 text-xs text-white bg-gray-800 rounded-full">{{ $user_fr }}</p>
         </div>
