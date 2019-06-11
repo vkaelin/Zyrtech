@@ -12,7 +12,7 @@
         <a href="/products/{{$product->id}}"
             class="w-64 max-h-xs rounded overflow-hidden shadow-lg mr-4 mt-4 hover:shadow-xl border hover:border-green-300 cursor-pointer">
             <div class="w-full h-32 bg-white">
-                <img class="object-contain w-full h-32" src="{{$product->getImage()}}" alt="Sunset in the mountains">
+                <img class="object-contain w-full h-32" src="{{$product->getImage()}}" alt="{{$product->image_src}}">
             </div>
             <div class="px-6 pt-2">
                 <span class="inline-block italic text-xs mb-1">

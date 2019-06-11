@@ -12,6 +12,9 @@ Route::get('/users/{user}', 'UserController@show');
 // Products 
 Route::resource('products', 'ProductController');
 
+// Stars
+Route::post('/products/{product}/star', 'StarController@store');
+
 // Dashboard for Admins
 Route::group(['prefix' => 'admin',  'middleware' => ['auth', 'role:admin']], function () {
     // Users

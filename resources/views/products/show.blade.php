@@ -11,4 +11,8 @@
 <p>{{$label->name}}</p>
 @endforeach
 <p>{{$product->getStarAverage()}}</p>
+
+<product-star :product="{{$product}}" :stars="{{$product->getStarAverage()}}" :readonly="false">
+</product-star>
+
 @endsection
