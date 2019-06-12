@@ -76,6 +76,7 @@ Route::group(['prefix' => 'dashboard',  'middleware' => ['auth', 'role:owner']],
 // Chefs
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/sets/', 'SetController@index');
+    Route::post('/products/{product}/rating', 'RatingController@store');
 });
 
 Auth::routes();

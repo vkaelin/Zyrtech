@@ -85,8 +85,21 @@ class User extends Authenticatable
      */
     public function canRateProduct($product)
     {
+        return $this->setsWithProduct($product)->first();
+    }
+
+    /**
+     *  Tous les sets du chef contenant un produit spécifique
+     */
+    public function allSetsWithProduct($product)
+    {
+        return $this->setsWithProduct($product)->get();
+    }
+
+    private function setsWithProduct($product)
+    {
         return $this->assignedSets()->whereHas('products', function ($query) use ($product) {
             $query->where('product_id', $product->id);
-        })->first();
+        });
     }
 }

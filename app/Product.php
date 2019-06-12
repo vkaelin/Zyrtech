@@ -69,4 +69,12 @@ class Product extends Model
         $this->image_src === 'no-src' ? $image = Storage::url('placeholder.jpg') : $image = Storage::url($this->image_src);
         return $image;
     }
+
+    /**
+     *  Vérifie si le produit a déjà été évalué par le chef/groupe de chefs du Set
+     */
+    public function alreadyRatedBySetChef($user, $times = 0)
+    {
+        return $this->ratings->whereIn('set_id', $user->assignedSets()->pluck('id'))->count() > $times;
+    }
 }
