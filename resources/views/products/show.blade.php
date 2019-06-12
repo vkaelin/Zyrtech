@@ -15,7 +15,7 @@
 <product-star :product="{{$product}}" :stars="{{$product->getStarAverage()}}" :readonly="false">
 </product-star>
 
-@if (auth()->user()->canRateProduct($product))
+@if (Auth::check() && auth()->user()->canRateProduct($product))
 <span>You can vote</span>
 @else
 <span>You can't vote</span>
