@@ -23,6 +23,11 @@ class OwnerSetController extends Controller
         return view('owner.sets.create', compact('chefs', 'products'));
     }
 
+    public function show(Set $set)
+    {
+        return view('owner.sets.show', compact('set'));
+    }
+
     public function store()
     {
         $attributes = request()->validate([

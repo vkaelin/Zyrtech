@@ -65,12 +65,13 @@ Route::group(['prefix' => 'dashboard',  'middleware' => ['auth', 'role:owner']],
     Route::post('/chefs/', 'Owner\OwnerChefController@store');
 
     // Sets
-    Route::get('/sets/', 'Owner\OwnerSetController@index');
-    Route::get('/sets/create', 'Owner\OwnerSetController@create');
-    Route::post('/sets/', 'Owner\OwnerSetController@store');
-    Route::get('/sets/{set}/edit', 'Owner\OwnerSetController@edit');
-    Route::patch('/sets/{set}', 'Owner\OwnerSetController@update');
-    Route::delete('/sets/{set}', 'Owner\OwnerSetController@destroy');
+    // Route::get('/sets/', 'Owner\OwnerSetController@index');
+    // Route::get('/sets/create', 'Owner\OwnerSetController@create');
+    // Route::post('/sets/', 'Owner\OwnerSetController@store');
+    // Route::get('/sets/{set}/edit', 'Owner\OwnerSetController@edit');
+    // Route::patch('/sets/{set}', 'Owner\OwnerSetController@update');
+    // Route::delete('/sets/{set}', 'Owner\OwnerSetController@destroy');
+    Route::resource('sets', 'Owner\OwnerSetController');
 });
 
 // Chefs
