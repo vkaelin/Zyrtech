@@ -35,7 +35,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function getFullNameAttribute() {
+    public function getFullNameAttribute()
+    {
         return ucfirst($this->first_name) . ' ' . ucfirst($this->last_name);
     }
 
@@ -43,14 +44,15 @@ class User extends Authenticatable
      *  Rôle d'un utilisateur
      */
     public function role()
-	{
-		return $this->belongsTo(Role::class);
+    {
+        return $this->belongsTo(Role::class);
     }
 
     /**
      *  Propriétaire d'un chef
      */
-    public function owner() {
+    public function owner()
+    {
         return $this->belongsTo(User::class);
     }
 
@@ -66,8 +68,8 @@ class User extends Authenticatable
      *  Sets d'un propriétaire
      */
     public function sets()
-	{
-		return $this->hasMany(Set::class, 'owner_id');
+    {
+        return $this->hasMany(Set::class, 'owner_id');
     }
 
     /**
@@ -76,5 +78,15 @@ class User extends Authenticatable
     public function assignedSets()
     {
         return $this->hasMany(Set::class, 'chef_id');
+    }
+
+    /**
+     *  Evalue si l'utilisateur peut ou pas évaluer un produit
+     */
+    public function canRateProduct($product)
+    {
+        return $this->assignedSets()->whereHas('products', function ($query) use ($product) {
+            $query->where('product_id', $product->id);
+        })->first();
     }
 }
