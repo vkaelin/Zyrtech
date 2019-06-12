@@ -23,8 +23,18 @@ class Set extends Model
         return $this->belongsToMany(Product::class, 'set_products')->withTimestamps();
     }
 
+    public function ratings()
+    {
+        return $this->hasMany(Rating::class);
+    }
+
     public function path()
     {
         return "/dashboard/sets/{$this->id}";
+    }
+
+    public function productAlreadyRated($product)
+    {
+        return $this->ratings()->where('product_id', $product->id)->exists();
     }
 }

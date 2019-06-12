@@ -3,7 +3,7 @@
 <div class="flex h-full min-h-screen w-full bg-gray-300">
 
     {{-- Sidenav Desktop --}}
-    <div class="hidden bg-blue-900 text-gray-100 lg:flex lg:flex-col lg:justify-between lg:w-64 lg:shrink-0 lg:text-left">
+    <div class="hidden bg-gray-800 text-gray-100 lg:flex lg:flex-col lg:justify-between lg:w-64 lg:shrink-0 lg:text-left">
         <div>
             <h2 class="bg-gray-900 p-4 mb-4">
                 <a class="text-xl font-bold" href="/">Zyrtech SA</a>
@@ -36,7 +36,7 @@
             <div class="block lg:hidden">
                 <nav-mobile title="Dashboard" tag="{{ $user_fr }}">
                     @include("layouts.{$user}.side-links")
-                    <hr class="w-full bg-blue-900 my-4" style="height: 1px;">
+                    <hr class="w-full bg-gray-800 my-4" style="height: 1px;">
                     @include("layouts.{$user}.main-links", ['color' => 'text-gray-400'])
                 </nav-mobile>
             </div>
