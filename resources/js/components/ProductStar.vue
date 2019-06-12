@@ -10,7 +10,8 @@
                 @mouseleave="hover = false"
                 @click="sendStar"
                 ></i>
-        </form> 
+        </form>
+        <span class="text-xs italic text-green-500" v-if="hasVoted">Merci pour votre vote !</span>
     </div>
 </template>
 
@@ -26,6 +27,7 @@ export default {
         return {
             starsNum : 5,
             hover: false,
+            hasVoted: false,
             form: new ZyrtechForm({
                 star: this.stars
             })
@@ -33,7 +35,7 @@ export default {
     },
     methods: {
         starsHover() {
-            if(this.readonly){
+            if(this.readonly || this.hasVoted){
                 return
             }
             this.hover = true;
@@ -41,6 +43,9 @@ export default {
             this.form.star = event.target.id;
         },
         sendStar() {
+            if(this.readonly || this.hasVoted){
+                return
+            }
             const productId = this.product.id;
             console.log(this.form);
 
@@ -49,5 +54,17 @@ export default {
                 .catch(err => {})
         }
     },
+    mounted(){
+
+        if(this.product === undefined){
+            return
+        }
+
+        const hasCookie = document.cookie.includes('voting_cookie_id' + this.product.id);
+
+        if(hasCookie){
+            this.hasVoted = true;
+        }
+    }
 }
 </script>

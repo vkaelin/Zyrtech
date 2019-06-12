@@ -3,25 +3,35 @@
 namespace App\Http\Controllers;
 
 use App\Star;
-use Illuminate\Http\Request;
 use App\Product;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cookie;
 
 class StarController extends Controller
 {
 
     public function store(Product $product)
     {
-        $validateArguments = request()->validate([
-            'star' => 'required '
-        ]);
+        if (Cookie::has('voting_cookie_id' . $product->id)) {
+            return ['message' => "/products/{$product->id}"];
+        } else {
 
-        $star = $validateArguments['star'];
+            $validateArguments = request()->validate([
+                'star' => 'required '
+            ]);
 
-        Star::create([
-            'value' => $star,
-            'product_id' => $product->id
-        ]);
+            $star = $validateArguments['star'];
 
-        return ['message' => "/products/{$product->id}"];
+            Star::create([
+                'value' => $star,
+                'product_id' => $product->id
+            ]);
+
+            $cookieName = 'voting_cookie_id' . $product->id;
+
+            Cookie::queue($cookieName, $product->id, 2628000, null, null, false, false);
+
+            return ['message' => "/products/{$product->id}"];
+        }
     }
 }
