@@ -22,6 +22,9 @@
                     Produits
                 </th>
                 <th class="py-4 px-6 bg-gray-800 font-bold uppercase text-sm text-gray-100 border-r border-white">
+                    Evaluations
+                </th>
+                <th class="py-4 px-6 bg-gray-800 font-bold uppercase text-sm text-gray-100 border-r border-white">
                     Code
                 </th>
                 <th class="py-4 px-6 bg-gray-800 font-bold uppercase text-sm text-gray-100">
@@ -49,9 +52,10 @@
                     {{ $set->chef->full_name }}
                 </td>
                 <td class="py-4 px-6 border-b border-gray-200">
-                    @foreach ($set->products as $product)
-                    {{ $product->name }},
-                    @endforeach
+                    {{ $set->products->count() }}
+                </td>
+                <td class="py-4 px-6 border-b border-gray-200">
+                    {{ $set->productsRated()->count() }}
                 </td>
                 <td class="py-4 px-6 border-b border-gray-200">
                     {{ $set->code }}

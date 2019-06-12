@@ -33,8 +33,21 @@ class Set extends Model
         return "/dashboard/sets/{$this->id}";
     }
 
+    /**
+     *  Vérifie si un produit a déjà été évalué par le Set
+     */
     public function productAlreadyRated($product)
     {
         return $this->ratings()->where('product_id', $product->id)->exists();
+    }
+
+    /**
+     *  Tous les produits évalués par le Set
+     */
+    public function productsRated()
+    {
+        return $this->products()->whereHas('ratings', function ($query) {
+            $query->where('set_id', $this->id);
+        })->get();
     }
 }

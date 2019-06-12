@@ -96,6 +96,9 @@ class User extends Authenticatable
         return $this->setsWithProduct($product)->get();
     }
 
+    /**
+     *  Requête renvoyant tous les sets du chef contenant un produit spécifique
+     */
     private function setsWithProduct($product)
     {
         return $this->assignedSets()->whereHas('products', function ($query) use ($product) {
