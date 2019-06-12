@@ -7,7 +7,7 @@
                 :id="index"
                 :class="[index <= form.star ? 'text-green-400' : 'text-gray-400' ]"
                 @mouseover="starsHover"
-                @mouseleave="starsNoHover"
+                @mouseleave="hover = false"
                 @click="sendStar"
                 ></i>
         </form> 
@@ -39,13 +39,6 @@ export default {
             this.hover = true;
             console.log('hover over ' + event.target.id);
             this.form.star = event.target.id;
-        },
-        starsNoHover() {
-            if(this.readonly){
-                return
-            }
-            console.log('not hovering');
-            this.hover = false;
         },
         sendStar() {
             const productId = this.product.id;

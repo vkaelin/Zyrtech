@@ -17,8 +17,11 @@ class StarController extends Controller
 
         $star = $validateArguments['star'];
 
-        //Créer la star 
+        Star::create([
+            'value' => $star,
+            'product_id' => $product->id
+        ]);
 
-        //return ['message' => $product];
+        return ['message' => "/products/{$product->id}"];
     }
 }
