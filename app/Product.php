@@ -54,19 +54,20 @@ class Product extends Model
         return $this->period->name;
     }
 
-    public function getStarAverage()
+    public function getStarNote()
     {
-        // A refactoriser
-        $stars = $this->stars;
-
-        if ($stars->isNotEmpty()) {
-            $stars = $stars->reduce(function ($carry, $star) {
-                return $carry + $star->value;
-            });
-
-            return $stars / $this->stars->count();
+        if(! $this->stars()->exists()) {
+            return 0;
         }
-        return 0;
+        return round($this->stars()->avg('value'));
+    }
+
+    public function getRatingsNote()
+    {
+        if(! $this->ratings()->exists()) {
+            return 0;
+        }
+        return round($this->ratings()->avg('value'));
     }
 
     public function getImage()

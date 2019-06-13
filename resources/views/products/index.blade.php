@@ -22,7 +22,7 @@
                 <div class="mb-1 flex justify-between">
                     <span class="font-bold text-xl">{{$product->name}}</span>
                     <div>
-                        <product-star :stars="{{$product->getStarAverage()}}" :readonly="true"></product-star>
+                        <product-star :stars="{{$product->getStarNote()}}" :readonly="true"></product-star>
                         <span class="mt-1 block text-xs text-gray-500 text-right">{{$product->stars->count()}}
                             {{$product->stars->count() <= 1 ? 'vote' : 'votes'}}
                         </span>

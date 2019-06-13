@@ -27,7 +27,7 @@
             </div>
         </div>
         <div class="notation-section w-1/3 ml-4 flex flex-col justify-center items-center">
-            <span class="text-green-400 inline-block font-bold text-6xl">9/10</span>
+            <span class="text-green-400 inline-block font-bold text-6xl">{{ $product->getRatingsNote() }}/10</span>
             <div class="mt-4">
                 <a href="#" class="inline-block">
                     <svg viewBox="0 0 90 90" class="w-8 h-8 text-red-700 fill-current"
@@ -146,9 +146,9 @@
 @foreach ($product->labels as $label)
 <p>{{$label->name}}</p>
 @endforeach
-<p>{{$product->getStarAverage()}}</p>
+<p>{{$product->getStarNote()}}</p>
 
-<product-star :product="{{$product}}" :stars="{{$product->getStarAverage()}}" :readonly="false">
+<product-star :product="{{$product}}" :stars="{{$product->getStarNote()}}" :readonly="false">
 </product-star>
 
 <div class="mt-8">
