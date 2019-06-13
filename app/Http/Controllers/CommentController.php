@@ -12,14 +12,16 @@ class CommentController extends Controller
     public function store(Product $product)
     {
         $attributes = request()->validate([
-            'body' => 'required|min:3|max:100',
+            'content' => 'required|min:3|max:100',
         ]);
 
         $comment = new Comment();
-        $comment->body = $attributes['body'];
+        $comment->content = $attributes['content'];
         if (Auth::check()) {
             $comment->user()->associate(auth()->user());
         }
         $product->comments()->save($comment);
+
+        return back();
     }
 }

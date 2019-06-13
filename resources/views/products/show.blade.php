@@ -18,7 +18,7 @@
             </div>
             <div class="ml-6">
                 <h2 class="text-3xl font-bold -mt-1">{{{$product->name}}}</h2>
-                <p class="my-4 text-sm text-justify max-w-lg text-gray-700">{{ $product->description }}</p>
+                <p class="my-4 text-sm text-justify max-w-lg">{{ $product->description }}</p>
             </div>
         </div>
         <div class="notation-section flex flex-col justify-center items-center">
@@ -72,10 +72,11 @@
             </div>
         </div>
         <div class="w-full mt-4">
-            <form action="" class="flex flex-col items-end">
+            <form method="POST" action="/products/{{ $product->id }}/comment" class="flex flex-col items-end">
+                @csrf
                 <textarea
                     class="bg-gray-200 text-gray-700 leading-snug w-full h-48 rounded shadow-lg resize-none p-5 focus:outline-none"
-                    name="" id="" placeholder="Votre commentaire ici..."></textarea>
+                    name="content" placeholder="Votre commentaire ici..."></textarea>
                 <button class="bg-green-500 text-white px-4 py-2 mt-4 rounded hover:bg-green-400"
                     type="submit">Envoyer</button>
             </form>
@@ -84,50 +85,29 @@
         <div class=" mt-8">
             <h4 class="text-xl italic">Les derniers commentaires</h4>
             <div class="comments-wrapper mt-4 w-full pb-12">
+
+                @forelse ($product->comments as $comment)
                 <div class="comment bg-gray-200 rounded p-6 mt-6 shadow-lg">
                     <div class="comment-infos flex ">
                         <i class="fas fa-user"></i>
-                        <p class="ml-2 italic text-m">Anonyme <span class=" not-italic text-sm"> le 13.06.2019 à
-                                13:12</span></p>
+                        <p class="ml-2 italic text-m">
+                            @if ($comment->user)
+                            {{ $comment->user->full_name }}
+                            @else
+                            Anonyme
+                            @endif
+                            <span class=" not-italic text-sm">
+                                le {{ $comment->created_at->format('d.m.Y à H:i') }}
+                            </span>
+                        </p>
                     </div>
                     <div class="comment-content mt-3 text-sm text-gray-700">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse error quod aliquid sit rerum,
-                            adipisci fuga architecto nesciunt quas facere unde! Cum id, iure nulla animi mollitia
-                            ducimus similique, sint, illo aperiam nostrum consequuntur rem architecto ipsum fugiat
-                            aliquam tempora?</p>
+                        <p>{{ $comment->content }}</p>
                     </div>
                 </div>
-                <div class="comment  bg-gray-200 rounded p-6 mt-6 shadow-lg">
-                    <div class="comment-infos flex ">
-                        <i class="fas fa-user"></i>
-                        <p class="ml-2 italic text-m">Anonyme <span class=" not-italic text-sm"> le 13.06.2019 à
-                                13:12</span></p>
-                    </div>
-                    <div class="comment-content mt-3 text-sm text-gray-700">
-                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Asperiores nobis veritatis libero
-                            veniam officiis saepe, numquam minus voluptatem voluptates iusto aut labore. Nobis error
-                            iusto neque earum quisquam ut minima, ullam dolorem rem expedita vel autem dicta mollitia,
-                            consequuntur molestias rerum quam porro cupiditate incidunt asperiores, voluptatem sint
-                            aliquid ex blanditiis! Delectus vero quibusdam dignissimos officia ducimus illo fugit. Quo
-                            nemo repudiandae cumque! Labore consectetur cupiditate sunt hic libero, excepturi voluptatum
-                            atque fugit debitis fuga deleniti vitae, minus optio eligendi eum cum cumque ratione autem
-                            quam aperiam numquam, voluptatibus est. Aut alias necessitatibus dolorum earum, explicabo
-                            dignissimos placeat beatae vitae inventore aliquam! Reprehenderit, neque hic non libero
-                            ipsum dolores labore, quo repellendus eius, aspernatur cupiditate repudiandae temporibus.
-                            Quaerat, ad maiores! Fuga odit consectetur quia, nisi adipisci iure voluptates? Ad
-                            laboriosam tempora corporis aut fugiat quibusdam aliquam rem in sunt consequuntur reiciendis
-                            perspiciatis numquam amet omnis odit, eaque culpa ipsum! Voluptatibus itaque, dicta
-                            distinctio repellat quas obcaecati consequatur non exercitationem! Esse recusandae at, quas
-                            quae eum architecto ab fuga corrupti obcaecati nisi, unde consequatur magnam quod possimus
-                            odio! Tempore totam hic consequuntur a accusamus molestias sunt temporibus libero repellat
-                            error, provident in ipsam aperiam et similique earum dolorem suscipit. Magnam repudiandae
-                            atque quia quidem rerum, nobis enim aliquid earum est nulla dicta possimus id accusamus at
-                            omnis autem eveniet ducimus veritatis quisquam et facilis laborum illum consequatur? Tenetur
-                            mollitia in, quos recusandae magni excepturi sequi aspernatur impedit magnam voluptas eos
-                            repudiandae ipsam sed nulla? Non error aut enim obcaecati, assumenda maiores eaque. Iste
-                            consequuntur distinctio incidunt.</p>
-                    </div>
-                </div>
+                @empty
+                <p>Aucun commentaire sur ce produit.</p>
+                @endforelse
             </div>
 
         </div>
