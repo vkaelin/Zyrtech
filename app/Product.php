@@ -39,6 +39,11 @@ class Product extends Model
         return $this->hasMany(Rating::class);
     }
 
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
     public function getTypeName()
     {
         return $this->type->name;

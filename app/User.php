@@ -49,6 +49,14 @@ class User extends Authenticatable
     }
 
     /**
+     *  Commentaires d'un utilisateur
+    */
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
+    /**
      *  Propriétaire d'un chef
      */
     public function owner()
