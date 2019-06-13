@@ -50,9 +50,12 @@
         <h3 class="text-2xl">Commentaires</h3>
         <div class="notation flex justify-between items-end">
             <product-star :product="{{$product}}" :stars="0" size="" :readonly="false"></product-star>
-            <div class="flex">
-                <form class="max-w-sm" method="" action="">
+            <div>
+                @if (Auth::check() && auth()->user()->canRateProduct($product))
+
+                <form class="max-w-sm flex" method="POST" action="/products/{{ $product->id }}/rating">
                     @csrf
+
                     <label class="inline-block">
                         <span class="text-gray-700">Note</span>
                         <select class="form-select block w-full mt-1" name="value">
@@ -60,9 +63,15 @@
                                 @endfor
                         </select>
                     </label>
-                    <button class="bg-green-500 text-white px-4 py-2 mt-2 rounded hover:bg-green-400"
-                        type="submit">Evaluer</button>
+                    <div class="flex items-center">
+                        <button class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-400"
+                            type="submit">Evaluer</button>
+                    </div>
                 </form>
+                @if ($times = $product->alreadyRatedBySetChef(auth()->user()))
+                <p class="my-2">Vous avez déjà évalué ce produit {{ $times }} fois</p>
+                @endif
+                @endif
             </div>
         </div>
         <div class="w-full mt-2">

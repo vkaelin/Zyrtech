@@ -14,11 +14,7 @@ class RatingController extends Controller
         ]);
         $attributes['product_id'] = $product->id;
 
-        $setsWithProduct = auth()->user()->allSetsWithProduct($product);
-
-        foreach ($setsWithProduct as $set) {
-            $set->ratings()->create($attributes);
-        }
+        auth()->user()->currentSet->ratings()->create($attributes);
 
         return back();
     }

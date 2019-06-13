@@ -89,28 +89,18 @@ class User extends Authenticatable
     }
 
     /**
+     *  Set avec lequel le Chef s'est connecté
+     */
+    public function currentSet()
+    {
+        return $this->hasOne(Set::class, 'chef_id');
+    }
+
+    /**
      *  Evalue si l'utilisateur peut ou pas évaluer un produit
      */
     public function canRateProduct($product)
     {
-        return $this->setsWithProduct($product)->first();
-    }
-
-    /**
-     *  Tous les sets du chef contenant un produit spécifique
-     */
-    public function allSetsWithProduct($product)
-    {
-        return $this->setsWithProduct($product)->get();
-    }
-
-    /**
-     *  Requête renvoyant tous les sets du chef contenant un produit spécifique
-     */
-    private function setsWithProduct($product)
-    {
-        return $this->assignedSets()->whereHas('products', function ($query) use ($product) {
-            $query->where('product_id', $product->id);
-        });
+        return $this->currentSet->products->contains($product->id);
     }
 }

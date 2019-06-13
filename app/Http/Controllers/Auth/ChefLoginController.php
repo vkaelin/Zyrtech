@@ -17,6 +17,7 @@ class ChefLoginController extends Controller
 
         if (!$chefSet->isEmpty()) {
             Auth::login($chefSet->first()->chef);
+            $chefSet->first()->chef->currentSet = $chefSet->first();
             return ['message' => '/sets'];
         }
 

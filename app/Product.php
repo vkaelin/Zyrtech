@@ -78,8 +78,8 @@ class Product extends Model
     /**
      *  Vérifie si le produit a déjà été évalué par le chef/groupe de chefs du Set
      */
-    public function alreadyRatedBySetChef($user, $times = 0)
+    public function alreadyRatedBySetChef($user)
     {
-        return $this->ratings->whereIn('set_id', $user->assignedSets()->pluck('id'))->count() > $times;
+        return $this->ratings->whereIn('set_id', $user->currentSet->id)->count();
     }
 }
