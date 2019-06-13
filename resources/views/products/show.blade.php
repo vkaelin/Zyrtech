@@ -19,9 +19,7 @@
 
             <div class="ml-4">
                 <h2 class="text-3xl font-bold -mt-1">{{{$product->name}}}</h2>
-                <p class="my-4 text-sm">{{$product->description}}
-                </p>
-            </div>
+                <p class="my-4 text-sm text-justify max-w-lg">{{ $product->description }}</p></div>
         </div>
         <div class="notation-section flex flex-col justify-center items-center">
             <span class="text-green-400 inline-block font-bold text-6xl">{{ $product->getRatingsNote() }}/10</span>
