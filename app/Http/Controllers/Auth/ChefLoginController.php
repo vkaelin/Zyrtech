@@ -10,13 +10,16 @@ class ChefLoginController extends Controller
 {
     public function login()
     {
-        $chefSet = Set::where('code', request('code'))->get();
+        $chefSet = Set::where([
+            'code' => request('code'),
+            'active' => true
+        ])->get();
 
-        if(!$chefSet->isEmpty()) {
+        if (!$chefSet->isEmpty()) {
             Auth::login($chefSet->first()->chef);
             return ['message' => '/sets'];
         }
 
-        return response()->json(['errors' => ['code' => 'Compte non trouvé.']], 404);
+        return response()->json(['errors' => ['code' => 'Compte non trouvé ou inactif.']], 404);
     }
 }

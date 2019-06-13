@@ -18,6 +18,7 @@ class CreateSetsTable extends Migration
             $table->unsignedBigInteger('owner_id');
             $table->unsignedBigInteger('chef_id');
             $table->string('code');
+            $table->boolean('active')->default(true);
             $table->timestamps();
 
             $table->foreign('owner_id')->references('id')->on('users')->onDelete('cascade');
