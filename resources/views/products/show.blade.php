@@ -27,7 +27,7 @@
             </div>
         </div>
         <div class="notation-section w-1/3 ml-4 flex flex-col justify-center items-center">
-            <span class="inline-block font-bold text-6xl">9/10</span>
+            <span class="text-green-400 inline-block font-bold text-6xl">9/10</span>
             <div class="mt-4">
                 <a href="#" class="inline-block">
                     <svg viewBox="0 0 90 90" class="w-8 h-8 text-red-700 fill-current"
@@ -66,9 +66,64 @@
             </div>
         </div>
         <div class="w-full mt-2">
-            <form action="">
-                <textarea class="bg-green-500 w-full h-48 rounded resize-none" name="" id=""></textarea>
+            <form action="" class="flex flex-col items-end">
+                <textarea
+                    class="bg-gray-200 text-gray-700 leading-snug w-full h-48 rounded shadow-lg resize-none p-5 focus:outline-none"
+                    name="" id="" placeholder="Votre commentaire ici..."></textarea>
+                <button class="bg-green-500 text-white px-4 py-2 mt-4 rounded hover:bg-green-400"
+                    type="submit">Envoyer</button>
             </form>
+        </div>
+        <div class=" mt-4 border-b border-gray-400"></div>
+        <div class=" mt-8">
+            <h4 class="text-xl italic">Les derniers commentaires</h4>
+            <div class="comments-wrapper mt-4 w-full pb-12">
+                <div class="comment bg-gray-200 rounded p-6 mt-6 shadow-lg">
+                    <div class="comment-infos flex ">
+                        <i class="fas fa-user"></i>
+                        <p class="ml-2 italic text-m">Anonyme <span class=" not-italic text-sm"> le 13.06.2019 à
+                                13:12</span></p>
+                    </div>
+                    <div class="comment-content mt-3 text-sm text-gray-700">
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse error quod aliquid sit rerum,
+                            adipisci fuga architecto nesciunt quas facere unde! Cum id, iure nulla animi mollitia
+                            ducimus similique, sint, illo aperiam nostrum consequuntur rem architecto ipsum fugiat
+                            aliquam tempora?</p>
+                    </div>
+                </div>
+                <div class="comment  bg-gray-200 rounded p-6 mt-6 shadow-lg">
+                    <div class="comment-infos flex ">
+                        <i class="fas fa-user"></i>
+                        <p class="ml-2 italic text-m">Anonyme <span class=" not-italic text-sm"> le 13.06.2019 à
+                                13:12</span></p>
+                    </div>
+                    <div class="comment-content mt-3 text-sm text-gray-700">
+                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Asperiores nobis veritatis libero
+                            veniam officiis saepe, numquam minus voluptatem voluptates iusto aut labore. Nobis error
+                            iusto neque earum quisquam ut minima, ullam dolorem rem expedita vel autem dicta mollitia,
+                            consequuntur molestias rerum quam porro cupiditate incidunt asperiores, voluptatem sint
+                            aliquid ex blanditiis! Delectus vero quibusdam dignissimos officia ducimus illo fugit. Quo
+                            nemo repudiandae cumque! Labore consectetur cupiditate sunt hic libero, excepturi voluptatum
+                            atque fugit debitis fuga deleniti vitae, minus optio eligendi eum cum cumque ratione autem
+                            quam aperiam numquam, voluptatibus est. Aut alias necessitatibus dolorum earum, explicabo
+                            dignissimos placeat beatae vitae inventore aliquam! Reprehenderit, neque hic non libero
+                            ipsum dolores labore, quo repellendus eius, aspernatur cupiditate repudiandae temporibus.
+                            Quaerat, ad maiores! Fuga odit consectetur quia, nisi adipisci iure voluptates? Ad
+                            laboriosam tempora corporis aut fugiat quibusdam aliquam rem in sunt consequuntur reiciendis
+                            perspiciatis numquam amet omnis odit, eaque culpa ipsum! Voluptatibus itaque, dicta
+                            distinctio repellat quas obcaecati consequatur non exercitationem! Esse recusandae at, quas
+                            quae eum architecto ab fuga corrupti obcaecati nisi, unde consequatur magnam quod possimus
+                            odio! Tempore totam hic consequuntur a accusamus molestias sunt temporibus libero repellat
+                            error, provident in ipsam aperiam et similique earum dolorem suscipit. Magnam repudiandae
+                            atque quia quidem rerum, nobis enim aliquid earum est nulla dicta possimus id accusamus at
+                            omnis autem eveniet ducimus veritatis quisquam et facilis laborum illum consequatur? Tenetur
+                            mollitia in, quos recusandae magni excepturi sequi aspernatur impedit magnam voluptas eos
+                            repudiandae ipsam sed nulla? Non error aut enim obcaecati, assumenda maiores eaque. Iste
+                            consequuntur distinctio incidunt.</p>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 </div>

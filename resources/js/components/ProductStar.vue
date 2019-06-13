@@ -1,6 +1,8 @@
 <template>
     <div>
-        <span class="inline-block text-xs italic text-green-500 mb-2" v-if="hasVoted">Merci pour votre vote !</span>
+        <span class="inline-block text-xs italic text-green-500 mb-2" v-if="hasVoted">Merci pour votre note !</span>
+        <span class="inline-block text-xs italic text-green-500 mb-2" v-if="!hasVoted && !readonly">Evaluez ce produit !</span>
+
         <form method="POST">
             <i class="fas fa-star cursor-pointer" 
                 v-for="(index) in starsNum" 
