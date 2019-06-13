@@ -3,7 +3,7 @@
 <div class="flex h-full min-h-screen w-full bg-gray-300">
 
     {{-- Sidenav Desktop --}}
-    <div class="hidden bg-gray-800 text-gray-100 lg:flex lg:flex-col lg:justify-between lg:w-64 lg:shrink-0 lg:text-left">
+    <div class="hidden bg-gray-800 text-gray-100 lg:flex lg:flex-col lg:justify-between lg:w-80 lg:shrink-0 lg:text-left">
         <div>
             <h2 class="bg-gray-900 p-4 mb-4">
                 <a class="text-xl font-bold" href="/">Zyrtech SA</a>
