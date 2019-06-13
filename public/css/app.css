@@ -790,6 +790,27 @@ video {
   fill: currentColor;
 }
 
+.gem {
+  position: relative;
+}
+
+.gem::after {
+  content: "";
+  position: absolute;
+  background-color: transparent;
+  left: 50%;
+  -webkit-transform: translateX(-50%) rotate(45deg);
+          transform: translateX(-50%) rotate(45deg);
+  top: 0;
+  width: 6px;
+  height: 6px;
+  transition: all ease 0.2s;
+}
+
+.gem:hover::after {
+  background-color: #1a202c;
+}
+
 .table-container {
   display: block;
   width: 100%;

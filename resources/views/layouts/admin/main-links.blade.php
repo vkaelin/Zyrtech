@@ -5,13 +5,13 @@
     </svg>
     {{ Auth::user()->full_name }}
 </li>
-<li class="px-4 py-2 hover:underline {{ $color }}">
-    <a href="/dashboard/chefs">
+<li class="{{ $color }}">
+    <a href="/dashboard/chefs" class="block px-4 py-2 {{ $color === 'text-gray-900' ? 'gem' : 'hover:text-gray-100' }}">
         Dashboard Propriétaire
     </a>
 </li>
-<li class="px-4 py-2 hover:underline">
-    <a href="{{ route('logout') }}" class="hover:underline {{ $color }}"
+<li>
+    <a href="{{ route('logout') }}" class="block px-4 py-2 {{ $color === 'text-gray-900' ? 'gem' : 'hover:text-gray-100' }} {{ $color }}"
         onclick="event.preventDefault();document.getElementById('logout-form').submit();">{{ __('Déconnexion') }}</a>
     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
         {{ csrf_field() }}

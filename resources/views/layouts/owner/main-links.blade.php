@@ -6,15 +6,15 @@
     {{ Auth::user()->full_name }}
 </li>
 @can('administrate', auth()->user()->role)
-<li class="px-4 py-2 hover:underline {{ $color }}">
-    <a href="/admin/users">
+<li class="{{ $color }}">
+    <a href="/admin/users" class="block px-4 py-2 {{ $color === 'text-gray-900' ? 'gem' : 'hover:text-gray-100' }}">
         Dashboard Admin
     </a>
 </li>
 @endcan
 
-<li class="px-4 py-2 hover:underline">
-    <a href="{{ route('logout') }}" class="hover:underline {{ $color }}"
+<li>
+    <a href="{{ route('logout') }}" class="block px-4 py-2 {{ $color === 'text-gray-900' ? 'gem' : 'hover:text-gray-100' }} {{ $color }}"
         onclick="event.preventDefault();document.getElementById('logout-form').submit();">
         {{ __('Déconnexion') }}
     </a>
