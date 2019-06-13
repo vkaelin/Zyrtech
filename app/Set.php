@@ -36,9 +36,9 @@ class Set extends Model
     /**
      *  Vérifie si un produit a déjà été évalué par le Set
      */
-    public function productAlreadyRated($product)
+    public function productRatingsNumber($product)
     {
-        return $this->ratings()->where('product_id', $product->id)->exists();
+        return $this->ratings()->where('product_id', $product->id)->count();
     }
 
     /**

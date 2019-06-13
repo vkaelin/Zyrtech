@@ -9,8 +9,8 @@
         @foreach ($set->products as $product)
         <li class="flex">
             <a class="hover:font-bold" href="/products/{{ $product->id }}"> - {{ $product->name }}</a>
-            @if ($set->productAlreadyRated($product))
-            <span class="ml-2">[Evalué]</span>
+            @if ($times = $set->productRatingsNumber($product))
+            <span class="ml-2">[Evalué {{ $times }} fois]</span>
             @else
             <span class="ml-2">[A évaluer]</span>
             @endif

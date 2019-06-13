@@ -790,6 +790,10 @@ video {
   fill: currentColor;
 }
 
+.icon-md {
+  width: 1.5rem;
+}
+
 .gem {
   position: relative;
 }
