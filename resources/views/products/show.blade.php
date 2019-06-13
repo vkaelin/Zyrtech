@@ -6,24 +6,22 @@
 <div class="mx-auto container">
     <div class="product-info flex">
         <div class="imageText-section flex w-2/3">
-            <img class="w-80 h-64 object-cover rounded" src="{{Storage::url('placeholder.jpg')}}" alt="placeholder">
+            <div>
+
+            </div>
+            <img class="w-80 h-64 object-contain bg-white shadow-lg rounded" src="{{$product->getImage()}}"
+                alt="placeholder">
             <div class="ml-4">
-                <h2 class="text-3xl font-bold align-top -mt-1">Nom du produit</h2>
-                <p class="my-4 text-sm">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit voluptates magnam
-                    necessitatibus error. Mollitia illo labore earum temporibus magni ratione id iusto nobis suscipit
-                    quam ipsa voluptas atque, quidem nesciunt sunt facilis quaerat reprehenderit, eaque quia. Aliquid,
-                    corporis laudantium? Beatae molestias cupiditate cumque unde, expedita dolor neque dolore vero
-                    aliquid et dolorum, impedit, laudantium sit. Itaque, dignissimos nesciunt voluptatum dolore
-                    inventore architecto sint. Ad illo officia accusamus dolorem, a corrupti quae dolor deleniti sit
-                    perspiciatis eligendi, quaerat quam facilis, aut quia consequatur magnam necessitatibus perferendis
-                    illum. Accusantium, illum recusandae. Dignissimos obcaecati sed repudiandae reiciendis? Provident et
-                    praesentium repudiandae ex modi, quis voluptate error corrupti iste ipsam ad, deserunt voluptatem
-                    voluptas numquam quam ea corporis exercitationem possimus laborum distinctio molestias enim
-                    consequuntur aperiam! Nihil mollitia fugiat vitae consequatur blanditiis vel cum beatae dolorum
-                    expedita amet, est porro at totam eaque non quos vero necessitatibus facere fuga optio quod sunt
-                    doloremque adipisci.
+                <h2 class="text-3xl font-bold -mt-1">{{{$product->name}}}</h2>
+                <p class="my-4 text-sm">{{$product->description}}
                 </p>
-                <product-star :stars="2" size="fa-2x" :readonly="true"></product-star>
+                <div class="flex items-baseline">
+                    <product-star :stars="{{$product->getStarNote()}}" size="fa-2x" :readonly="true"></product-star>
+                    <span class="ml-4 block text-m text-gray-700 ">{{$product->stars->count()}}
+                        {{$product->stars->count() <= 1 ? 'vote' : 'votes'}}
+                    </span>
+                </div>
+
             </div>
         </div>
         <div class="notation-section w-1/3 ml-4 flex flex-col justify-center items-center">
@@ -47,34 +45,35 @@
         </div>
     </div>
     <div class="comment-section mt-6">
-        <h3 class="text-2xl">Commentaires</h3>
+        <h3 class="text-2xl mb-2">Commentaires</h3>
         <div class="notation flex justify-between items-end">
             <product-star :product="{{$product}}" :stars="0" size="" :readonly="false"></product-star>
             <div>
                 @if (Auth::check() && auth()->user()->canRateProduct($product))
 
-                <form class="max-w-sm flex" method="POST" action="/products/{{ $product->id }}/rating">
+                @if ($times = $product->alreadyRatedBySetChef(auth()->user()))
+                <span class="inline-block text-xs italic text-green-500 mb-2">Vous avez déjà évalué ce produit
+                    {{ $times }} fois</span>
+                @endif
+                <form class="max-w-sm flex items-center justify-end" method="POST"
+                    action="/products/{{ $product->id }}/rating">
                     @csrf
-
-                    <label class="inline-block">
-                        <span class="text-gray-700">Note</span>
-                        <select class="form-select block w-full mt-1" name="value">
+                    <label class="flex">
+                        <select
+                            class="form-select block w-full pr-8 pl-6 py-1 focus:outline-none focus:shadow-none focus:border-green-400"
+                            name="value">
                             @for ($i = 1; $i <= 10; $i++) <option>{{ $i }}</option>
                                 @endfor
                         </select>
                     </label>
-                    <div class="flex items-center">
-                        <button class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-400"
-                            type="submit">Evaluer</button>
-                    </div>
+                    <button class="ml-2 bg-green-500 text-white px-4 py-2 rounded hover:bg-green-400"
+                        type="submit">Evaluer</button>
                 </form>
-                @if ($times = $product->alreadyRatedBySetChef(auth()->user()))
-                <p class="my-2">Vous avez déjà évalué ce produit {{ $times }} fois</p>
-                @endif
+
                 @endif
             </div>
         </div>
-        <div class="w-full mt-2">
+        <div class="w-full mt-4">
             <form action="" class="flex flex-col items-end">
                 <textarea
                     class="bg-gray-200 text-gray-700 leading-snug w-full h-48 rounded shadow-lg resize-none p-5 focus:outline-none"
