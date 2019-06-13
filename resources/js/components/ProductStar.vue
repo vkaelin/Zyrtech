@@ -1,17 +1,17 @@
 <template>
-    <div class="inline">
+    <div>
+        <span class="inline-block text-xs italic text-green-500 mb-2" v-if="hasVoted">Merci pour votre vote !</span>
         <form method="POST">
             <i class="fas fa-star cursor-pointer" 
                 v-for="(index) in starsNum" 
                 :key="index"
                 :id="index"
-                :class="[index <= form.star ? 'text-green-400' : 'text-gray-400' ]"
+                :class="[index <= form.star ? 'text-green-400' : 'text-gray-400', size]"
                 @mouseover="starsHover"
                 @mouseleave="hover = false"
                 @click="sendStar"
                 ></i>
         </form>
-        <span class="text-xs italic text-green-500" v-if="hasVoted">Merci pour votre vote !</span>
     </div>
 </template>
 
@@ -21,7 +21,11 @@ export default {
     props:{
         product: Object,
         stars: Number,
-        readonly: Boolean
+        readonly: Boolean,
+        size: {
+            default: '',
+            type: String
+        }
     },
     data() {
         return {
