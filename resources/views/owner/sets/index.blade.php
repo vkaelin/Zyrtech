@@ -27,6 +27,9 @@
                 <th class="py-4 px-6 bg-gray-800 font-bold uppercase text-sm text-gray-100 border-r border-white">
                     Code
                 </th>
+                <th class="py-4 px-6 bg-gray-800 font-bold uppercase text-sm text-gray-100 border-r border-white">
+                    Activation
+                </th>
                 <th class="py-4 px-6 bg-gray-800 font-bold uppercase text-sm text-gray-100">
                     Actions
                 </th>
@@ -59,6 +62,16 @@
                 </td>
                 <td class="py-4 px-6 border-b border-gray-200">
                     {{ $set->code }}
+                </td>
+                <td class="py-4 px-6 border-b border-gray-200">
+                    <div class="flex items-center">
+                        <form method="POST" action="/dashboard/sets/{{ $set->id }}">
+                            @csrf
+                            @method('PATCH')
+                            <input class="form-checkbox w-6 h-6 text-gray-900" name="active" type="checkbox"
+                                onChange="this.form.submit()" {{ $set->active ? 'checked' : ''  }}>
+                        </form>
+                    </div>
                 </td>
                 <td class="py-4 px-6 border-b border-gray-200">
                     <div class="flex">

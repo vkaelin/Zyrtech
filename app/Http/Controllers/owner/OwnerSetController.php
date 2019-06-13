@@ -67,6 +67,13 @@ class OwnerSetController extends Controller
     {
         $this->authorize('update', $set);
 
+        // Update de l'activation du Set
+        if (! request()->wantsJson()) {
+            $state = request('active') ? true : false;
+            $set->update(['active' => $state]);
+            return back();
+        }
+
         $attributes = request()->validate([
             'chef' => 'required',
             'products' => 'required|array|min:1'
