@@ -101,6 +101,10 @@ class User extends Authenticatable
      */
     public function canRateProduct($product)
     {
+        if(! $this->currentSet)
+        {
+            return false;
+        }
         return $this->currentSet->products->contains($product->id);
     }
 }
