@@ -10,7 +10,8 @@ Route::post('/login/chefs/', 'Auth\ChefLoginController@login');
 Route::get('/users/{user}', 'UserController@show');
 
 // Products 
-Route::resource('products', 'ProductController');
+Route::resource('/products', 'ProductController');
+Route::post('/products/{product}/comment', 'CommentController@store');
 
 // Stars
 Route::post('/products/{product}/star', 'StarController@store');
@@ -32,24 +33,24 @@ Route::group(['prefix' => 'admin',  'middleware' => ['auth', 'role:admin']], fun
     Route::patch('/products/{product}/edit', 'Admin\AdminProductController@update');
     Route::delete('/products/{product}', 'Admin\AdminProductController@destroy');
 
-    //Attributes
+    // Attributes
     Route::get('/products/attributes', 'Admin\AdminAttributeController@index');
 
-    //Types
+    // Types
     Route::get('/products/attributes/types/create', 'Admin\AdminTypeController@create');
     Route::post('/products/attributes/types/', 'Admin\AdminTypeController@store');
     Route::get('/products/attributes/types/{type}/edit', 'Admin\AdminTypeController@edit');
     Route::patch('/products/attributes/types/{type}/edit', 'Admin\AdminTypeController@update');
     Route::delete('/products/attributes/types/{type}', 'Admin\AdminTypeController@destroy');
 
-    //Periods
+    // Periods
     Route::get('/products/attributes/periods/create', 'Admin\AdminPeriodController@create');
     Route::post('/products/attributes/periods/', 'Admin\AdminPeriodController@store');
     Route::get('/products/attributes/periods/{period}/edit', 'Admin\AdminPeriodController@edit');
     Route::patch('/products/attributes/periods/{period}/edit', 'Admin\AdminPeriodController@update');
     Route::delete('/products/attributes/periods/{period}', 'Admin\AdminPeriodController@destroy');
 
-    //Labels
+    // Labels
     Route::get('/products/attributes/labels/create', 'Admin\AdminLabelController@create');
     Route::post('/products/attributes/labels/', 'Admin\AdminLabelController@store');
     Route::get('/products/attributes/labels/{label}/edit', 'Admin\AdminLabelController@edit');
@@ -65,12 +66,6 @@ Route::group(['prefix' => 'dashboard',  'middleware' => ['auth', 'role:owner']],
     Route::post('/chefs/', 'Owner\OwnerChefController@store');
 
     // Sets
-    // Route::get('/sets/', 'Owner\OwnerSetController@index');
-    // Route::get('/sets/create', 'Owner\OwnerSetController@create');
-    // Route::post('/sets/', 'Owner\OwnerSetController@store');
-    // Route::get('/sets/{set}/edit', 'Owner\OwnerSetController@edit');
-    // Route::patch('/sets/{set}', 'Owner\OwnerSetController@update');
-    // Route::delete('/sets/{set}', 'Owner\OwnerSetController@destroy');
     Route::resource('sets', 'Owner\OwnerSetController');
 });
 
