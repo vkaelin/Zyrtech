@@ -794,25 +794,27 @@ video {
   width: 1.5rem;
 }
 
-.gem {
-  position: relative;
-}
+@media (min-width: 1024px) {
+  .gem {
+    position: relative;
+  }
 
-.gem::after {
-  content: "";
-  position: absolute;
-  background-color: transparent;
-  left: 50%;
-  -webkit-transform: translateX(-50%) rotate(45deg);
-          transform: translateX(-50%) rotate(45deg);
-  top: 0;
-  width: 6px;
-  height: 6px;
-  transition: all ease 0.2s;
-}
+  .gem::after {
+    content: "";
+    position: absolute;
+    background-color: transparent;
+    left: 50%;
+    -webkit-transform: translateX(-50%) rotate(45deg);
+            transform: translateX(-50%) rotate(45deg);
+    top: 0;
+    width: 6px;
+    height: 6px;
+    transition: all ease 0.2s;
+  }
 
-.gem:hover::after {
-  background-color: #1a202c;
+  .gem:hover::after {
+    background-color: #1a202c;
+  }
 }
 
 .table-container {

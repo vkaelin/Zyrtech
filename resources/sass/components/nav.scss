@@ -1,19 +1,21 @@
-.gem {
+@screen lg {
+  .gem {
     @apply relative;
-}
+  }
 
-.gem::after {
-    content: '';
-    @apply absolute bg-transparent;
-    left: 50%;
-    transform: translateX(-50%) rotate(45deg);
-    top: 0;
+  .gem::after {
+      content: '';
+      @apply absolute bg-transparent;
+      left: 50%;
+      transform: translateX(-50%) rotate(45deg);
+      top: 0;
 
-    width: 6px;
-    height: 6px;
-    transition: all ease .2s;
-}
+      width: 6px;
+      height: 6px;
+      transition: all ease .2s;
+  }
 
-.gem:hover::after {
-    @apply bg-gray-900;
+  .gem:hover::after {
+      @apply bg-gray-900;
+  }
 }
