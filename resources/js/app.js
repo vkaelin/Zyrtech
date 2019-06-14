@@ -10,6 +10,7 @@ Vue.component('login-chef-modal', require('./components/LoginChefModal.vue').def
 Vue.component('edit-set', require('./components/EditSet.vue').default);
 Vue.component('nav-mobile', require('./components/NavMobile.vue').default);
 Vue.component('product-star', require('./components/ProductStar.vue').default);
+Vue.component('dropdown', require('./components/DropDown.vue').default);
 
 new Vue({
     el: '#app',
