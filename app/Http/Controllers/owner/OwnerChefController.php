@@ -10,15 +10,6 @@ class OwnerChefController extends Controller
 {
     public function index()
     {
-        if (request('search')) {
-            $search = request('search');
-            $chefs = auth()->user()->chefs()->where(function ($query) use ($search) {
-                $query->where('first_name', 'LIKE', "%$search%")
-                    ->orWhere('last_name', 'LIKE', "%$search%");
-            })->paginate(10);
-            return $chefs;
-        }
-
         $chefs = auth()->user()->chefs()
             ->orderBy('first_name')
             ->orderBy('last_name')

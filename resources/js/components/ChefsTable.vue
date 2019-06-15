@@ -78,7 +78,7 @@ export default {
         this.chefs = this.allChefs
         return
       }
-      this.form.get('/dashboard/chefs/?search=' + value)
+      this.form.get('/api/findChef?search=' + value)
         .then(response => {
           this.chefs = response.data
         })
