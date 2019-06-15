@@ -60,7 +60,7 @@ Route::group(['prefix' => 'admin',  'middleware' => ['auth', 'role:admin']], fun
 
 // Dashboard for Owners
 Route::group(['prefix' => 'dashboard',  'middleware' => ['auth', 'role:owner']], function () {
-    // Users
+    // Chefs
     Route::get('/chefs/', 'Owner\OwnerChefController@index');
     Route::get('/chefs/create', 'Owner\OwnerChefController@create');
     Route::post('/chefs/', 'Owner\OwnerChefController@store');

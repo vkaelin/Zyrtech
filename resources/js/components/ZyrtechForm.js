@@ -16,6 +16,12 @@ class ZyrtechForm {
     }, {})
   }
 
+  get(endpoint) {
+    return axios.get(endpoint)
+      .catch(this.onFail.bind(this))
+      .then(this.onSuccess.bind(this))
+  }
+
   delete(endpoint) {
     this.submit(endpoint, 'delete')
   }
