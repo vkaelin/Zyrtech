@@ -2,7 +2,7 @@
     <div>
         <input
             v-model="value"
-            @input="test"
+            @input="search"
             class="form-input"
             type="text"
             name="search"
@@ -21,7 +21,7 @@ export default {
   },
 
   methods: {
-      test() {
+      search() {
           this.$emit('searching', this.value)
       }
   }

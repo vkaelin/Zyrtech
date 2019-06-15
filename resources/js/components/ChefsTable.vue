@@ -82,7 +82,7 @@ export default {
         .then(response => {
           this.chefs = response.data
         })
-        .catch(err => console.log(err))
+        .catch(err => {})
     },
 
     getChefsPerPage() {
@@ -90,7 +90,7 @@ export default {
         .then(response => {
           this.chefs = response.data
         })
-        .catch(err => console.log(err))
+        .catch(err => {})
     }
   }
 }
