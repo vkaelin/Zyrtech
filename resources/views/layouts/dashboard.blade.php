@@ -6,10 +6,12 @@
     <div
         class="hidden bg-gray-800 text-gray-100 lg:flex lg:flex-col lg:justify-between lg:w-80 lg:shrink-0 lg:text-left">
         <div>
-            <h2 class="bg-gray-900 py-6 mb-4 text-center">
-                <a class="text-xl font-bold" href="/">Zyrtech SA</a>
-            </h2>
-            <div class="flex items-center px-4">
+            <div class="bg-gray-900 py-4 text-center">
+                <h2 class="py-2">
+                    <a class="text-2xl font-bold" href="/">Zyrtech SA</a>
+                </h2>
+            </div>
+            <div class="mt-4 flex items-center px-4">
                 <h3 class="text-xl font-bold mr-2">Dashboard</h3>
                 <p class="px-2 py-1 text-xs text-white bg-green-500 rounded-full">{{ $user_fr }}</p>
             </div>
