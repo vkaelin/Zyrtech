@@ -15,7 +15,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-if="! chefs.data" class="hover:bg-gray-300">
+                    <tr v-if="! chefs.data.length" class="hover:bg-gray-300">
                         <td class="py-4 px-6" colspan="3">Vous n'avez pas de chefs.</td>
                     </tr>
 

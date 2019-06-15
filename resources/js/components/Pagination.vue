@@ -1,5 +1,5 @@
 <template>
-    <div class="mt-8 flex flex-wrap items-center">
+    <div v-if="pagination.data.length" class="mt-8 flex flex-wrap items-center">
         <a
             v-if="pagination.current_page > 1"
             href="#"
@@ -15,7 +15,7 @@
         <a
             v-for="page in pagesNumber"
             :key="'page' + page"
-            :class="{'bg-gray-400': page == pagination.current_page}"
+            :class="{'block bg-gray-400': page == pagination.current_page}"
             class="ml-2 hidden md:block rounded bg-white border border-gray-400 px-3 py-2 hover:bg-gray-400 text-gray-900"
             href="#"
             @click.prevent="changePage(page)"
@@ -76,3 +76,9 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.block {
+    display: block !important;
+}
+</style>
