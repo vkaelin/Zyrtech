@@ -103,7 +103,7 @@
             </tr>
             @empty
             <tr class="hover:bg-gray-300">
-                <td>Vous n'avez pas créé sets.</td>
+                <td colspan="7" class="py-4 px-6">Vous n'avez pas créé de sets.</td>
             </tr>
             @endforelse
         </tbody>
