@@ -1,8 +1,8 @@
 <template>
     <div>
-        <div class="mt-6 flex items-center justify-between">
-            <search-dashboard @searching="filterChefs"></search-dashboard>
-            <a class="bg-green-500 rounded py-2 px-4 text-white leading-tight hover:bg-green-400" href="/dashboard/chefs/create">Ajouter un chef</a>
+        <div class=" mt-4 flex items-center justify-between flex-wrap">
+            <search-dashboard @searching="filterChefs" class="mt-2"></search-dashboard>
+            <a class="mt-2 bg-green-500 rounded py-2 px-4 text-white leading-tight hover:bg-green-400" href="/dashboard/chefs/create">Ajouter un chef</a>
         </div>
         <div class="mt-4 table-container">
             <table class="table">
