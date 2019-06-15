@@ -33,7 +33,7 @@ class DatabaseSeeder extends Seeder
 
         // chefs
         User::all()->each(function ($user) {
-            $user->chefs()->saveMany(factory(App\User::class, 4)->make([
+            $user->chefs()->saveMany(factory(App\User::class, 50)->make([
                 'role_id' => 3,
             ]));
         });

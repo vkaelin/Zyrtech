@@ -10,7 +10,12 @@ class OwnerChefController extends Controller
 {
     public function index()
     {
-        return view('owner.chefs.index');
+        $chefs = auth()->user()->chefs()
+        ->orderBy('first_name')
+        ->orderBy('last_name')
+        ->paginate(10);
+
+        return view('owner.chefs.index', compact('chefs'));
     }
 
     public function create()

@@ -2,13 +2,19 @@
 
 @section('content')
 
-<div class="flex items-center mb-6">
-    <h1 class="text-xl font-bold mr-4">Les comptes de vos chefs</h1>
-    <a class="bg-green-400 rounded py-2 px-4 text-white" href="{{ url('/dashboard/chefs/create')}}">Ajouter un chef</a>
+<div class="flex items-center">
+    <h1 class="text-3xl font-bold">Vos Chefs</h1>
+</div>
+
+<div class="mt-6 flex items-center justify-between">
+    <div>
+        <input class="form-input" type="text" placeholder="Recherche...">
+    </div>
+    <a class="bg-green-500 rounded py-2 px-4 text-white leading-tight hover:bg-green-400" href="{{ url('/dashboard/chefs/create')}}">Ajouter un chef</a>
 </div>
 
 
-<div class="table-container">
+<div class="mt-4 table-container">
     <table class="table">
         <thead>
             <tr>
@@ -24,7 +30,7 @@
             </tr>
         </thead>
         <tbody>
-            @forelse (auth()->user()->chefs as $chef)
+            @forelse ($chefs as $chef)
             <tr>
                 <td class="py-4 px-6 border-b border-gray-200">
                     @if ($chef->group)
@@ -60,5 +66,7 @@
         </tbody>
     </table>
 </div>
+
+{{ $chefs->links('partials.pagination') }}
 
 @endsection

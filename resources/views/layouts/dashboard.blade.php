@@ -69,7 +69,7 @@
         </nav>
 
         {{-- Content --}}
-        <div class="p-4">
+        <div class="p-4 md:p-12">
             @yield('content')
         </div>
     </div>
