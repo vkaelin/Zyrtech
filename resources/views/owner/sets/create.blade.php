@@ -21,15 +21,6 @@
             </select>
         </label>
 
-        {{-- <label class="block mb-4">
-            <span class="text-gray-700">Produit(s)</span>
-            <select class="form-multiselect block w-full mt-1" name="products[]" multiple>
-                @foreach ($products as $product)
-                <option value="{{ $product->id }}">{{ $product->name }}</option>
-                @endforeach
-            </select>
-        </label> --}}
-
         <multiselect name="products[]" :data="{{ $products }}">
             <template v-slot:label>
                 Produit(s)
