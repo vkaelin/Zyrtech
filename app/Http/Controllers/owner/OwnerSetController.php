@@ -20,8 +20,12 @@ class OwnerSetController extends Controller
 
     public function create()
     {
-        $chefs = auth()->user()->chefs;
-        $products = Product::all();
+        $chefs = auth()->user()->chefs()
+            ->orderBy('first_name')
+            ->orderBy('last_name')
+            ->get();
+
+        $products = Product::orderBy('name')->get();
 
         return view('owner.sets.create', compact('chefs', 'products'));
     }

@@ -31,3 +31,16 @@
         <span class="ml-2">Sets</span>
     </a>
 </li>
+
+@if (Request::is('dashboard/sets*'))
+<li>
+    <a href="/dashboard/sets/create"
+        class="{{ Request::is('dashboard/sets/create') ? 'text-green-400' : ''}} flex items-center py-2 pl-8 hover:bg-gray-800 lg:hover:bg-gray-700">
+        <svg class="icon" viewBox="0 0 20 20">
+            <path
+                d="M11 9h4v2h-4v4H9v-4H5V9h4V5h2v4zm-1 11a10 10 0 1 1 0-20 10 10 0 0 1 0 20zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16z" />
+        </svg>
+        <span class="ml-2">Ajouter un Set</span>
+    </a>
+</li>
+@endif

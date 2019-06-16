@@ -35,7 +35,7 @@
             </div>
         </div>
 
-        <button class="mt-6 block ml-auto btn-primary">Créer le compte</button>
+        <button class="mt-6 block ml-auto btn-primary">Créer le Compte</button>
     </form>
 </div>
 
