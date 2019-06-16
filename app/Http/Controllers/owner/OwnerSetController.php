@@ -12,7 +12,10 @@ class OwnerSetController extends Controller
 {
     public function index()
     {
-        return view('owner.sets.index');
+        $sets = auth()->user()->sets()
+            ->paginate(10);
+
+        return view('owner.sets.index', compact('sets'));
     }
 
     public function create()
@@ -68,7 +71,7 @@ class OwnerSetController extends Controller
         $this->authorize('update', $set);
 
         // Update de l'activation du Set
-        if (! request()->wantsJson()) {
+        if (!request()->wantsJson()) {
             $state = request('active') ? true : false;
             $set->update(['active' => $state]);
             return back();

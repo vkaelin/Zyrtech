@@ -2,13 +2,12 @@
 
 @section('content')
 
-<div class="flex items-center mb-6">
-    <h1 class="text-xl font-bold mr-4">Vos sets</h1>
-    <a class="bg-green-400 rounded py-2 px-4 text-white" href="{{ url('/dashboard/sets/create')}}">Créer un set</a>
+<div class="flex items-center justify-between mb-6">
+    <h1 class="text-3xl font-bold leading-normal">Vos Sets</h1>
+    <a class="bg-green-500 rounded py-2 px-4 text-white leading-tight hover:bg-green-400" href="/dashboard/sets/create">Créer un set</a>
 </div>
 
-
-<div class="table-container">
+<div class="mt-4 table-container">
     <table class="table">
         <thead>
             <tr>
@@ -38,7 +37,7 @@
             </tr>
         </thead>
         <tbody>
-            @forelse (auth()->user()->sets as $set)
+            @forelse ($sets as $set)
             <tr class="hover:bg-gray-300">
                 <td class="border-b border-gray-200">
                     <a class="block py-4 px-6" href="/dashboard/sets/{{ $set->id }}">
@@ -109,5 +108,7 @@
         </tbody>
     </table>
 </div>
+
+{{ $sets->links('partials.pagination') }}
 
 @endsection
