@@ -3,10 +3,10 @@
 @section('content')
 
 <h1 class="text-3xl font-bold">
-        <a class="text-green-500 hover:text-green-600" href="/dashboard/sets">Sets</a>
-        <span class="text-green-500"> / </span>
-        <span>Créer</span>
-    </h1>
+    <a class="text-green-500 hover:text-green-600" href="/dashboard/sets">Sets</a>
+    <span class="text-green-500"> / </span>
+    <span>Créer</span>
+</h1>
 
 <div class="mt-6 max-w-6xl bg-white rounded-lg shadow p-8">
     <form method="POST" action="/dashboard/sets">

@@ -4,7 +4,8 @@
 
 <div class="flex items-center justify-between mb-6">
     <h1 class="text-3xl font-bold leading-normal">Vos Sets</h1>
-    <a class="bg-green-500 rounded py-2 px-4 text-white leading-tight hover:bg-green-400" href="/dashboard/sets/create">Créer un set</a>
+    <a class="bg-green-500 rounded py-2 px-4 text-white leading-tight hover:bg-green-400"
+        href="/dashboard/sets/create">Créer un set</a>
 </div>
 
 <div class="mt-4 table-container">
@@ -84,16 +85,14 @@
                 </td>
                 <td class="py-4 px-6 border-b border-gray-200">
                     <div class="flex">
-                        <a href="{{ $set->path() . '/edit' }}"
-                            class="inline-block text-white font-bold py-2 px-3 mr-2 rounded text-xs bg-green-600 hover:bg-green-700">
+                        <a href="{{ $set->path() . '/edit' }}" class="inline-block font-bold btn-primary btn-sm">
                             Modifier
                         </a>
                         <form class="inline-block" method="POST" action="{{ $set->path() }}">
                             @csrf
                             @method('DELETE')
 
-                            <button class="text-white font-bold py-2 px-3 rounded text-xs bg-red-600 hover:bg-red-700"
-                                type="submit">
+                            <button class="ml-3 font-bold btn-danger btn-sm" type="submit">
                                 Supprimer
                             </button>
                         </form>

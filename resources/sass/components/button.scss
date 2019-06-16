@@ -13,4 +13,21 @@
             @apply outline-none;
         }
     }
+
+    &-danger {
+        @extend .btn;
+        @apply bg-red-500 text-white;
+
+        &:hover {
+            @apply bg-red-400;
+        }
+
+        &:focus {
+            @apply outline-none;
+        }
+    }
+}
+
+.btn-sm {
+    @apply text-xs leading-tight;
 }

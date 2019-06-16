@@ -1,12 +1,12 @@
 <template>
-  <div class="max-w-lg">
+  <div class="mt-6 max-w-xl bg-white rounded shadow p-8">
     <form @submit.prevent="submit" method="POST">
 
-        <label class="block mb-4">
-          <span class="text-gray-700">Chef / Groupe</span>
+        <label class="block">
+          <span class="font-semibold">Chef / Groupe</span>
           <select
             v-model="form.chef"
-            class="form-multiselect block w-full mt-1"
+            class="form-select block w-full mt-1 border-gray-400"
             name="chef"
           >
             <option
@@ -20,8 +20,8 @@
           </select>
         </label>
 
-        <div class="mb-6">
-          <h3 class="text-lg font-bold mb-3">Produits dans le set</h3>
+        <div class="mt-6">
+          <h3 class="font-semibold mb-3">Produits actuellement dans le Set</h3>
           <div
               v-for="(product) in form.products"
               :key="'selected-'+product.id"
@@ -37,8 +37,8 @@
           </div>
         </div>
 
-        <div class="mb-6">
-          <h3 class="text-lg font-bold mb-3">Produits pas dans le set</h3>
+        <div class="mt-6">
+          <h3 class="font-semibold mb-3">Autres Produits</h3>
           <div
               v-for="(product) in products"
               :key="product.id"
@@ -57,7 +57,7 @@
           </div>
         </div>
 
-        <button class="block bg-green-400 rounded py-2 px-4 text-white mt-8" type="submit">Valider les modifications</button>
+        <button class="mt-8 ml-auto block btn-primary" type="submit">Valider les modifications</button>
     </form>
 </div>
 </template>

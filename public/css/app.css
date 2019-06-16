@@ -770,7 +770,7 @@ video {
   border-color: #68d391;
 }
 
-.btn, .btn-primary {
+.btn, .btn-danger, .btn-primary {
   line-height: 1.5;
   padding-left: 1rem;
   padding-right: 1rem;
@@ -791,6 +791,24 @@ video {
 
 .btn-primary:focus {
   outline: 0;
+}
+
+.btn-danger {
+  background-color: #f56565;
+  color: #fff;
+}
+
+.btn-danger:hover {
+  background-color: #fc8181;
+}
+
+.btn-danger:focus {
+  outline: 0;
+}
+
+.btn-sm {
+  font-size: 0.75rem;
+  line-height: 1.25;
 }
 
 .label-edit {
