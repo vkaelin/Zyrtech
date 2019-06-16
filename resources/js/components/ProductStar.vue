@@ -8,7 +8,7 @@
                 v-for="(index) in starsNum" 
                 :key="index"
                 :id="index"
-                :class="[index <= form.star ? 'text-green-400' : 'text-gray-400', size, readonly === false ? 'cursor-pointer' : '']"
+                :class="[index <= form.star ? 'text-green-400' : 'text-gray-400', size, readonly === false && hasVoted === false ? 'cursor-pointer' : '']"
                 @mouseover="starsHover"
                 @mouseleave="hover = false"
                 @click="sendStar"

@@ -29,7 +29,7 @@ class StarController extends Controller
 
             $cookieName = 'voting_cookie_id' . $product->id;
 
-            Cookie::queue($cookieName, $product->id, 2628000, null, null, false, false);
+            Cookie::queue($cookieName, $star, 2628000, null, null, false, false);
 
             return ['message' => "/products/{$product->id}"];
         }
