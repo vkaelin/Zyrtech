@@ -1,0 +1,16 @@
+.btn {
+    @apply leading-normal px-4 py-2 rounded cursor-pointer;
+
+    &-primary {
+        @extend .btn;
+        @apply bg-green-500 text-white;
+
+        &:hover {
+            @apply bg-green-400;
+        }
+
+        &:focus {
+            @apply outline-none;
+        }
+    }
+}

@@ -770,6 +770,29 @@ video {
   border-color: #63b3ed;
 }
 
+.btn, .btn-primary {
+  line-height: 1.5;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background-color: #48bb78;
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background-color: #68d391;
+}
+
+.btn-primary:focus {
+  outline: 0;
+}
+
 .label-edit {
   display: flex;
   align-items: center;

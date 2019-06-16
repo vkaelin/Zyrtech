@@ -2,36 +2,40 @@
 
 @section('content')
 
-<h1 class="text-xl font-bold mb-6">Créer un compte chef</h1>
+<h1 class="text-3xl font-bold">
+    <a class="text-green-500 hover:text-green-600" href="/dashboard/chefs">Chefs</a>
+    <span class="text-green-500"> / </span>
+    <span>Créer</span>
+</h1>
 
-<div class="max-w-lg">
+<div class="mt-6 max-w-lg bg-white rounded-lg shadow p-8">
     <form method="POST" action="/dashboard/chefs">
         @csrf
 
-        <label class="block mb-4">
+        <label class="block">
             <span class="text-gray-700">Nom</span>
-            <input class="form-input mt-1 block w-full" type="text" name="name">
+            <input class="form-input mt-1 block w-full border-gray-400" type="text" name="name">
         </label>
 
-        <div class="mb-6">
+        <div class="mt-4">
             <span class="text-gray-700">Type</span>
             <div class="mt-2">
                 <div>
                     <label class="inline-flex items-center">
-                        <input type="radio" class="form-radio text-blue-600" name="group" value="0" checked>
+                        <input type="radio" class="form-radio text-green-600 border-gray-400" name="group" value="0" checked>
                         <span class="ml-2">Individuel</span>
                     </label>
                 </div>
-                <div>
+                <div class="mt-2">
                     <label class="inline-flex items-center">
-                        <input type="radio" class="form-radio text-blue-600" name="group" value="1">
+                        <input type="radio" class="form-radio text-green-600 border-gray-400" name="group" value="1">
                         <span class="ml-2">Groupe</span>
                     </label>
                 </div>
             </div>
         </div>
 
-        <button class="bg-green-400 rounded py-2 px-4 text-white">Créer</button>
+        <button class="mt-6 block ml-auto btn-primary">Créer le compte</button>
     </form>
 </div>
 
