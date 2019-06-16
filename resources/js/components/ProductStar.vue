@@ -4,11 +4,11 @@
         <span class="inline-block text-xs italic text-green-500 mb-2" v-if="!hasVoted && !readonly">Evaluez ce produit !</span>
 
         <form method="POST">
-            <i class="fas fa-star cursor-pointer" 
+            <i class="fas fa-star" 
                 v-for="(index) in starsNum" 
                 :key="index"
                 :id="index"
-                :class="[index <= form.star ? 'text-green-400' : 'text-gray-400', size]"
+                :class="[index <= form.star ? 'text-green-400' : 'text-gray-400', size, readonly === false ? 'cursor-pointer' : '']"
                 @mouseover="starsHover"
                 @mouseleave="hover = false"
                 @click="sendStar"

@@ -12,7 +12,8 @@
         <a href="/products/{{$product->id}}"
             class="w-64 max-h-xs rounded overflow-hidden shadow-lg mr-4 mt-4 hover:shadow-xl border hover:border-green-300 cursor-pointer">
             <div class="w-full h-32 bg-white">
-                <img class="object-contain w-full h-32" src="{{$product->getImage()}}" alt="{{$product->image_src}}">
+                <img class="w-full h-32 {{$product->image_src === 'no-src' ? 'object-cover' : 'object-contain'}}"
+                    src="{{$product->getImage()}}" alt="{{$product->image_src}}">
             </div>
             <div class="px-6 pt-2">
                 <span class="inline-block italic text-xs mb-1">
@@ -20,7 +21,8 @@
                 </span>
 
                 <div class="mb-1 flex justify-between">
-                    <span class="font-bold text-xl">{{$product->name}}</span>
+                    <span
+                        class="font-bold {{strlen($product->name) <= 9 ? 'text-xl' : 'text-base'}} {{strlen($product->name) > 12 ? 'text-sm' : ''}}">{{$product->name}}</span>
                     <div>
                         <product-star :stars="{{$product->getStarNote()}}" :readonly="true"></product-star>
                         <span class="mt-1 block text-xs text-gray-500 text-right">{{$product->stars->count()}}
