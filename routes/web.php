@@ -64,6 +64,8 @@ Route::group(['prefix' => 'dashboard',  'middleware' => ['auth', 'role:owner']],
     Route::get('/chefs/', 'Owner\OwnerChefController@index');
     Route::get('/chefs/create', 'Owner\OwnerChefController@create');
     Route::post('/chefs/', 'Owner\OwnerChefController@store');
+    Route::get('/chefs/{chef}/edit', 'Owner\OwnerChefController@edit');
+    Route::patch('/chefs/{chef}', 'Owner\OwnerChefController@update');
     Route::delete('/chefs/{chef}', 'Owner\OwnerChefController@destroy');
 
     // Sets

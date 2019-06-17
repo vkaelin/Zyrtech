@@ -25,20 +25,34 @@ class OwnerChefController extends Controller
 
     public function store()
     {
-        $attributes = request()->validate([
-            'name' => 'required',
-            'group' => 'required'
-        ]);
+        $attributes = $this->validateRequest();
         $attributes['role_id'] = 3; // chef
 
-        $names = explode(' ', $attributes['name'], 2);
-        unset($attributes['name']);
-        $attributes['first_name'] = $names[0];
-        $attributes['last_name'] = $names[1] ?? '';
+        $this->explodeName($attributes);
 
         auth()->user()->chefs()->create($attributes);
 
         return redirect('/dashboard/chefs/');
+    }
+
+    public function edit(User $chef)
+    {
+        $this->authorize('update', $chef);
+
+        return view('owner.chefs.edit', compact('chef'));
+    }
+
+    public function update(User $chef)
+    {
+        $this->authorize('update', $chef);
+
+        $attributes = $this->validateRequest();
+
+        $this->explodeName($attributes);
+
+        $chef->update($attributes);
+
+        return redirect('dashboard/chefs');
     }
 
     public function destroy(User $chef)
@@ -53,8 +67,16 @@ class OwnerChefController extends Controller
     protected function validateRequest()
     {
         return request()->validate([
-            'first_name' => 'required',
-            'last_name' => 'required'
+            'name' => 'required',
+            'group' => 'required'
         ]);
+    }
+
+    protected function explodeName(&$attributes)
+    {
+        $names = explode(' ', $attributes['name'], 2);
+        unset($attributes['name']);
+        $attributes['first_name'] = $names[0];
+        $attributes['last_name'] = $names[1] ?? '';
     }
 }
