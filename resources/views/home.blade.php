@@ -2,20 +2,8 @@
 
 @section('content')
 <div class="-mt-8 flex items-center flex-wrap justify-center" style="height: calc(100vh - 66px);">
-    {{-- <div class="flex flex-col break-words bg-white border border-2 rounded shadow-md">
-        <div class="font-semibold bg-gray-200 text-gray-700 py-3 px-6 mb-0">
-            Zyrtech SA
-        </div>
-        <div class="w-full p-6">
-            <p class="text-gray-700 mb-8">
-                Bienvenue!
-            </p>
-            <a class="bg-green-500 text-white px-4 py-2 rounded-full hover:bg-green-400" href="/products">Nos
-                produits</a>
-        </div>
-    </div> --}}
-    <div class="Infos flex flex-col items-center">
-        <svg class="h-48 w-auto mt-auto" viewBox="0 0 137 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <div class="Infos">
+        <svg class="h-48 w-auto" viewBox="0 0 137 68" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
                 d="M81.883 37.1558C77.32 38.7948 72.354 39.499 67.4987 38.9256C59.3369 37.9617 52.9666 33.1662 52.9666 33.1662C51.368 32.9774 48.6895 39.2048 45.9192 38.8777C43.2383 38.5611 42.2095 36.0197 42.3798 34.5778C42.7685 31.2863 49.3865 29.4665 49.6026 27.6368C49.6026 27.6368 48.6104 25.382 49.0566 21.6033C50.2451 11.5398 59.1654 5.31347 68.5819 3.41072C75.3789 2.03552 88.9949 6.17427 93.9265 2.52192C95.8742 1.11853 96.9142 -0.271085 99.5947 0.0455152C103.2 0.471165 103.287 9.87868 102.969 12.5735C101.666 23.6016 95.1318 32.4691 81.883 37.1558ZM57.5208 26.6561C64.8816 18.461 73.3811 15.5425 84.5176 17.745C85.3831 17.9178 86.2252 17.3517 86.398 16.4849C86.5709 15.618 86.006 14.7749 85.1404 14.6021C72.941 12.1934 63.3052 15.4415 55.1454 24.5204C54.5544 25.1765 54.6058 26.1909 55.2608 26.7825C55.9158 27.374 56.9287 27.3223 57.5208 26.6561Z"
                 fill="#48BB78" />
@@ -24,10 +12,14 @@
                 fill="#2D3748" />
         </svg>
         <p class="text-green-500 italic text-2xl">La plateforme des produits frais</p>
-        <a class="inline-block mb-auto bg-green-500 text-white px-4 py-2 rounded-full hover:bg-green-400"
-            href="/products">Nos produits</a>
+        <div class="mt-24 flex justify-center">
+            <a class=" inline-block text-xl bg-green-500 text-white px-6 py-4 rounded hover:bg-green-400"
+                href="/products">Nos
+                produits</a>
+        </div>
+
     </div>
     <div class="illustration ml-24">
-        <img src="{{Storage::url('illustration.png')}}" class="" style="height:550px;"></div>
+        <img src="{{Storage::url('illustration.png')}}" alt="illustration" style="height:550px;"></div>
 </div>
 @endsection

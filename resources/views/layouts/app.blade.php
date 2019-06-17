@@ -1,6 +1,6 @@
 @include('layouts.header')
 
-<nav class="bg-white shadow mb-8 py-3">
+<nav class="bg-white mb-8 py-3">
     <div class="mx-auto px-6 md:px-8">
         <div class="flex items-center justify-center">
             <div class="">
@@ -21,7 +21,7 @@
                 </a>
 
             </div>
-            <div class="flex-1 text-right">
+            <div class="flex flex-1 justify-end items-center">
                 <a class="font-bold text-base gem py-2 {{(request()->is('products')) ? 'text-green-500' : 'text-gray-800'}}"
                     href="/products">Nos produits</a>
                 @guest
@@ -33,17 +33,31 @@
                 @endif
                 @else
                 @can('manage', auth()->user()->role)
-                <a class="font-bold text-gray-800 text-base ml-3 py-2" href="/dashboard/chefs">Dashboard</a>
+                <a class="font-bold text-base gem ml-3 py-2" href="/dashboard/chefs">Dashboard</a>
                 @endcan
-                <span class="font-bold text-gray-8000 text-base ml-3 py-2">
-                    {{ Auth::user()->full_name }}
-                </span>
+                <dropdown align="right" width="auto" class="inline-block ml-3">
+                    <template v-slot:trigger>
+                        <button
+                            class="flex items-center py-2 text-gray-400 font-semibold text-gray-900 gem focus:outline-none">
+                            <svg class="w-6 mr-2 fill-current" viewBox="0 0 20 20">
+                                <path
+                                    d="M10 20a10 10 0 1 1 0-20 10 10 0 0 1 0 20zM7 6v2a3 3 0 1 0 6 0V6a3 3 0 1 0-6 0zm-3.65 8.44a8 8 0 0 0 13.3 0 15.94 15.94 0 0 0-13.3 0z" />
+                            </svg>
+                            {{ Auth::user()->full_name }}
+                        </button>
+                    </template>
 
-                <a href="{{ route('logout') }}" class="font-bold text-gray-800 text-base ml-3 py-2" onclick="event.preventDefault();
-                                    document.getElementById('logout-form').submit();">{{ __('Déconnexion') }}</a>
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
-                    {{ csrf_field() }}
-                </form>
+                    <template v-slot:default>
+                        <a href="{{ route('logout') }}"
+                            class="block px-4 py-2 font-bold text-base text-gray-400 lg:text-gray-900 lg:hover:text-gray-800"
+                            onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                            {{ __('Déconnexion') }}
+                        </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
+                            @csrf
+                        </form>
+                    </template>
+                </dropdown>
                 @endguest
             </div>
         </div>
