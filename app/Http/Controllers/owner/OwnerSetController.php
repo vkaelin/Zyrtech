@@ -32,7 +32,11 @@ class OwnerSetController extends Controller
 
     public function show(Set $set)
     {
-        return view('owner.sets.show', compact('set'));
+        $ratings = $set->ratings()
+            ->latest()
+            ->paginate(10);
+
+        return view('owner.sets.show', compact('set', 'ratings'));
     }
 
     public function store()
@@ -68,7 +72,7 @@ class OwnerSetController extends Controller
             ->orderBy('first_name')
             ->orderBy('last_name')
             ->get();
-        
+
         $products = Product::orderBy('name')->get();
 
         return view('owner.sets.edit', compact('set', 'chefs', 'products'));
