@@ -11,6 +11,8 @@ Vue.component('nav-mobile', require('./components/shared/NavMobile.vue').default
 Vue.component('pagination', require('./components/shared/Pagination.vue').default);
 Vue.component('product-star', require('./components/shared/ProductStar.vue').default);
 Vue.component('search-dashboard', require('./components/shared/SearchDashboard.vue').default);
+Vue.component('tab', require('./components/shared/Tab.vue').default);
+Vue.component('tabs', require('./components/shared/Tabs.vue').default);
 
 Vue.component('chefs-table', require('./components/ChefsTable.vue').default);
 Vue.component('edit-set', require('./components/EditSet.vue').default);
