@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="flex items-center mx-auto justify-center">
+<div class="-mt-8 flex items-center flex-wrap justify-center" style="height: calc(100vh - 66px);">
     {{-- <div class="flex flex-col break-words bg-white border border-2 rounded shadow-md">
         <div class="font-semibold bg-gray-200 text-gray-700 py-3 px-6 mb-0">
             Zyrtech SA
