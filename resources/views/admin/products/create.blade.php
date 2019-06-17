@@ -17,7 +17,8 @@
                 <!-- NAME -->
                 <label class="block max-w-full mb-4">
                     <span class="text-gray-700">Nom</span>
-                    <input class="form-input mt-1 block w-full" required type="text" name="name">
+                    <input class="form-input mt-1 block w-full" required type="text" name="name"
+                        placeholder="Tapez le nom ici...">
                 </label>
                 @if ($errors->has('name'))
                 <div class="text-red-500 text-xs italic my-4">
@@ -29,7 +30,7 @@
                 <label class="block max-w-full mb-4">
                     <span class="text-gray-700">Description</span>
                     <textarea class="form-input mt-1 block w-full resize-none h-56" required cols="30" rows="10"
-                        name="description"></textarea>
+                        name="description" placeholder="Tapez la description ici..."></textarea>
                 </label>
                 @if ($errors->has('description'))
                 <div class="text-red-500 text-xs italic my-4">

@@ -2,13 +2,17 @@
 
 @section('content')
 
-<h1 class="text-2xl font-bold">Editer la période {{$period->name}}</h1>
-<div class="max-w-lg mt-2">
+<h1 class="text-3xl font-bold">
+    <a class="text-green-500 hover:text-green-600" href="/admin/products/attributes">Période</a>
+    <span class="text-green-500"> / </span>
+    <span class="text-gray-900">Modifier</span>
+</h1>
+
+
+<div class="mt-6 max-w-lg bg-white rounded-lg shadow p-8">
     <form method="POST" action="/admin/products/attributes/periods/{{$period->id}}/edit">
         @method("PATCH")
         @csrf
-
-        <h3 class="text-2xl mb-4">Période ID : {{$period->id}}</h3>
 
         <label class=" block mb-4">
             <span class="text-gray-700">Nom</span>
@@ -19,7 +23,7 @@
             {{ $errors->first('name')}}
         </div>
         @endif
-        <button type="submit" class="bg-green-400 rounded py-2 px-4 text-white">Editer</button>
+        <button type="submit" class="mt-6 block ml-auto btn-primary">Editer</button>
     </form>
 </div>
 
