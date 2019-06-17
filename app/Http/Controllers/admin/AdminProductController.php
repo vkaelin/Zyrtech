@@ -11,7 +11,7 @@ class AdminProductController extends Controller
 {
     public function index()
     {
-        $products = \App\Product::all();
+        $products = \App\Product::paginate(10);
 
         return view('admin.products.index', compact('products'));
     }

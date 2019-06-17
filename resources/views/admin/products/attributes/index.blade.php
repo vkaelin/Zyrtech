@@ -2,29 +2,23 @@
 
 @section('content')
 
-<h1 class="text-xl font-bold mr-4 mb-4">Catégories</h1>
-<div class="flex flex-wrap items-center mb-6">
-    <a class="bg-green-500 rounded py-2 px-4 mr-2 mb-2 text-white hover:bg-green-400"
-        href="{{ url('/admin/products/attributes/types/create')}}">
-        Ajouter un type
-    </a>
-    <a class="bg-green-500 rounded py-2 px-4 mr-2 mb-2 text-white hover:bg-green-400"
-        href="{{ url('/admin/products/attributes/periods/create')}}">
-        Ajouter une période
-    </a>
-    <a class="bg-green-500 rounded py-2 px-4 mb-2 text-white hover:bg-green-400"
-        href="{{ url('/admin/products/attributes/labels/create')}}">
-        Ajouter un label
-    </a>
+<div class="flex flex-wrap items-center justify-between mb-6">
+    <h1 class="text-3xl font-bold leading-normal">Vos Catégories</h1>
+    <div class="flex flex-wrap">
+        <a class="mt-1 sm:mt-0 mr-2 bg-green-500 rounded py-2 px-4 text-white leading-tight hover:bg-green-400"
+            href="{{ url('/admin/products/attributes/types/create')}}">Créer un type</a>
+        <a class="mt-1 sm:mt-0 mr-2 bg-green-500 rounded py-2 px-4 text-white leading-tight hover:bg-green-400"
+            href="{{ url('/admin/products/attributes/periods/create')}}">Créer une période</a>
+        <a class="mt-1 sm:mt-0 bg-green-500 rounded py-2 px-4 text-white leading-tight hover:bg-green-400"
+            href="{{ url('/admin/products/attributes/labels/create')}}">Créer un label</a>
+    </div>
 </div>
 
 <!-- TYPES -->
-
-<div class="flex flex-wrap">
-
+<div class="xl:flex inline-block ">
     <div class="mr-2 lg:mr-4 mb-6">
         <h2 class="text-xl font-bold mb-4">Les types</h2>
-        <div class="table-container">
+        <div class="table-container mx-auto">
             <table class="table">
                 <thead>
                     <tr>
@@ -65,7 +59,7 @@
                     </tr>
                     @empty
                     <tr class="hover:bg-gray-300">
-                        <td>Vous n'avez pas de type.</td>
+                        <td colspan="7" class="py-4 px-6">Vous n'avez pas de type.</td>
                     </tr>
                     @endforelse
                 </tbody>
@@ -117,7 +111,7 @@
                     </tr>
                     @empty
                     <tr class="hover:bg-gray-300">
-                        <td>Vous n'avez pas de période.</td>
+                        <td colspan="7" class="py-4 px-6">Vous n'avez pas de période.</td>
                     </tr>
                     @endforelse
                 </tbody>
@@ -169,7 +163,7 @@
                     </tr>
                     @empty
                     <tr class="hover:bg-gray-300">
-                        <td>Vous n'avez pas de label.</td>
+                        <td colspan="7" class="py-4 px-6">Vous n'avez pas de label.</td>
                     </tr>
                     @endforelse
                 </tbody>

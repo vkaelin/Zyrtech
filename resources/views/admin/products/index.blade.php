@@ -2,13 +2,13 @@
 
 @section('content')
 
-<div class="flex items-center mb-6">
-    <h1 class="text-xl font-bold mr-4">Les produits</h1>
-    <a class="bg-green-400 rounded py-2 px-4 text-white" href="{{ url('/admin/products/create')}}">Ajouter un
-        produit</a>
+<div class="flex items-center justify-between mb-6">
+    <h1 class="text-3xl font-bold leading-normal">Vos Produits</h1>
+    <a class="bg-green-500 rounded py-2 px-4 text-white leading-tight hover:bg-green-400"
+        href="{{ url('/admin/products/create')}}">Créer un produit</a>
 </div>
 
-<div class="table-container">
+<div class="mt-4 table-container">
     <table class="table">
         <thead>
             <tr>
@@ -89,11 +89,13 @@
             </tr>
             @empty
             <tr class="hover:bg-gray-300">
-                <td>Vous n'avez pas de produits.</td>
+                <td colspan="7" class="py-4 px-6">Vous n'avez pas de produits.</td>
             </tr>
             @endforelse
         </tbody>
     </table>
 </div>
+
+{{ $products->links('partials.pagination') }}
 
 @endsection
