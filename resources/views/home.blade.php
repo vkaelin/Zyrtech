@@ -20,6 +20,6 @@
 
     </div>
     <div class="illustration ml-24">
-        <img src="{{Storage::url('illustration.png')}}" alt="illustration" style="height:550px;"></div>
+        <img src="{{Storage::url('illustration.png')}}" alt="illustration" class="h-120"></div>
 </div>
 @endsection
