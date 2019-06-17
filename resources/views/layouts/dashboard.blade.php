@@ -4,7 +4,7 @@
 
     {{-- Sidenav Desktop --}}
     <div
-        class="hidden bg-gray-800 text-gray-100 lg:flex lg:flex-col lg:justify-between lg:w-80 lg:shrink-0 lg:text-left">
+        class="hidden bg-gray-800 text-gray-100 lg:flex lg:flex-col lg:justify-between lg:w-64 lg:flex-shrink-0 lg:text-left">
         <div>
             <div class="bg-gray-900 py-4 text-center">
                 <h2 class="py-2">
