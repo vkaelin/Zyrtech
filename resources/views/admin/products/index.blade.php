@@ -71,16 +71,14 @@
                     <div class="flex">
                         <form method="GET" action="/admin/products/{{$product->id}}/edit" class="inline-block">
                             @csrf
-                            <button
-                                class="inline-block text-white font-bold py-2 px-3 mr-2 rounded text-xs bg-green-600 hover:bg-green-700">
+                            <button class="inline-block font-bold btn-primary btn-sm">
                                 Modifier
                             </button>
                         </form>
                         <form method="POST" action="/admin/products/{{$product->id}}" class="inline-block">
                             @method('DELETE')
                             @csrf
-                            <button
-                                class="inline-block text-white font-bold py-2 px-3 mr-2 rounded text-xs bg-red-600 hover:bg-red-700">
+                            <button class="ml-3 font-bold btn-danger btn-sm">
                                 Supprimer
                             </button>
                         </form>
