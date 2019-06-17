@@ -41,6 +41,15 @@ class OwnerChefController extends Controller
         return redirect('/dashboard/chefs/');
     }
 
+    public function destroy(User $chef)
+    {
+        $this->authorize('update', $chef);
+
+        $chef->delete();
+
+        return redirect('/dashboard/chefs');
+    }
+
     protected function validateRequest()
     {
         return request()->validate([

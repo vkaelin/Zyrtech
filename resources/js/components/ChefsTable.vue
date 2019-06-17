@@ -35,13 +35,17 @@
                         </td>
                         <td class="py-3 px-6 border-b border-gray-200">
                             <div class="flex">
-                                <a href="#"
-                                    class="btn-primary btn-sm">
+                                <a :href="`/dashboard/chefs/${chef.id}/edit`" class="inline-block btn-primary btn-sm">
                                     Modifier
                                 </a>
-                                <a href="#" class="ml-2 btn-danger btn-sm">
-                                    Supprimer
-                                </a>
+                                <form class="inline-block" method="POST" :action="`/dashboard/chefs/${chef.id}`">
+                                    <input type="hidden" name="_token" :value="csrf">
+                                    <input type="hidden" name="_method" value="DELETE">
+
+                                    <button class="ml-3 btn-danger btn-sm" type="submit">
+                                        Supprimer
+                                    </button>
+                                </form>
                             </div>
                         </td>
                     </tr>
@@ -59,7 +63,8 @@ import ZyrtechForm from './ZyrtechForm';
 export default {
   props: {
     'headers': Array,
-    'allChefs': Object
+    'allChefs': Object,
+    'csrf': String
   },
 
   data() {
