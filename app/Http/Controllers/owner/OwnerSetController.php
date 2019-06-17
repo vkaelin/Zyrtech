@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Product;
 use App\Set;
 use App\User;
+use App\Rating;
 
 class OwnerSetController extends Controller
 {
@@ -36,7 +37,12 @@ class OwnerSetController extends Controller
             ->latest()
             ->paginate(10);
 
-        return view('owner.sets.show', compact('set', 'ratings'));
+        $averages = Rating::selectRaw('AVG(value) average, product_id')
+            ->where('set_id', $set->id)
+            ->groupBy('product_id')
+            ->get();
+
+        return view('owner.sets.show', compact('set', 'ratings', 'averages'));
     }
 
     public function store()

@@ -35,8 +35,7 @@
                             {{ $rating->value }} / 10
                         </td>
                         <td class="py-4 px-6 border-b border-gray-200">
-                            <a class="hover:text-green-500 hover:font-semibold"
-                                href="/products/{{ $rating->product->id }}">
+                            <a class="hover:text-green-500" href="/products/{{ $rating->product->id }}">
                                 {{ $rating->product->name }}
                             </a>
                         </td>
@@ -46,7 +45,7 @@
                     </tr>
                     @empty
                     <tr class="hover:bg-gray-300">
-                        <td colspan="7" class="py-4 px-6">Vous n'avez pas créé de sets.</td>
+                        <td colspan="3" class="py-4 px-6">Aucune donnée n'est disponible.</td>
                     </tr>
                     @endforelse
                 </tbody>
@@ -55,8 +54,41 @@
 
         {{ $ratings->links('partials.pagination') }}
     </tab>
-    <tab name="Second Tab">
-        <h1>Second tab example content</h1>
+    <tab name="Moyennes">
+        <div class="mt-4 table-container">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th
+                            class="py-4 px-6 bg-gray-800 font-bold uppercase text-sm text-gray-100 border-r border-white">
+                            Moyenne
+                        </th>
+                        <th
+                            class="py-4 px-6 bg-gray-800 font-bold uppercase text-sm text-gray-100 border-r border-white">
+                            Produit
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @forelse ($averages as $average)
+                    <tr class="hover:bg-gray-300">
+                        <td class="py-4 px-6 border-b border-gray-200">
+                            {{ $average->average }} / 10
+                        </td>
+                        <td class="py-4 px-6 border-b border-gray-200">
+                            <a class="hover:text-green-500" href="/products/{{ $average->product->id }}">
+                                {{ $average->product->name }}
+                            </a>
+                        </td>
+                    </tr>
+                    @empty
+                    <tr class="hover:bg-gray-300">
+                        <td colspan="2" class="py-4 px-6">Aucune donnée n'est disponible.</td>
+                    </tr>
+                    @endforelse
+                </tbody>
+            </table>
+        </div>
     </tab>
 </tabs>
 
