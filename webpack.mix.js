@@ -15,10 +15,17 @@ require('laravel-mix-purgecss');
  */
 
 mix.js('resources/js/app.js', 'public/js')
-   .sass('resources/sass/app.scss', 'public/css')
-   .tailwind('./tailwind.config.js')
-   .purgeCss();
+    .sass('resources/sass/app.scss', 'public/css')
+    .tailwind('./tailwind.config.js')
+    .purgeCss()
+    .webpackConfig({
+        resolve: {
+            alias: {
+                '@': __dirname + '/resources/js'
+            },
+        },
+    });
 
 if (mix.inProduction()) {
-  mix.version();
+    mix.version();
 }
