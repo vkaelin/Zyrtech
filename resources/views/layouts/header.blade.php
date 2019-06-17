@@ -18,5 +18,6 @@
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
 </head>
 
-<body class="font-sans bg-gray-100 min-h-screen antialiased leading-none">
-    <div id="app" class="h-full">
+<body
+    class="{{(request()->is('products/*')) || (request()->is('/')) ? 'bg-white' : 'bg-gray-100'}} font-sans min-h-screen antialiased leading-none">
+    <div id="app" class="min-h-screen h-full">
