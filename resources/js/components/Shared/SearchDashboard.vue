@@ -33,9 +33,9 @@ export default {
   },
 
   computed: {
-      searchEmpty() {
-          return this.value.length === 0
-      }
+    searchEmpty() {
+      return this.value.length === 0
+    }
   },
 
   methods: {

@@ -24,13 +24,32 @@ export default {
   props: {
     msg: Object
   },
+
   data() {
     return {
-      message: this.msg
+      message: this.msg,
+      timer: 0
     };
   },
+
+  methods: {
+    clearAfterTimer(time) {
+      clearTimeout(this.timer);
+      this.timer = setTimeout(() => {
+        this.message = null;
+      }, time);
+    }
+  },
+
   mounted() {
-    console.log('mounted - ' + this.msg)
+    if (this.msg) {
+      this.clearAfterTimer(5000);
+    }
+
+    Bus.$on('flash-message', message => {
+      this.message = message;
+      this.clearAfterTimer(5000);
+    });
   }
 };
 </script>
