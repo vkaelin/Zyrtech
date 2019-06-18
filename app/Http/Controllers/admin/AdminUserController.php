@@ -13,7 +13,7 @@ class AdminUserController extends Controller
             ->orderBy('first_name')
             ->orderBy('last_name')
             ->paginate(10);
-            
+
         $users->loadMissing('role');
 
         return view('admin.users.index', compact('users'));
@@ -26,12 +26,28 @@ class AdminUserController extends Controller
 
     public function store()
     {
+        $attributes = request()->validate([
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'city' => 'required',
+            'country' => 'required',
+            'email' => 'required',
+            'password' => 'required',
+            'role_id' => 'required',
+        ]);
+
+        User::create($attributes);
+
+        return redirect('/admin/users');
     }
 
     public function edit(User $user)
     {
-        return view('admin.users.edit');
+        return view('admin.users.edit', compact('user'));
     }
+
+    public function update(User $user)
+    { }
 
     public function destroy(User $user)
     {
