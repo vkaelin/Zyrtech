@@ -38,22 +38,22 @@
         <div class="mt-2 sm:flex">
             <div>
                 <label class="inline-flex items-center">
-                    <input type="radio" class="form-radio text-green-600 border-gray-400" name="role_id" value="2"
-                        {{ $user->role->id === 2 ? 'checked' : '' }}>
+                    <input type="radio" class="form-radio text-green-600 border-gray-400" name="role_id" value="3"
+                        {{ $user->role && $user->role->id === 3 ? 'checked' : '' }}>
                     <span class="ml-2">Chef</span>
                 </label>
             </div>
             <div class="mt-2 sm:mt-0 sm:ml-4">
                 <label class="inline-flex items-center">
-                    <input type="radio" class="form-radio text-green-600 border-gray-400" name="role_id" value="1"
-                        {{ $user->role->id === 1 ? 'checked' : '' }}>
+                    <input type="radio" class="form-radio text-green-600 border-gray-400" name="role_id" value="2"
+                        {{ $user->role && $user->role->id === 2 ? 'checked' : '' }}>
                     <span class="ml-2">Propriétaire</span>
                 </label>
             </div>
             <div class="mt-2 sm:mt-0 sm:ml-4">
                 <label class="inline-flex items-center">
-                    <input type="radio" class="form-radio text-green-600 border-gray-400" name="role_id" value="0"
-                        {{ $user->role->id === 0 ? 'checked' : '' }}>
+                    <input type="radio" class="form-radio text-green-600 border-gray-400" name="role_id" value="1"
+                        {{ $user->role && $user->role->id === 1 ? 'checked' : '' }}>
                     <span class="ml-2">Admin</span>
                 </label>
             </div>

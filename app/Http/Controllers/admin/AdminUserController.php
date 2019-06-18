@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\User;
+use Illuminate\Support\Facades\Hash;
 
 class AdminUserController extends Controller
 {
@@ -26,15 +27,7 @@ class AdminUserController extends Controller
 
     public function store()
     {
-        $attributes = request()->validate([
-            'first_name' => 'required',
-            'last_name' => 'required',
-            'city' => 'required',
-            'country' => 'required',
-            'email' => 'required',
-            'password' => 'required',
-            'role_id' => 'required',
-        ]);
+        $attributes = $this->validateRequest();
 
         User::create($attributes);
 
@@ -47,12 +40,40 @@ class AdminUserController extends Controller
     }
 
     public function update(User $user)
-    { }
+    {
+        $password = request('password');
+        request()->request->remove('password');
+
+        $attributes = $this->validateRequest();
+
+        $user->update($attributes);
+
+        if ($password) {
+            $user->password = Hash::make($password);
+        }
+
+        $user->save();
+
+        return redirect('/admin/users');
+    }
 
     public function destroy(User $user)
     {
         $user->delete();
 
         return redirect('/admin/users');
+    }
+
+    protected function validateRequest()
+    {
+        return request()->validate([
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'city' => 'required',
+            'country' => 'required',
+            'email' => 'required',
+            'password' => 'sometimes|min:8',
+            'role_id' => 'required'
+        ]);
     }
 }
