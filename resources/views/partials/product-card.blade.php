@@ -1,5 +1,5 @@
 <a href="/products/{{$product->id}}"
-    class="relative w-64 max-h-xs rounded overflow-hidden shadow-lg mr-4 mt-4 hover:shadow-xl border hover:border-green-300 cursor-pointer">
+    class="relative w-full sm:w-64 max-h-xs rounded overflow-hidden shadow-lg mr-0 sm:mr-4 mt-4 hover:shadow-xl border hover:border-green-300 cursor-pointer">
     @if ($chef)
     @if ($times = $set->productRatingsNumber($product))
     <span class="mr-1 mt-1 absolute right-0 top-0 px-2 py-1 bg-green-500 text-white text-xs rounded-full">Evalué {{ $times }} fois</span>

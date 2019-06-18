@@ -9,6 +9,11 @@ class RolePolicy
 {
     use HandlesAuthorization;
 
+    public function evaluate(User $user)
+    {
+        return $user->role->name === 'chef'; 
+    }
+
     public function manage(User $user)
     {
         return $user->role->name === 'admin' || $user->role->name === 'owner'; 
