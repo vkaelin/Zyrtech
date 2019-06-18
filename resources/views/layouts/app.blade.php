@@ -1,7 +1,8 @@
 @include('layouts.header')
 
-<nav class="bg-white mb-8 py-3">
-    <div class="mx-auto px-6 md:px-8">
+<nav class="bg-white mb-8 md:py-3">
+    {{-- Navbar --}}
+    <div class="hidden md:block mx-auto px-6 md:px-8">
         <div class="flex items-center justify-center">
             <div>
                 <a class="inline-block text-2xl font-bold" href="/">
@@ -24,11 +25,11 @@
                     href="{{ route('login') }}">{{ __('Se connecter') }}</a>
                 @if (Route::has('register'))
                 <a class="font-bold text-base gem ml-3 py-2 {{(request()->is('register')) ? 'text-green-500' : 'text-gray-800'}}"
-                    href="{{ route('register') }}">{{ __("S'nscrire") }}</a>
+                    href="{{ route('register') }}">{{ __("S'inscrire") }}</a>
                 @endif
                 @else
                 @can('manage', auth()->user()->role)
-                <a class="font-bold text-base gem ml-3 py-2" href="/dashboard/chefs">Dashboard</a>
+                <a class="font-bold text-base gem ml-3 py-2 text-gray-800" href="/dashboard/chefs">Dashboard</a>
                 @endcan
                 @can('evaluate', auth()->user()->role)
                 <a class="font-bold text-base gem ml-3 py-2 {{(request()->is('sets')) ? 'text-green-500' : 'text-gray-800'}}"
@@ -36,8 +37,7 @@
                 @endcan
                 <dropdown align="right" width="auto" class="inline-block ml-3">
                     <template v-slot:trigger>
-                        <button
-                            class="flex items-center py-2 text-gray-400 font-semibold text-gray-900 gem focus:outline-none">
+                        <button class="flex items-center py-2 font-semibold text-gray-800 gem focus:outline-none">
                             <svg class="w-6 mr-2 fill-current" viewBox="0 0 20 20">
                                 <path
                                     d="M10 20a10 10 0 1 1 0-20 10 10 0 0 1 0 20zM7 6v2a3 3 0 1 0 6 0V6a3 3 0 1 0-6 0zm-3.65 8.44a8 8 0 0 0 13.3 0 15.94 15.94 0 0 0-13.3 0z" />
@@ -61,8 +61,64 @@
             </div>
         </div>
     </div>
-</nav>
+    {{-- Nav-Mobile --}}
+    <div class="block md:hidden">
+        <public-nav-mobile>
+            <li class="px-4">
+                <a href="/products"
+                    class="block py-2 font-bold text-base {{(request()->is('products')) ? 'text-green-500' : 'text-gray-800'}}">
+                    Nos produits
+                </a>
+            </li>
+            <hr class="w-full bg-gray-400 my-4" style="height: 1px;">
+            @guest
+            <li class="px-4">
+                <a class="block py-2 font-bold text-base {{(request()->is('login')) ? 'text-green-500' : 'text-gray-800'}}"
+                    href="{{ route('login') }}">{{ __('Se connecter') }}</a>
+            </li>
 
+            @if (Route::has('register'))
+            <li class="px-4">
+                <a class="block py-2 font-bold text-base {{(request()->is('register')) ? 'text-green-500' : 'text-gray-800'}}"
+                    href="{{ route('register') }}">{{ __("S'inscrire") }}</a>
+            </li>
+            @endif
+            @endguest
+            @auth
+            <li class="flex items-center px-4 py-2 font-bold text-base text-gray-800 lg:hidden">
+                <svg class="w-6 mr-2 fill-current" viewBox="0 0 20 20">
+                    <path
+                        d="M10 20a10 10 0 1 1 0-20 10 10 0 0 1 0 20zM7 6v2a3 3 0 1 0 6 0V6a3 3 0 1 0-6 0zm-3.65 8.44a8 8 0 0 0 13.3 0 15.94 15.94 0 0 0-13.3 0z" />
+                </svg>
+                {{ Auth::user()->full_name }}
+            </li>
+            @can('manage', auth()->user()->role)
+            <li class="px-4">
+                <a href="/dashboard/chefs" class="block py-2 font-bold text-base text-gray-800 hover:text-green-500">
+                    Dashboard
+                </a>
+            </li>
+            @endcan
+            @can('evaluate', auth()->user()->role)
+            <li class="px-4">
+                <a href="/sets"
+                    class="block py-2 font-bold text-base {{(request()->is('sets')) ? 'text-green-500' : 'text-gray-800'}}">
+                    Evaluations
+                </a>
+            </li>
+            @endcan
+            <li class="px-4 lg:hidden">
+                <a href="{{ route('logout') }}"
+                    class="block py-2 font-bold text-base text-gray-800 hover:text-green-500"
+                    onclick="event.preventDefault();document.getElementById('logout-form-mobile').submit();">{{ __('Déconnexion') }}</a>
+                <form id="logout-form-mobile" action="{{ route('logout') }}" method="POST" class="hidden">
+                    @csrf
+                </form>
+            </li>
+            @endauth
+        </public-nav-mobile>
+    </div>
+</nav>
 @yield('content')
 
 @include('layouts.footer')

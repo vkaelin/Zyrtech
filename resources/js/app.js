@@ -8,6 +8,7 @@ Vue.use(VModal)
 Vue.component('dropdown', require('./components/shared/DropDown.vue').default);
 Vue.component('multiselect', require('./components/shared/MultiSelect.vue').default);
 Vue.component('nav-mobile', require('./components/shared/NavMobile.vue').default);
+Vue.component('public-nav-mobile', require('./components/shared/PublicNavMobile.vue').default);
 Vue.component('pagination', require('./components/shared/Pagination.vue').default);
 Vue.component('product-star', require('./components/shared/ProductStar.vue').default);
 Vue.component('search-dashboard', require('./components/shared/SearchDashboard.vue').default);
