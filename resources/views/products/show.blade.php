@@ -17,12 +17,29 @@
                 </div>
             </div>
             <div class="ml-6">
-                <h2 class="text-3xl font-bold -mt-1">{{{$product->name}}}</h2>
+                <h2 class="text-gray-800 text-3xl font-bold -mt-1 flex justify-between">{{{$product->name}}}
+                    <span class="text-gray-800 text-2xl font-bold italic text-right">
+                        {{$product->getTypeName()}} &#8250; {{$product->getPeriodName()}}
+                    </span>
+                </h2>
                 <p class="my-4 text-sm text-justify max-w-lg text-gray-700 leading-snug">{{ $product->description }}</p>
+                <div>
+                    @forelse ($product->labels as $label)
+                    <span
+                        class="inline-block bg-green-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-1">
+                        {{$label->name}}
+                    </span>
+                    @empty
+                    <span
+                        class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-1">
+                        Aucun label
+                    </span>
+                    @endforelse
+                </div>
             </div>
         </div>
         <div class="notation-section flex flex-col justify-center items-center">
-            <span class="text-green-400 inline-block italic text-m">Note des chefs</span>
+            <span class="-mt-6 text-green-400 inline-block italic text-m">Note des chefs</span>
             <span class="text-green-400 inline-block font-bold text-6xl">{{ $product->getRatingsNote() }}/10</span>
             <div class="mt-4">
                 <a href="#" class="inline-block">
@@ -43,7 +60,7 @@
         </div>
     </div>
     <div class="mt-12 comment-section">
-        <h3 class="text-2xl mb-2">Commentaires</h3>
+        <h3 class="text-gray-800 text-2xl mb-2 font-bold">Commentaires</h3>
         <div class="notation flex justify-between items-end">
             <product-star :product="{{$product}}"
                 :stars="{{Cookie::has('voting_cookie_id' . $product->id) ? Cookie::get('voting_cookie_id' . $product->id) : 0}}"
@@ -85,20 +102,20 @@
         </div>
         <div class=" mt-4 border-b border-gray-400"></div>
         <div class=" mt-8">
-            <h4 class="text-xl italic">Les derniers commentaires</h4>
+            <h4 class="text-gray-800 font-bold text-xl italic">Les derniers commentaires</h4>
             <div class="comments-wrapper mt-4 w-full pb-12">
 
                 @forelse ($product->comments as $comment)
-                <div class="comment bg-gray-200 rounded p-6 mt-6 shadow-lg">
+                <div class="text-gray-800 comment bg-gray-200 rounded p-6 mt-6 shadow-lg">
                     <div class="comment-infos flex ">
                         <i class="fas fa-user"></i>
-                        <p class="ml-2 italic text-m">
+                        <p class="ml-2 font-bold italic text-m">
                             @if ($comment->user)
                             {{ $comment->user->full_name }}
                             @else
                             Anonyme
                             @endif
-                            <span class=" not-italic text-sm">
+                            <span class=" font-normal not-italic text-sm">
                                 le {{ $comment->created_at->format('d.m.Y à H:i') }}
                             </span>
                         </p>

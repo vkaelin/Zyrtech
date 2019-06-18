@@ -14,7 +14,7 @@
     </div>
     <div class="px-6 pt-2">
         <span class="inline-block italic text-xs mb-1">
-            {{$product->getTypeName()}} > {{$product->getPeriodName()}}
+            {{$product->getTypeName()}} &#8250; {{$product->getPeriodName()}}
         </span>
 
         <div class="mb-1 flex justify-between">
