@@ -30,14 +30,21 @@ Generate a new application key
 
     php artisan key:generate
 
+Create the symbolic link
+
+    php artisan storage:link
 
 Run the database migrations (**Set the database connection in .env before migrating**)
 
     php artisan migrate
 
-Create the symbolic link
+Seed the database (optional)
 
-    php artisan storage:link
+    php artisan db:seed
+
+Listen for file changes
+
+    npm run watch
 
 Start the local development server
 
