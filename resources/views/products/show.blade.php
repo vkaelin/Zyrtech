@@ -18,7 +18,7 @@
             </div>
             <div class="ml-6">
                 <h2 class="text-3xl font-bold -mt-1">{{{$product->name}}}</h2>
-                <p class="my-4 text-sm text-justify max-w-lg text-gray-700">{{ $product->description }}</p>
+                <p class="my-4 text-sm text-justify max-w-lg text-gray-700 leading-snug">{{ $product->description }}</p>
             </div>
         </div>
         <div class="notation-section flex flex-col justify-center items-center">

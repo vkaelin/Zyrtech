@@ -2,7 +2,8 @@
     class="relative w-full sm:w-64 max-h-xs rounded overflow-hidden shadow-lg mr-0 sm:mr-4 mt-4 hover:shadow-xl border hover:border-green-300 cursor-pointer">
     @if ($chef)
     @if ($times = $set->productRatingsNumber($product))
-    <span class="mr-1 mt-1 absolute right-0 top-0 px-2 py-1 bg-green-500 text-white text-xs rounded-full">Evalué {{ $times }} fois</span>
+    <span class="mr-1 mt-1 absolute right-0 top-0 px-2 py-1 bg-green-500 text-white text-xs rounded-full">Evalué
+        {{ $times }} fois</span>
     @else
     <span class="mr-1 mt-1 absolute right-0 top-0 px-2 py-1 bg-red-500 text-white text-xs rounded-full">A évaluer</span>
     @endif
@@ -28,14 +29,19 @@
         </div>
     </div>
     <div class="px-6 pt-2 pb-4">
-        @forelse ($product->labels as $label)
-        <span class="inline-block bg-green-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">
+        @forelse ($product->labels->take(2) as $label)
+        <span class="inline-block bg-green-200 rounded-full px-3 py-1 text-xs font-semibold text-gray-700 mr-1">
             {{$label->name}}
         </span>
         @empty
-        <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">
+        <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-xs font-semibold text-gray-700 mr-1">
             Aucun label
         </span>
         @endforelse
+        @if ($product->labels->count() > 2)
+        <span class="inline-block bg-green-200 rounded-full px-3 py-1 text-xs font-semibold text-gray-700">
+            +{{$product->labels->count() - 2}}
+        </span>
+        @endif
     </div>
 </a>
