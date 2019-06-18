@@ -11,7 +11,9 @@ class AdminProductController extends Controller
 {
     public function index()
     {
-        $products = \App\Product::paginate(10);
+        $products = Product::paginate(10);
+
+        $products->loadMissing(['type', 'period', 'labels']);
 
         return view('admin.products.index', compact('products'));
     }
