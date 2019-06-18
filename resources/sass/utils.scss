@@ -2,3 +2,18 @@
     top: 50%;
     transform: translateY(-50%);
 }
+
+@media screen and (max-height: 480px), screen and(max-width: 900px)
+{   
+
+    .infos-mobile-landscape{
+        margin-left: 0 !important;
+    }
+    .button-mobile-landscape{
+        justify-content: center !important;
+    }
+
+    .illustration-mobile-landscape{
+        display: none !important;
+    }
+}
