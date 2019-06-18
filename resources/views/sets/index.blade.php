@@ -1,23 +1,17 @@
 @extends('layouts.app')
 
 @section('content')
-<h1 class="text-2xl font-bold mb-4">Produits assignés</h1>
-
-<ul>
-
-    <ul class="mb-3">
+<div class="container mx-auto">
+    @if (auth()->user()->group)
+    <h1 class="text-2xl font-bold mb-4">Produits assignés à votre groupe</h1>
+    @else
+    <h1 class="text-2xl font-bold mb-4">Vos Produits Assignés</h1>
+    @endif
+    <div class="flex flex-wrap">
         @foreach ($set->products as $product)
-        <li class="flex">
-            <a class="hover:font-bold" href="/products/{{ $product->id }}"> - {{ $product->name }}</a>
-            @if ($times = $set->productRatingsNumber($product))
-            <span class="ml-2">[Evalué {{ $times }} fois]</span>
-            @else
-            <span class="ml-2">[A évaluer]</span>
-            @endif
-        </li>
+        @include('partials.product-card', ['chef' => 'true'])
         @endforeach
-    </ul>
-</ul>
-
+    </div>
+</div>
 
 @endsection

@@ -9,7 +9,7 @@
 </h1>
 
 <tabs>
-    <tab name="Evaluations" selected="true">
+    <tab name="Evaluations" :selected="true">
         <div class="mt-4 table-container">
             <table class="table">
                 <thead>
