@@ -29,8 +29,9 @@
                 </ul>
             </nav>
         </div>
-        <div class="flex justify-center bg-gray-900 p-4">
-            <a class="bg-green-500 w-full text-center py-2 rounded hover:bg-green-400" href="/">Retour au site</a>
+        <div class="flex justify-center bg-gray-900 p-4 fixed bottom-0 lg:w-64">
+            <a class="bg-green-500 w-full text-center py-2 rounded hover:bg-green-400" href="/">Retour au
+                site</a>
         </div>
     </div>
 
