@@ -6,6 +6,7 @@ import VModal from 'vue-js-modal'
 Vue.use(VModal)
 
 Vue.component('dropdown', require('./components/shared/DropDown.vue').default);
+Vue.component('flash-message', require('./components/shared/FlashMessage.vue').default);
 Vue.component('multiselect', require('./components/shared/MultiSelect.vue').default);
 Vue.component('nav-mobile', require('./components/shared/NavMobile.vue').default);
 Vue.component('public-nav-mobile', require('./components/shared/PublicNavMobile.vue').default);
@@ -21,6 +22,8 @@ Vue.component('login-chef-modal', require('./components/LoginChefModal.vue').def
 Vue.component('youtube-modal', require('./components/VideoModal.vue').default);
 Vue.component('products-table', require('./components/ProductsTable.vue').default);
 Vue.component('users-table', require('./components/UsersTable.vue').default);
+
+window.Bus = new Vue();
 
 new Vue({
     el: '#app',

@@ -52,7 +52,7 @@ class OwnerChefController extends Controller
 
         $chef->update($attributes);
 
-        return redirect('dashboard/chefs');
+        return redirect('dashboard/chefs')->with('success', 'Le compte a bien été modifié!');
     }
 
     public function destroy(User $chef)
