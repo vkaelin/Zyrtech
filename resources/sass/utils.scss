@@ -5,7 +5,6 @@
 
 @media screen and (max-height: 480px), screen and(max-width: 900px)
 {   
-
     .infos-mobile-landscape{
         margin-left: 0 !important;
     }
@@ -16,4 +15,17 @@
     .illustration-mobile-landscape{
         display: none !important;
     }
+}
+
+.block-imp {
+    display: block !important;
+}
+
+.open {
+    height: auto;
+}
+  
+.close {
+    height: 0;
+    overflow: hidden;
 }

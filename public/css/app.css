@@ -878,6 +878,18 @@ video {
   background-color: #edf2f7;
 }
 
+.slide-fade-enter-active,
+.slide-fade-leave-active {
+  transition: all 0.4s;
+}
+
+.slide-fade-enter,
+.slide-fade-leave-to {
+  -webkit-transform: translateX(400px);
+          transform: translateX(400px);
+  opacity: 0;
+}
+
 .absolute-vert-center {
   top: 50%;
   -webkit-transform: translateY(-50%);
@@ -896,6 +908,19 @@ video {
   .illustration-mobile-landscape {
     display: none !important;
   }
+}
+
+.block-imp {
+  display: block !important;
+}
+
+.open {
+  height: auto;
+}
+
+.close {
+  height: 0;
+  overflow: hidden;
 }
 
 .appearance-none {

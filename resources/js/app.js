@@ -5,23 +5,25 @@ import VModal from 'vue-js-modal'
 
 Vue.use(VModal)
 
-Vue.component('dropdown', require('./components/shared/DropDown.vue').default);
-Vue.component('flash-message', require('./components/shared/FlashMessage.vue').default);
-Vue.component('multiselect', require('./components/shared/MultiSelect.vue').default);
-Vue.component('nav-mobile', require('./components/shared/NavMobile.vue').default);
-Vue.component('public-nav-mobile', require('./components/shared/PublicNavMobile.vue').default);
-Vue.component('pagination', require('./components/shared/Pagination.vue').default);
-Vue.component('product-star', require('./components/shared/ProductStar.vue').default);
-Vue.component('search-dashboard', require('./components/shared/SearchDashboard.vue').default);
-Vue.component('tab', require('./components/shared/Tab.vue').default);
-Vue.component('tabs', require('./components/shared/Tabs.vue').default);
+Vue.component('dropdown', () => import(/* webpackChunkName: "js/global" */ './components/shared/DropDown.vue'));
+Vue.component('flash-message', () => import(/* webpackChunkName: "js/global" */ './components/shared/FlashMessage.vue'));
+Vue.component('pagination', () => import(/* webpackChunkName: "js/global" */ './components/shared/Pagination.vue'));
 
-Vue.component('chefs-table', require('./components/ChefsTable.vue').default);
-Vue.component('edit-set', require('./components/EditSet.vue').default);
-Vue.component('login-chef-modal', require('./components/LoginChefModal.vue').default);
-Vue.component('youtube-modal', require('./components/VideoModal.vue').default);
-Vue.component('products-table', require('./components/ProductsTable.vue').default);
-Vue.component('users-table', require('./components/UsersTable.vue').default);
+Vue.component('product-star', () => import(/* webpackChunkName: "js/public" */ './components/shared/ProductStar.vue'));
+Vue.component('public-nav-mobile', () => import(/* webpackChunkName: "js/public" */ './components/shared/PublicNavMobile.vue'));
+
+Vue.component('nav-mobile', () => import(/* webpackChunkName: "js/dashboard" */ './components/shared/NavMobile.vue'));
+Vue.component('multiselect', () => import(/* webpackChunkName: "js/dashboard" */ './components/shared/MultiSelect.vue'));
+Vue.component('search-dashboard', () => import(/* webpackChunkName: "js/dashboard" */ './components/shared/SearchDashboard.vue'));
+Vue.component('tab', () => import(/* webpackChunkName: "js/dashboard" */ './components/shared/Tab.vue'));
+Vue.component('tabs', () => import(/* webpackChunkName: "js/dashboard" */ './components/shared/Tabs.vue'));
+
+Vue.component('chefs-table', () => import(/* webpackChunkName: "js/ChefsTable" */ './components/ChefsTable.vue'));
+Vue.component('edit-set', () => import(/* webpackChunkName: "js/EditSet" */ './components/EditSet.vue'));
+Vue.component('login-chef-modal', () => import(/* webpackChunkName: "js/LoginChefModal" */ './components/LoginChefModal.vue'));
+Vue.component('youtube-modal', () => import(/* webpackChunkName: "js/VideoModal" */ './components/VideoModal.vue'));
+Vue.component('products-table', () => import(/* webpackChunkName: "js/ProductsTable" */ './components/ProductsTable.vue'));
+Vue.component('users-table', () => import(/* webpackChunkName: "js/UsersTable" */ './components/UsersTable.vue'));
 
 window.Bus = new Vue();
 

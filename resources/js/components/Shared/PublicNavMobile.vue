@@ -42,14 +42,3 @@ export default {
   },
 }
 </script>
-
-<style scoped>
-.open {
-  height: auto;
-}
-
-.close {
-  height: 0;
-  overflow: hidden;
-}
-</style>

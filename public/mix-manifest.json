@@ -1,4 +1,13 @@
 {
     "/js/app.js": "/js/app.js",
-    "/css/app.css": "/css/app.css"
+    "/css/app.css": "/css/app.css",
+    "/js/ChefsTable.js": "/js/ChefsTable.js",
+    "/js/EditSet.js": "/js/EditSet.js",
+    "/js/LoginChefModal.js": "/js/LoginChefModal.js",
+    "/js/ProductsTable.js": "/js/ProductsTable.js",
+    "/js/UsersTable.js": "/js/UsersTable.js",
+    "/js/VideoModal.js": "/js/VideoModal.js",
+    "/js/dashboard.js": "/js/dashboard.js",
+    "/js/global.js": "/js/global.js",
+    "/js/public.js": "/js/public.js"
 }
