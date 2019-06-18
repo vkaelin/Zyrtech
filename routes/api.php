@@ -20,4 +20,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/findChef', 'API\ChefController@search');
+    Route::get('/findUser', 'API\UserController@search');
 });

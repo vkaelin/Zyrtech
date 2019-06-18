@@ -17,6 +17,7 @@ Vue.component('tabs', require('./components/shared/Tabs.vue').default);
 Vue.component('chefs-table', require('./components/ChefsTable.vue').default);
 Vue.component('edit-set', require('./components/EditSet.vue').default);
 Vue.component('login-chef-modal', require('./components/LoginChefModal.vue').default);
+Vue.component('users-table', require('./components/UsersTable.vue').default);
 
 new Vue({
     el: '#app',

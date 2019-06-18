@@ -8,7 +8,14 @@ class AdminUserController extends Controller
 {
     public function index()
     {
-        return view('admin.users.index');
+        $users = auth()->user()->chefs()
+            ->orderBy('first_name')
+            ->orderBy('last_name')
+            ->paginate(10);
+            
+        $users->loadMissing('role');
+
+        return view('admin.users.index', compact('users'));
     }
 
     public function create()
