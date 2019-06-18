@@ -19,11 +19,9 @@ Route::post('/products/{product}/star', 'StarController@store');
 // Dashboard for Admins
 Route::group(['prefix' => 'admin',  'middleware' => ['auth', 'role:admin']], function () {
     // Users
-    Route::get('/users', 'Admin\AdminUserController@index');
-    Route::get('/users/create', 'Admin\AdminUserController@create');
-    Route::post('/users/', 'Admin\AdminUserController@store');
-    Route::get('/users/{user}/show', 'Admin\AdminUserController@show');
-    Route::get('/users/{user}/edit', 'Admin\AdminUserController@edit');
+    Route::resource('users', 'Admin\AdminUserController', [
+        'except' => ['show']
+    ]);
 
     // Products
     Route::get('/products', 'Admin\AdminProductController@index');
