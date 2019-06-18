@@ -32,7 +32,7 @@ class OwnerChefController extends Controller
 
         auth()->user()->chefs()->create($attributes);
 
-        return redirect('/dashboard/chefs/');
+        return redirect('/dashboard/chefs/')->with('success', 'Le compte a bien été créé!');
     }
 
     public function edit(User $chef)
@@ -61,7 +61,7 @@ class OwnerChefController extends Controller
 
         $chef->delete();
 
-        return redirect('/dashboard/chefs');
+        return redirect('/dashboard/chefs')->with('success', 'Le compte a bien été supprimé!');
     }
 
     protected function validateRequest()

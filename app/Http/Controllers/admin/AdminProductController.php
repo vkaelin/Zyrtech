@@ -18,7 +18,6 @@ class AdminProductController extends Controller
         return view('admin.products.index', compact('products'));
     }
 
-    //GET la page de création
     public function create()
     {
         $types = \App\Type::all();
@@ -34,7 +33,6 @@ class AdminProductController extends Controller
         return view('admin.products.create', compact('data'));
     }
 
-    //Méthode POST pour la création
     public function store(Request $request)
     {
         $validatedAttributes = request()->validate([
@@ -47,9 +45,7 @@ class AdminProductController extends Controller
         ]);
 
         $imageName = $request->file('image_src')->getClientOriginalName();
-
         $validatedAttributes['image_src'] = $imageName;
-
         request()->image_src->move(storage_path('app/public'), $imageName);
 
         $product = Product::create($validatedAttributes);
@@ -58,18 +54,11 @@ class AdminProductController extends Controller
             $product->labels()->attach(array_values(request('multiLabels')));
         }
 
-        return redirect('/admin/products');
+        return redirect('/admin/products')->with('success', 'Le produit a bien été créé!');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Product  $product
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Product $product)
     {
-        //On utilisera paginate par la suite.
         $types = \App\Type::all();
         $periods = \App\Period::all();
         $labels = \App\Label::all();
@@ -86,16 +75,8 @@ class AdminProductController extends Controller
         return view('admin.products.edit', compact('data'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Product  $product
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Product $product)
     {
-        //Validation de la requête
         $validatedAttributes = request()->validate([
             'name' => ['required', 'min:3', 'max:255'],
             'description' => ['required', 'min:3'],
@@ -121,20 +102,16 @@ class AdminProductController extends Controller
         }
 
         $product->update($validatedAttributes);
-        return back();
+
+        return back()->with('success', 'Le produit a bien été modifié!');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Product  $product
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Product $product)
     {
         Storage::disk('public')->delete($product->image_src);
+        
         $product->delete();
 
-        return redirect('/admin/products');
+        return redirect('/admin/products')->with('success', 'Le produit a bien été supprimé!');
     }
 }

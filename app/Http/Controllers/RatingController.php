@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Product;
 
 class RatingController extends Controller
@@ -16,6 +15,6 @@ class RatingController extends Controller
 
         auth()->user()->currentSet->ratings()->create($attributes);
 
-        return back();
+        return back()->with('success', "Evaluation réussie!");
     }
 }

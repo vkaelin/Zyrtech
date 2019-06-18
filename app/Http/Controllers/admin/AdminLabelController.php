@@ -21,7 +21,7 @@ class AdminLabelController extends Controller
 
         Label::create($validatedAttributes);
 
-        return redirect('/admin/products/attributes');
+        return redirect('/admin/products/attributes')->with('success', 'Le label a bien été créé!');
     }
 
     public function edit(Label $label)
@@ -36,13 +36,13 @@ class AdminLabelController extends Controller
         ]);
 
         $label->update($validatedAttributes);
-        return back();
+        return back()->with('success', 'Le label a bien été modifié!');
     }
 
     public function destroy(Label $label)
     {
         $label->delete();
 
-        return redirect('admin/products/attributes');
+        return redirect('admin/products/attributes')->with('success', 'Le label a bien été supprimé!');
     }
 }

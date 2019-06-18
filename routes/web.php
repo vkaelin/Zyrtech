@@ -6,9 +6,6 @@ Route::get('/', 'HomeController@index');
 // Login Chef
 Route::post('/login/chefs/', 'Auth\ChefLoginController@login');
 
-// Users
-Route::get('/users/{user}', 'UserController@show');
-
 // Products 
 Route::resource('/products', 'ProductController');
 Route::post('/products/{product}/comment', 'CommentController@store');
@@ -76,4 +73,5 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/products/{product}/rating', 'RatingController@store');
 });
 
+// Auth
 Auth::routes();

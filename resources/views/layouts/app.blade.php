@@ -121,4 +121,5 @@
 </nav>
 @yield('content')
 
+@include('partials.flash-messages')
 @include('layouts.footer')

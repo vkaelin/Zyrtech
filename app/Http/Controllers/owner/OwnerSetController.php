@@ -65,7 +65,7 @@ class OwnerSetController extends Controller
 
         $set->products()->attach($attributes['products']);
 
-        return redirect('/dashboard/sets');
+        return redirect('/dashboard/sets')->with('success', 'Le set a bien été créé!');;
     }
 
     public function edit(Set $set)
@@ -92,7 +92,7 @@ class OwnerSetController extends Controller
         if (!request()->wantsJson()) {
             $state = request('active') ? true : false;
             $set->update(['active' => $state]);
-            return back();
+            return back()->with('success', "L'activation du set a bien été modifiée!");
         }
 
         $attributes = request()->validate([
@@ -116,6 +116,6 @@ class OwnerSetController extends Controller
 
         $set->delete();
 
-        return redirect('/dashboard/sets');
+        return redirect('/dashboard/sets')->with('success', 'Le set a bien été supprimé!');
     }
 }

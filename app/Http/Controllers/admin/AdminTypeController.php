@@ -21,7 +21,7 @@ class AdminTypeController extends Controller
 
         Type::create($validatedAttributes);
 
-        return redirect('/admin/products/attributes');
+        return redirect('/admin/products/attributes')->with('success', 'Le type a bien été créé!');
     }
 
     public function edit(Type $type)
@@ -36,13 +36,14 @@ class AdminTypeController extends Controller
         ]);
 
         $type->update($validatedAttributes);
-        return back();
+
+        return back()->with('success', 'Le type a bien été modifié!');
     }
 
     public function destroy(Type $type)
     {
         $type->delete();
 
-        return redirect('admin/products/attributes');
+        return redirect('admin/products/attributes')->with('success', 'Le type a bien été supprimé!');
     }
 }

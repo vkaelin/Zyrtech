@@ -22,6 +22,6 @@ class CommentController extends Controller
         }
         $product->comments()->save($comment);
 
-        return back();
+        return back()->with('success', "Commentaire publié!");
     }
 }

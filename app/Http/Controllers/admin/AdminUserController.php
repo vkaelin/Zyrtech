@@ -31,7 +31,7 @@ class AdminUserController extends Controller
 
         User::create($attributes);
 
-        return redirect('/admin/users');
+        return redirect('/admin/users')->with('success', "L'utilisateur a bien été créé!");
     }
 
     public function edit(User $user)
@@ -54,14 +54,14 @@ class AdminUserController extends Controller
 
         $user->save();
 
-        return redirect('/admin/users');
+        return redirect('/admin/users')->with('success', "L'utilisateur a bien été modifié!");
     }
 
     public function destroy(User $user)
     {
         $user->delete();
 
-        return redirect('/admin/users');
+        return redirect('/admin/users')->with('success', "L'utilisateur a bien été supprimé!");
     }
 
     protected function validateRequest()

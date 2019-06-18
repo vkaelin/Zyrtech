@@ -21,7 +21,7 @@ class AdminPeriodController extends Controller
 
         Period::create($validatedAttributes);
 
-        return redirect('/admin/products/attributes');
+        return redirect('/admin/products/attributes')->with('success', 'La période a bien été créée!');
     }
 
     public function edit(Period $period)
@@ -36,13 +36,14 @@ class AdminPeriodController extends Controller
         ]);
 
         $period->update($validatedAttributes);
-        return back();
+
+        return back()->with('success', 'La période a bien été modifiée!');
     }
 
     public function destroy(Period $period)
     {
         $period->delete();
 
-        return redirect('admin/products/attributes');
+        return redirect('admin/products/attributes')->with('success', 'La période a bien été supprimée!');
     }
 }
