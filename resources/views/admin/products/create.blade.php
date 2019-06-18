@@ -79,22 +79,9 @@
                 </div>
                 @endif
 
-                <!-- IMAGE -->
-
-                <label class="block max-w-full mb-4">
-                    <span class="text-gray-700">Image</span>
-                    <input type="file" class="form-input mt-1 block w-full text-gray-700" required type="text"
-                        name="image_src">
-                </label>
-                @if ($errors->has('image_src'))
-                <div class="text-red-500 text-xs italic my-4">
-                    {{ $errors->first('image_src')}}
-                </div>
-                @endif
-
                 <!-- LABEL -->
 
-                <div class="block max-w-full pb-6">
+                <div class="block max-w-full mb-4">
                     <label class="block">
                         <span class="text-gray-700">Labels</span>
                         <select class="form-multiselect block w-full mt-1 h-16" multiple name="multiLabels[]"
@@ -105,6 +92,33 @@
                         </select>
                     </label>
                 </div>
+
+                <!-- Youtube -->
+                <label class="block max-w-full mb-4">
+                    <span class="text-gray-700">Lien Youtube</span>
+                    <input class="form-input mt-1 block w-full" type="text" name="video_link"
+                        placeholder="Tapez le lien complet ici...">
+                </label>
+                @if ($errors->has('video_link'))
+                <div class="text-red-500 text-xs italic my-4">
+                    {{ $errors->first('video_link')}}
+                </div>
+                @endif
+
+                <!-- IMAGE -->
+
+                <label class="block max-w-full pb-6">
+                    <span class="text-gray-700">Image</span>
+                    <input type="file" class="form-input mt-1 block w-full text-gray-700" required type="text"
+                        name="image_src">
+                </label>
+                @if ($errors->has('image_src'))
+                <div class="text-red-500 text-xs italic my-4">
+                    {{ $errors->first('image_src')}}
+                </div>
+                @endif
+
+
 
             </div>
         </div>

@@ -42,6 +42,7 @@ class AdminProductController extends Controller
             'description' => ['required', 'min:3'],
             'type_id' => ['required'],
             'period_id' => ['required'],
+            'video_link' => 'sometimes',
             'image_src' => 'required|image|mimes:jpeg,png,jpg'
         ]);
 
@@ -100,6 +101,7 @@ class AdminProductController extends Controller
             'description' => ['required', 'min:3'],
             'type_id' => ['required'],
             'period_id' => ['required'],
+            'video_link' => 'sometimes',
             'image_src' => 'image|mimes:jpeg,png,jpg'
         ]);
 

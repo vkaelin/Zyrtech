@@ -42,7 +42,8 @@
             <span class="-mt-6 text-green-400 inline-block italic text-m">Note des chefs</span>
             <span class="text-green-400 inline-block font-bold text-6xl">{{ $product->getRatingsNote() }}/10</span>
             <div class="mt-4">
-                <a href="#" class="inline-block">
+                <a href="{{$product->video_link != null ? $product->video_link : '#'}}" class="inline-block"
+                    @click.prevent="$modal.show('youtube-modal')">
                     <svg viewBox="0 0 90 90" class="w-8 h-8 text-red-700 fill-current"
                         xmlns="http://www.w3.org/2000/svg">
                         <path
@@ -128,10 +129,10 @@
                 <p>Aucun commentaire sur ce produit.</p>
                 @endforelse
             </div>
-
         </div>
     </div>
 </div>
+<youtube-modal></youtube-modal>
 
 
 {{-- <h1>Product show page</h1>

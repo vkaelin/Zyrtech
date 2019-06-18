@@ -56,7 +56,7 @@ class Product extends Model
 
     public function getStarNote()
     {
-        if(! $this->stars()->exists()) {
+        if (!$this->stars()->exists()) {
             return 0;
         }
         return round($this->stars()->avg('value'));
@@ -64,7 +64,7 @@ class Product extends Model
 
     public function getRatingsNote()
     {
-        if(! $this->ratings()->exists()) {
+        if (!$this->ratings()->exists()) {
             return 0;
         }
         return round($this->ratings()->avg('value'));
@@ -82,5 +82,10 @@ class Product extends Model
     public function alreadyRatedBySetChef($user)
     {
         return $this->ratings->whereIn('set_id', $user->currentSet->id)->count();
+    }
+
+    public function convertVideoUrl()
+    {
+        //
     }
 }
