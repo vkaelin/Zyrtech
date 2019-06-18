@@ -23,5 +23,6 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 Route::group(['middleware' => ['auth', 'role:admin']], function () {
+    Route::get('/findProduct', 'API\ProductController@search');
     Route::get('/findUser', 'API\UserController@search');
 });
