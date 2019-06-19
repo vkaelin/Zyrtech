@@ -84,8 +84,15 @@ class Product extends Model
         return $this->ratings->whereIn('set_id', $user->currentSet->id)->count();
     }
 
-    public function convertVideoUrl()
+    public function getConvertedUrl()
     {
-        //
+        if ($this->video_link === null) {
+            return 'empty';
+        } else {
+            //TODO
+            $convertedLink = explode('watch?v=', $this->video_link);
+
+            return $convertedLink[1];
+        }
     }
 }
