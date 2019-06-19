@@ -24,13 +24,7 @@ class AdminProductController extends Controller
         $periods = \App\Period::all();
         $labels = \App\Label::all();
 
-        $data = [
-            'types' => $types,
-            'periods' => $periods,
-            'labels' => $labels,
-        ];
-
-        return view('admin.products.create', compact('data'));
+        return view('admin.products.create', compact('types', 'periods', 'labels'));
     }
 
     public function store(Request $request)
@@ -72,7 +66,7 @@ class AdminProductController extends Controller
             'productLabels' => $productLabels,
         ];
 
-        return view('admin.products.edit', compact('data'));
+        return view('admin.products.edit', compact('product', 'types', 'periods', 'labels', 'productLabels'));
     }
 
     public function update(Request $request, Product $product)
@@ -109,7 +103,7 @@ class AdminProductController extends Controller
     public function destroy(Product $product)
     {
         Storage::disk('public')->delete($product->image_src);
-        
+
         $product->delete();
 
         return redirect('/admin/products')->with('success', 'Le produit a bien été supprimé!');

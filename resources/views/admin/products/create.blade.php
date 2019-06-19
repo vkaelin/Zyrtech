@@ -43,7 +43,7 @@
                 <!-- TYPE  -->
                 <div class="block max-w-full mb-4">
                     <span class="text-gray-700 block mb-2">Type :</span>
-                    @foreach ($data['types'] as $type)
+                    @foreach ($types as $type)
                     <div>
                         <div class="mb-1">
                             <label class="inline-flex items-center">
@@ -65,7 +65,7 @@
                     <label class="block">
                         <span class="text-gray-700">Période :</span>
                         <select class="form-select block w-full mt-1" name="period_id" required>
-                            @foreach ($data['periods'] as $period)
+                            @foreach ($periods as $period)
                             <option value="{{$period->id}}">
                                 {{$period->name}}
                             </option>
@@ -86,7 +86,7 @@
                         <span class="text-gray-700">Labels</span>
                         <select class="form-multiselect block w-full mt-1 h-16" multiple name="multiLabels[]"
                             id="multiLabels">
-                            @foreach ($data['labels'] as $label)
+                            @foreach ($labels as $label)
                             <option value="{{$label->id}}"> {{$label->name}} </option>
                             @endforeach
                         </select>

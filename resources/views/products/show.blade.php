@@ -16,7 +16,7 @@
                     </span>
                 </div>
             </div>
-            <div class="ml-6">
+            <div class="ml-6 w-116">
                 <h2 class="text-gray-800 text-3xl font-bold -mt-1 flex justify-between">{{{$product->name}}}
                     <span class="text-gray-800 text-2xl font-bold italic text-right">
                         {{$product->getTypeName()}} &#8250; {{$product->getPeriodName()}}
