@@ -132,7 +132,8 @@
         </div>
     </div>
 </div>
-<youtube-modal link={{$product->video_link}} :id={{$product->id}}></youtube-modal>
+<youtube-modal link={{$product->video_link === null ? 'empty' : $product->video_link}} :id={{$product->id}}>
+</youtube-modal>
 
 
 {{-- <h1>Product show page</h1>

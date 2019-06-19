@@ -1,5 +1,5 @@
 <template>
-    <modal v-if="link !== null" name="youtube-modal" classes="-mt-24 rounded-lg shadow-lg" height="360" width="640" @before-open="beforeOpen">
+    <modal v-if="link !== null && link !== 'empty'" name="youtube-modal" classes="-mt-24 rounded-lg shadow-lg" height="360" width="640" @before-open="beforeOpen">
         <iframe width="640" height="360" 
             :src="`https://www.youtube-nocookie.com/embed/${link}`" 
             frameborder="0" 
