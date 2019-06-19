@@ -34,9 +34,16 @@ class AdminProductController extends Controller
             'description' => ['required', 'min:3'],
             'type_id' => ['required'],
             'period_id' => ['required'],
-            'video_link' => ['regex:/^.*(youtu\.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/', 'nullable'],
+            'video_link' => ['sometimes'],
             'image_src' => 'required|image|mimes:jpeg,png,jpg'
         ]);
+
+        if ($validatedAttributes['video_link']) {
+
+            preg_match("/^(?:http(?:s)?:\/\/)?(?:www\.)?(?:m\.)?(?:youtu\.be\/|youtube\.com\/(?:(?:watch)?\?(?:.*&)?v(?:i)?=|(?:embed|v|vi|user)\/))([^\?&\"'>]+)/", $validatedAttributes['video_link'], $matches);
+
+            $validatedAttributes['video_link'] = $matches[1];
+        }
 
         $imageName = $request->file('image_src')->getClientOriginalName();
         $validatedAttributes['image_src'] = $imageName;
@@ -68,9 +75,16 @@ class AdminProductController extends Controller
             'description' => ['required', 'min:3'],
             'type_id' => ['required'],
             'period_id' => ['required'],
-            'video_link' => ['regex:/^.*(youtu\.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/', 'nullable'],
+            'video_link' => ['sometimes'],
             'image_src' => 'image|mimes:jpeg,png,jpg'
         ]);
+
+        if ($validatedAttributes['video_link']) {
+
+            preg_match("/^(?:http(?:s)?:\/\/)?(?:www\.)?(?:m\.)?(?:youtu\.be\/|youtube\.com\/(?:(?:watch)?\?(?:.*&)?v(?:i)?=|(?:embed|v|vi|user)\/))([^\?&\"'>]+)/", $validatedAttributes['video_link'], $matches);
+
+            $validatedAttributes['video_link'] = $matches[1];
+        }
 
         if ($request->has('image_src')) {
             Storage::disk('public')->delete($product->image_src);
