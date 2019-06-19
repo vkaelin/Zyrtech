@@ -58,14 +58,6 @@ class AdminProductController extends Controller
         $labels = \App\Label::all();
         $productLabels = \App\ProductLabel::where('product_id', $product->id)->get();
 
-        $data = [
-            'product' => $product,
-            'types' => $types,
-            'periods' => $periods,
-            'labels' => $labels,
-            'productLabels' => $productLabels,
-        ];
-
         return view('admin.products.edit', compact('product', 'types', 'periods', 'labels', 'productLabels'));
     }
 

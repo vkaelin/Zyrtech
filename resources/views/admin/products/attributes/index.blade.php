@@ -32,7 +32,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @forelse ($data['types'] as $type)
+                    @forelse ($types as $type)
                     <tr class="hover:bg-gray-300">
                         <td class="py-4 px-6 border-b border-gray-200">{{$type->name}}</td>
                         <td class="py-4 px-6 border-b border-gray-200">
@@ -82,7 +82,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @forelse ($data['periods'] as $period)
+                    @forelse ($periods as $period)
                     <tr class="hover:bg-gray-300">
                         <td class="py-4 px-6 border-b border-gray-200">{{$period->name}}</td>
                         <td class="py-4 px-6 border-b border-gray-200">
@@ -132,7 +132,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @forelse ($data['labels'] as $label)
+                    @forelse ($labels as $label)
                     <tr class="hover:bg-gray-300">
                         <td class="py-4 px-6 border-b border-gray-200">{{$label->name}}</td>
                         <td class="py-4 px-6 border-b border-gray-200">

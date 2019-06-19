@@ -13,12 +13,6 @@ class AdminAttributeController extends Controller
         $periods = \App\Period::all();
         $labels = \App\Label::all();
 
-        $data = [
-            'types' => $types,
-            'periods' => $periods,
-            'labels' => $labels,
-        ];
-
-        return view('admin.products.attributes.index', compact('data'));
+        return view('admin.products.attributes.index', compact('types', 'periods', 'labels'));
     }
 }
