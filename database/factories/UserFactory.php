@@ -24,6 +24,7 @@ $factory->define(User::class, function (Faker $faker) {
         'country' => $faker->country,
         'group' => false,
         'email' => $faker->unique()->safeEmail,
+        'role_id' => 2,
         'email_verified_at' => now(),
         'password' => bcrypt('12345678'),
         'remember_token' => Str::random(10),
