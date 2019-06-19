@@ -103,7 +103,7 @@ class AdminProductController extends Controller
 
         $product->update($validatedAttributes);
 
-        return back()->with('success', 'Le produit a bien été modifié!');
+        return redirect('/admin/products')->with('success', 'Le produit a bien été modifié!');
     }
 
     public function destroy(Product $product)

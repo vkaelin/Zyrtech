@@ -37,7 +37,7 @@ class AdminTypeController extends Controller
 
         $type->update($validatedAttributes);
 
-        return back()->with('success', 'Le type a bien été modifié!');
+        return redirect('/admin/products/attributes')->with('success', 'Le type a bien été modifié!');
     }
 
     public function destroy(Type $type)

@@ -37,7 +37,7 @@ class AdminPeriodController extends Controller
 
         $period->update($validatedAttributes);
 
-        return back()->with('success', 'La période a bien été modifiée!');
+        return redirect('/admin/products/attributes')->with('success', 'La période a bien été modifiée!');
     }
 
     public function destroy(Period $period)

@@ -36,7 +36,7 @@ class AdminLabelController extends Controller
         ]);
 
         $label->update($validatedAttributes);
-        return back()->with('success', 'Le label a bien été modifié!');
+        return redirect('/admin/products/attributes')->with('success', 'Le label a bien été modifié!');
     }
 
     public function destroy(Label $label)
