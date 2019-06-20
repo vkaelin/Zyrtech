@@ -1,13 +1,13 @@
 {
-    "/js/app.js": "/js/app.js?id=ce3ed51124d90dfe78db",
-    "/css/app.css": "/css/app.css?id=857773ad4a1425c498f4",
-    "/js/ChefsTable.js": "/js/ChefsTable.js?id=d85acecb52b714b17c54",
-    "/js/EditSet.js": "/js/EditSet.js?id=4451b1d9365fe4d61b93",
-    "/js/LoginChefModal.js": "/js/LoginChefModal.js?id=8f1e6d9750da39b9fc27",
-    "/js/ProductsTable.js": "/js/ProductsTable.js?id=bce4f2bc57fa77765ca8",
-    "/js/UsersTable.js": "/js/UsersTable.js?id=201a30460e22283bf587",
-    "/js/VideoModal.js": "/js/VideoModal.js?id=2d3458bfa5b748d85308",
-    "/js/dashboard.js": "/js/dashboard.js?id=eb3df6cba555fbeea749",
-    "/js/global.js": "/js/global.js?id=053589ba37c1a2b7744f",
-    "/js/public.js": "/js/public.js?id=007ed805206a5f554a8d"
+    "/js/app.js": "/js/app.js",
+    "/css/app.css": "/css/app.css",
+    "/js/ChefsTable.js": "/js/ChefsTable.js",
+    "/js/EditSet.js": "/js/EditSet.js",
+    "/js/LoginChefModal.js": "/js/LoginChefModal.js",
+    "/js/ProductsTable.js": "/js/ProductsTable.js",
+    "/js/UsersTable.js": "/js/UsersTable.js",
+    "/js/VideoModal.js": "/js/VideoModal.js",
+    "/js/dashboard.js": "/js/dashboard.js",
+    "/js/global.js": "/js/global.js",
+    "/js/public.js": "/js/public.js"
 }
