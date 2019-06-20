@@ -10,11 +10,9 @@ class AdminUserController extends Controller
 {
     public function index()
     {
-        $users = User::orderBy('first_name')
+        $users = User::with('role')->orderBy('first_name')
             ->orderBy('last_name')
             ->paginate(10);
-
-        $users->loadMissing('role');
 
         return view('admin.users.index', compact('users'));
     }
