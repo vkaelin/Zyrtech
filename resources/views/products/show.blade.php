@@ -6,23 +6,25 @@
 <div class="mx-auto container">
     <div class="product-info flex justify-between">
         <div class="imageText-section flex">
-            <div class="w-80">
-                <img class="block w-full h-64 object-contain bg-white shadow-lg rounded" src="{{$product->getImage()}}"
-                    alt="placeholder">
+            <div class="lg:w-80">
+                <img class="block w-56 lg:w-full h-48 lg:h-64 object-contain bg-white shadow-lg rounded"
+                    src="{{$product->getImage()}}" alt="placeholder">
                 <div class="mt-4 flex items-baseline">
-                    <product-star :stars="{{$product->getStarNote()}}" size="fa-2x" :readonly="true"></product-star>
+                    <product-star :stars="{{$product->getStarNote()}}" size="text-xl lg:text-3xl" :readonly="true">
+                    </product-star>
                     <span class="ml-4 block text-m text-gray-700 ">{{$product->stars->count()}}
                         {{$product->stars->count() <= 1 ? 'vote' : 'votes'}}
                     </span>
                 </div>
             </div>
-            <div class="ml-6 w-116">
+            <div class="ml-3 lg:ml-6 lg:w-116">
                 <h2 class="text-gray-800 text-3xl font-bold -mt-1 flex justify-between">{{{$product->name}}}
-                    <span class="text-gray-800 text-2xl font-bold italic text-right">
+                    <span class="text-gray-800 text-lg lg:text-2xl font-bold italic">
                         {{$product->getTypeName()}} &#8250; {{$product->getPeriodName()}}
                     </span>
                 </h2>
-                <p class="my-4 text-sm text-justify max-w-lg text-gray-700 leading-snug">{{ $product->description }}</p>
+                <p class="mb-4 mt-2 lg:my-4 text-sm text-justify max-w-lg text-gray-700 leading-snug">
+                    {{ $product->description }}</p>
                 <div>
                     @forelse ($product->labels as $label)
                     <span
@@ -38,9 +40,10 @@
                 </div>
             </div>
         </div>
-        <div class="notation-section flex flex-col justify-center items-center">
-            <span class="-mt-6 text-green-400 inline-block italic text-m">Note des chefs</span>
-            <span class="text-green-400 inline-block font-bold text-6xl">{{ $product->getRatingsNote() }}/10</span>
+        <div class="ml-3 lg:ml-6 xl:ml-0 notation-section flex flex-col justify-center items-center">
+            <span class="-mt-6 text-green-400 inline-block italic text-sm lg:text-base">Note des chefs</span>
+            <span
+                class="text-green-400 inline-block font-bold text-5xl lg:text-6xl">{{ $product->getRatingsNote() }}/10</span>
             <div class="mt-4">
                 <a href="#" class="inline-block"
                     @click.prevent="$modal.show('youtube-modal', { videoId: {{$product->id}} })">
