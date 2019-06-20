@@ -3,7 +3,7 @@
 @section('content')
 <div class="container mx-auto">
     <div class="flex flex-wrap justify-center">
-        <div class="w-full max-w-lg px-4">
+        <div class="w-full max-w-lg px-4 pb-4">
             <div class="flex flex-col break-words bg-white rounded-lg shadow-md">
 
                 <div class="font-semibold bg-gray-200 text-gray-700 py-3 px-6 rounded-t-lg">
