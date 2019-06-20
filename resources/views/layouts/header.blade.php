@@ -20,5 +20,5 @@
 </head>
 
 <body
-    class="{{(request()->is('products*')) || (request()->is('/')) ? 'bg-white' : 'bg-gray-100'}} font-sans min-h-screen antialiased leading-none">
+    class="{{(request()->is('admin*')) || (request()->is('dashboard*')) ? 'bg-gray-100' : 'bg-white'}} font-sans min-h-screen antialiased leading-none">
     <div id="app" class="min-h-screen h-full">
