@@ -10,8 +10,7 @@ class AdminUserController extends Controller
 {
     public function index()
     {
-        $users = auth()->user()->chefs()
-            ->orderBy('first_name')
+        $users = User::orderBy('first_name')
             ->orderBy('last_name')
             ->paginate(10);
 

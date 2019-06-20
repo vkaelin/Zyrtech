@@ -61,7 +61,7 @@ class User extends Authenticatable
      */
     public function owner()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'owner_id');
     }
 
     /**
