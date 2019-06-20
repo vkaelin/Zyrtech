@@ -23,13 +23,13 @@
             <td class="py-3 px-6 border-b border-gray-200">{{ product.name }}</td>
             <td class="py-3 px-6 border-b border-gray-200">{{ maxLength(product.description, 20) }}</td>
             <td class="py-3 px-6 border-b border-gray-200">
-              <a :href="'/storage/' + product['image_src']" target="_blank">
+              <div class="cursor-pointer" @click="$modal.show('image-modal', {imageUrl: '/storage/' + product['image_src']} )">
                 <svg class="w-6 h-auto inline" viewBox="0 0 20 20">
                   <path
                     d="M0 6c0-1.1.9-2 2-2h3l2-2h6l2 2h3a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V6zm10 10a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0-2a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"
                   ></path>
                 </svg>
-              </a>
+              </div>
             </td>
             <td class="py-3 px-6 border-b border-gray-200">{{ product.type.name }}</td>
             <td class="py-3 px-6 border-b border-gray-200">{{ product.period.name }}</td>
@@ -64,7 +64,7 @@
         </tbody>
       </table>
     </div>
-
+    <image-modal></image-modal>
     <pagination :pagination="products" @paginate="getProductsPerPage" :offset="5"></pagination>
   </div>
 </template>

@@ -22,6 +22,7 @@ Vue.component('chefs-table', () => import(/* webpackChunkName: "js/ChefsTable" *
 Vue.component('edit-set', () => import(/* webpackChunkName: "js/EditSet" */ './components/EditSet.vue'));
 Vue.component('login-chef-modal', () => import(/* webpackChunkName: "js/LoginChefModal" */ './components/LoginChefModal.vue'));
 Vue.component('youtube-modal', () => import(/* webpackChunkName: "js/VideoModal" */ './components/VideoModal.vue'));
+Vue.component('image-modal', () => import(/* webpackChunkName: "js/ImageModal" */ './components/ImageModal.vue'));
 Vue.component('products-table', () => import(/* webpackChunkName: "js/ProductsTable" */ './components/ProductsTable.vue'));
 Vue.component('users-table', () => import(/* webpackChunkName: "js/UsersTable" */ './components/UsersTable.vue'));
 
