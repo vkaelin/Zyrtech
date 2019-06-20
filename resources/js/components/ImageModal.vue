@@ -1,5 +1,5 @@
 <template>
-    <modal name="image-modal" classes="-mt-24 rounded-lg bg-white shadow-lg" height="500" width="500" @before-open="beforeOpen">
+    <modal name="image-modal" classes="-mt-24 rounded-lg bg-white shadow-lg" :height="height" :reset="reset" :width="width" @before-open="beforeOpen">
         <div class="w-full h-full flex flex-col items-center justify-center">
             <img class="h-full w-auto" :class="[link === '/storage/placeholder.jpg' ? 'object-cover' : 'object-contain']" :src="link" alt="Image du produit">
         </div>
@@ -14,7 +14,10 @@ export default {
     },
     data() {
         return {
-            link: 'no-src'
+            link: 'no-src',
+            width: 500,
+            height: 500,
+            reset: false
         }
     },
     methods:{
@@ -30,6 +33,14 @@ export default {
             console.log(event.params.imageUrl)
             
         }
-    }
+    },
+    mounted() {
+        const body = document.getElementsByTagName("body")[0];
+        if(body.clientWidth < this.width){
+                this.width = 250
+                this.height = 250
+                this.reset = true;
+            };
+    },
 }
 </script>

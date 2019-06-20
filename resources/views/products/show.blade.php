@@ -3,13 +3,13 @@
 @section('content')
 
 
-<div class="mx-auto container">
-    <div class="product-info flex justify-between">
-        <div class="imageText-section flex">
-            <div class="lg:w-80">
-                <img class="block w-56 lg:w-full h-48 lg:h-64 object-contain bg-white shadow-lg rounded"
+<div class="px-6 mx-auto container">
+    <div class="product-info flex flex-col sm:flex-row justify-between">
+        <div class="imageText-section flex flex-col sm:flex-row">
+            <div class="flex flex-col mx-auto md:block md:mx-0">
+                <img class="block w-88 h-48 lg:h-64 object-contain bg-white shadow-lg rounded"
                     src="{{$product->getImage()}}" alt="placeholder">
-                <div class="mt-4 flex items-baseline">
+                <div class="my-4 md:mb-0 md:mt-4 flex items-baseline">
                     <product-star :stars="{{$product->getStarNote()}}" size="text-xl lg:text-3xl" :readonly="true">
                     </product-star>
                     <span class="ml-4 block text-m text-gray-700 ">{{$product->stars->count()}}
@@ -17,13 +17,14 @@
                     </span>
                 </div>
             </div>
-            <div class="ml-3 lg:ml-6 lg:w-116">
+            <div class="md:ml-6 lg:w-116">
                 <h2 class="text-gray-800 text-3xl font-bold -mt-1 flex justify-between">{{{$product->name}}}
                     <span class="text-gray-800 text-lg lg:text-2xl font-bold italic">
                         {{$product->getTypeName()}} &#8250; {{$product->getPeriodName()}}
                     </span>
                 </h2>
-                <p class="mb-4 mt-2 lg:my-4 text-sm text-justify max-w-lg text-gray-700 leading-snug">
+                <p
+                    class="pr-3 xl:pr-0 mb-4 mt-2 lg:mb-6 lg:mt-4 h-32 sm:h-40 overflow-y-scroll text-sm text-justify max-w-md lg:max-w-lg text-gray-700 leading-snug">
                     {{ $product->description }}</p>
                 <div>
                     @forelse ($product->labels as $label)
@@ -41,7 +42,7 @@
             </div>
         </div>
         <div class="ml-3 lg:ml-6 xl:ml-0 notation-section flex flex-col justify-center items-center">
-            <span class="-mt-6 text-green-400 inline-block italic text-sm lg:text-base">Note des chefs</span>
+            <span class="mt-6 md:-mt-6 text-green-400 inline-block italic text-sm lg:text-base">Note des chefs</span>
             <span
                 class="text-green-400 inline-block font-bold text-5xl lg:text-6xl">{{ $product->getRatingsNote() }}/10</span>
             <div class="mt-4">

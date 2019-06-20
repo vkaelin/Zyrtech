@@ -12,7 +12,7 @@ class CommentController extends Controller
     public function store(Product $product)
     {
         $attributes = request()->validate([
-            'content' => 'required|min:3|max:100',
+            'content' => 'required|min:3|max:1000',
         ]);
 
         $comment = new Comment();
