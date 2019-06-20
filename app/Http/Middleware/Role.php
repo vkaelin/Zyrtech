@@ -14,13 +14,8 @@ class Role
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle($request, Closure $next, ... $roles)
+    public function handle($request, Closure $next, ...$roles)
     {
-        // if (!Auth::check())
-        // {
-        //     return redirect('login');
-        // }
-
         $user = Auth::user();
 
         if ($user->role->name === 'admin') {

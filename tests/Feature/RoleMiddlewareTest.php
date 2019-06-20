@@ -78,7 +78,7 @@ class RoleMiddlewareTest extends TestCase
 
         $middleware = new Role;
 
-        $response = $middleware->handle($request, function () { });
+        $response = $middleware->handle($request, function () { }, 'owner');
 
         $this->assertEquals($response, null);
     }
