@@ -18,8 +18,8 @@
                 </div>
             </div>
             <div class="md:ml-6 lg:w-116">
-                <h2 class="text-gray-800 text-3xl font-bold -mt-1 flex justify-between">{{{$product->name}}}
-                    <span class="text-gray-800 text-lg lg:text-2xl font-bold italic">
+                <h2 class="text-gray-800 text-lg sm:text-3xl font-bold -mt-1 flex justify-between">{{{$product->name}}}
+                    <span class="text-gray-800 text-sm md:text-lg lg:text-2xl font-bold italic">
                         {{$product->getTypeName()}} &#8250; {{$product->getPeriodName()}}
                     </span>
                 </h2>
