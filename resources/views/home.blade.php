@@ -20,7 +20,7 @@
 
     </div>
     <div class="hidden md:block illustration-mobile-landscape -ml-16 -mt-96 lg:mt-0 lg:ml-16 xl:ml-24">
-        <img src="{{Storage::url('illustration.png')}}" alt="illustration" class="h-64 lg:h-80 xl:h-120">
+        <img src="{{ asset('images/illustration.png') }}" alt="illustration" class="h-64 lg:h-80 xl:h-120">
     </div>
 </div>
 @endsection
