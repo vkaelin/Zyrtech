@@ -7,7 +7,7 @@
     <div class="product-info flex flex-col sm:flex-row justify-between">
         <div class="imageText-section flex flex-col sm:flex-row">
             <div class="flex flex-col mx-auto md:block md:mx-0">
-                <img class="block w-88 h-48 lg:h-64 object-contain bg-white shadow-lg rounded"
+                <img class="block w-72 sm:w-88 h-48 lg:h-64 object-contain bg-white shadow-lg rounded"
                     src="{{$product->getImage()}}" alt="placeholder">
                 <div class="my-4 md:mb-0 md:mt-4 flex items-baseline">
                     <product-star :stars="{{$product->getStarNote()}}" size="text-xl lg:text-3xl" :readonly="true">
