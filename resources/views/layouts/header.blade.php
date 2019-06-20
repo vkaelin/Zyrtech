@@ -14,7 +14,8 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700,800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.css">
 
-    <!-- Styles -->
+    <!-- Scripts / Styles -->
+    <link href="{{ mix('js/app.js') }}" rel="preload" as="script">
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
 </head>
 
