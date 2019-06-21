@@ -103,13 +103,17 @@
                     name="content" placeholder="Votre commentaire ici..."></textarea>
                 <button class="bg-green-500 text-white px-4 py-2 mt-4 rounded hover:bg-green-400"
                     type="submit">Envoyer</button>
+                @if ($errors->has('content'))
+                <div class="text-red-500 text-xs italic my-4">
+                    {{ $errors->first('content')}}
+                </div>
+                @endif
             </form>
         </div>
         <div class=" mt-4 border-b border-gray-400"></div>
         <div class=" mt-8">
             <h4 class="text-gray-800 font-bold text-xl italic">Les derniers commentaires</h4>
             <div class="comments-wrapper mt-4 w-full pb-12">
-
                 @forelse ($product->comments as $comment)
                 <div class="text-gray-800 comment bg-gray-200 rounded p-6 mt-6 shadow-lg">
                     <div class="comment-infos flex ">
