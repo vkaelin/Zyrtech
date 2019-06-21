@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use App\Role;
 
 class RegisterController extends Controller
 {
@@ -74,7 +75,7 @@ class RegisterController extends Controller
             'country' => $data['country'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'role_id' => '1'
+            'role_id' => Role::where('name', 'owner')->first()->id
         ]);
     }
 }
