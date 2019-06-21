@@ -1,3 +1,5 @@
+/* purgecss start ignore */
+
 .absolute-vert-center {
     top: 50%;
     transform: translateY(-50%);
@@ -22,28 +24,35 @@
   width: 5px;
   height: 5px;
 }
+
 ::-webkit-scrollbar-thumb {
   background: #edf2f7;
   border: 0px none #ffffff;
   border-radius: 50px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
   background: #4a5568;
 }
+
 ::-webkit-scrollbar-thumb:active {
   background: #4a5568;
 }
+
 ::-webkit-scrollbar-track {
   background: #ffffff;
   border: 0px none #ffffff;
   border-radius: 50px;
 }
+
 ::-webkit-scrollbar-track:hover {
   background: #fcfcfc;
 }
+
 ::-webkit-scrollbar-track:active {
   background: #edf2f7;
 }
+
 ::-webkit-scrollbar-corner {
   background: transparent;
 }
@@ -51,18 +60,23 @@
 [v-cloak] .v-cloak--block {
   display: block;
 }
+
 [v-cloak] .v-cloak--inline {
   display: inline;
 }
+
 [v-cloak] .v-cloak--inlineBlock {
   display: inline-block;
 }
+
 [v-cloak] .v-cloak--hidden {
   display: none;
 }
+
 [v-cloak] .v-cloak--invisible {
   visibility: hidden;
 }
+
 .v-cloak--block,
 .v-cloak--inline,
 .v-cloak--inlineBlock {
@@ -89,3 +103,5 @@
         transform: translateX(-50%);
     }
 }
+
+/* purgecss end ignore */
