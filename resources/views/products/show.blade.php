@@ -69,7 +69,7 @@
         <div class="notation flex justify-between items-end">
             <product-star :product="{{$product}}"
                 :stars="{{Cookie::has('voting_cookie_id' . $product->id) ? Cookie::get('voting_cookie_id' . $product->id) : 0}}"
-                size="" :readonly="false"></product-star>
+                size="text-2xl sm:text-base" :readonly="false"></product-star>
             <div>
                 @if (Auth::check() && auth()->user()->canRateProduct($product))
 
