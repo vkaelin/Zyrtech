@@ -100,7 +100,6 @@ export default {
         this.form.errors.products = 'Le Set doit contenir au moins un produit.'
         return
       }
-      console.log(this.form.products)
       const setId = this.set.id;
       this.form.submit(`/dashboard/sets/${setId}`, 'patch')
         .then(response => location = response.data.message)

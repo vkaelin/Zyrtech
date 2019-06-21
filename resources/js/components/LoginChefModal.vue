@@ -40,7 +40,7 @@ export default {
 
   methods: {
     submit() {
-      this.form.submit('/login/chefs/')
+      this.form.submit('/api/loginChef')
         .then(response => location = response.data.message)
         .catch(err => { })
     }

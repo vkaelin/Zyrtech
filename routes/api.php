@@ -18,6 +18,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::post('/loginChef', 'API\ChefLoginController@login');
+
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/findChef', 'API\ChefController@search');
 });
