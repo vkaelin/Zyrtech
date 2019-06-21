@@ -1,4 +1,5 @@
 {
+<<<<<<< Updated upstream
     "/js/app.js": "/js/app.js?id=5c6e5447684bcdd8718a",
     "/css/app.css": "/css/app.css?id=e1ab570190721ea3a0d5",
     "/js/ChefsTable.js": "/js/ChefsTable.js?id=d85acecb52b714b17c54",
@@ -11,4 +12,18 @@
     "/js/dashboard.js": "/js/dashboard.js?id=122b39694ddc9b391879",
     "/js/global.js": "/js/global.js?id=4f2c939a07dbbdec2582",
     "/js/public.js": "/js/public.js?id=e94e659dcc59c3554099"
+=======
+    "/js/app.js": "/js/app.js",
+    "/css/app.css": "/css/app.css",
+    "/js/ChefsTable.js": "/js/ChefsTable.js",
+    "/js/EditSet.js": "/js/EditSet.js",
+    "/js/ImageModal.js": "/js/ImageModal.js",
+    "/js/LoginChefModal.js": "/js/LoginChefModal.js",
+    "/js/ProductsTable.js": "/js/ProductsTable.js",
+    "/js/UsersTable.js": "/js/UsersTable.js",
+    "/js/VideoModal.js": "/js/VideoModal.js",
+    "/js/dashboard.js": "/js/dashboard.js",
+    "/js/global.js": "/js/global.js",
+    "/js/public.js": "/js/public.js"
+>>>>>>> Stashed changes
 }
