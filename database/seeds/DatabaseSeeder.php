@@ -42,7 +42,7 @@ class DatabaseSeeder extends Seeder
         for ($i = 0; $i < 50; $i++) {
             User::first()->sets()->create([
                 'code' => str_random(10),
-                'chef_id' => User::inRandomOrder()
+                'chef_id' => User::first()->chefs()->inRandomOrder()
                     ->where('role_id', Role::where('name', 'chef')->first()->id)
                     ->first()->id
             ]);

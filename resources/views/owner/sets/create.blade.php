@@ -27,6 +27,8 @@
             </template>
         </multiselect>
 
+        @include ('partials.errors')
+
         <button class="mt-6 block ml-auto btn-primary">Créer le Set</button>
     </form>
 </div>

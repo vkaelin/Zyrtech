@@ -39,6 +39,8 @@
             </div>
         </div>
 
+        @include ('partials.errors')
+
         <button class="mt-6 block ml-auto btn-primary">Modifier le Compte</button>
     </form>
 </div>
