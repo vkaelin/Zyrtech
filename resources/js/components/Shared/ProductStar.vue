@@ -63,7 +63,7 @@ export default {
       const productId = this.product.id;
       console.log(this.form);
 
-      this.form.submit(`/products/${productId}/star`, 'post')
+      this.form.submit(`/api/products/${productId}/star`, 'post')
         .then(response => location = response.data.message)
         .catch(err => { })
     }

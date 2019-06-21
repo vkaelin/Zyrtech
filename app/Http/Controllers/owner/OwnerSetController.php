@@ -89,25 +89,9 @@ class OwnerSetController extends Controller
         $this->authorize('update', $set);
 
         // Update de l'activation du Set
-        if (!request()->wantsJson()) {
-            $state = request('active') ? true : false;
-            $set->update(['active' => $state]);
-            return back()->with('success', "L'activation du set a bien été modifiée!");
-        }
-
-        $attributes = request()->validate([
-            'chef' => 'required',
-            'products' => 'required|array|min:1'
-        ]);
-
-        $chef = User::find(request('chef'));
-        $set->chef()->associate($chef)->save();
-
-        $idProducts = array_column($attributes['products'], 'id');
-        $set->products()->detach();
-        $set->products()->attach($idProducts);
-
-        return ['message' => '/dashboard/sets'];
+        $state = request('active') ? true : false;
+        $set->update(['active' => $state]);
+        return back()->with('success', "L'activation du set a bien été modifiée!");
     }
 
     public function destroy(Set $set)

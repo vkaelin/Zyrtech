@@ -20,8 +20,14 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::post('/loginChef', 'API\ChefLoginController@login');
 
+Route::post('/products/{product}/star', 'API\StarController@store');
+
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/findChef', 'API\ChefController@search');
+});
+
+Route::group(['middleware' => ['auth', 'role:owner']], function () {
+    Route::patch('/editSet/{set}', 'API\OwnerSetController@update');
 });
 
 Route::group(['middleware' => ['auth', 'role:admin']], function () {

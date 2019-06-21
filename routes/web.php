@@ -7,9 +7,6 @@ Route::get('/', 'HomeController@index');
 Route::resource('/products', 'ProductController');
 Route::post('/products/{product}/comment', 'CommentController@store');
 
-// Stars
-Route::post('/products/{product}/star', 'StarController@store');
-
 // Dashboard for Admins
 Route::group(['prefix' => 'admin',  'middleware' => ['auth', 'role:admin']], function () {
     // Users

@@ -101,7 +101,7 @@ export default {
         return
       }
       const setId = this.set.id;
-      this.form.submit(`/dashboard/sets/${setId}`, 'patch')
+      this.form.submit(`/api/editSet/${setId}`, 'patch')
         .then(response => location = response.data.message)
         .catch(err => { })
     }
