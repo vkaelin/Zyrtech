@@ -9,7 +9,7 @@
 </h1>
 
 <div class="mt-6 max-w-lg bg-white rounded-lg shadow p-8">
-    <form method="POST" action="/admin/products/attributes/types/{{$type->id}}/edit">
+    <form method="POST" action="/admin/products/attributes/types/{{$type->id}}">
         @method("PATCH")
         @csrf
 

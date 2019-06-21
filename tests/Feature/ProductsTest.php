@@ -51,7 +51,7 @@ class ProductsTest extends TestCase
         $product = factory(Product::class)->create();
 
         $this->actingAs($this->signIn(null, 'admin'))
-            ->patch("/admin/products/{$product->id}/edit", $attributes = [
+            ->patch("/admin/products/{$product->id}", $attributes = [
                 'name' => 'Changed',
                 'description' => 'Changed',
                 'type_id' => factory(\App\Type::class)->create()->id,

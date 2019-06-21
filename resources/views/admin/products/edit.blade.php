@@ -8,7 +8,7 @@
 </h1>
 
 <div class="mt-6 max-w-lg xl:max-w-5xl bg-white rounded-lg shadow p-8">
-    <form method="POST" action="/admin/products/{{$product->id}}/edit" enctype="multipart/form-data">
+    <form method="POST" action="/admin/products/{{$product->id}}" enctype="multipart/form-data">
         @method("PATCH")
         @csrf
 

@@ -10,7 +10,7 @@
 
 
 <div class="mt-6 max-w-lg bg-white rounded-lg shadow p-8">
-    <form method="POST" action="/admin/products/attributes/periods/{{$period->id}}/edit">
+    <form method="POST" action="/admin/products/attributes/periods/{{$period->id}}">
         @method("PATCH")
         @csrf
 
