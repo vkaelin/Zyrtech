@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Owner;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
+use App\Role;
 
 class OwnerChefController extends Controller
 {
@@ -26,7 +27,7 @@ class OwnerChefController extends Controller
     public function store()
     {
         $attributes = $this->validateRequest();
-        $attributes['role_id'] = 3; // chef
+        $attributes['role_id'] = Role::where('name', 'chef')->first()->id; // chef
 
         $this->explodeName($attributes);
 
