@@ -103,11 +103,8 @@
                     name="content" placeholder="Votre commentaire ici..."></textarea>
                 <button class="bg-green-500 text-white px-4 py-2 mt-4 rounded hover:bg-green-400"
                     type="submit">Envoyer</button>
-                @if ($errors->has('content'))
-                <div class="text-red-500 text-xs italic my-4">
-                    {{ $errors->first('content')}}
-                </div>
-                @endif
+
+                @include ('partials.errors')
             </form>
         </div>
         <div class=" mt-4 border-b border-gray-400"></div>
@@ -142,42 +139,5 @@
 </div>
 <youtube-modal link={{$product->video_link === null ? 'empty' : $product->video_link}} :id={{$product->id}}>
 </youtube-modal>
-
-
-{{-- <h1>Product show page</h1>
-
-<p>{{$product->name}}</p>
-<p>{{$product->getTypeName()}}</p>
-<p>{{$product->getPeriodName()}}</p>
-@foreach ($product->labels as $label)
-<p>{{$label->name}}</p>
-@endforeach
-<p>{{$product->getStarNote()}}</p>
-
-<product-star :product="{{$product}}" :stars="{{$product->getStarNote()}}" :readonly="false">
-</product-star>
-
-<div class="mt-8">
-    @if (Auth::check() && auth()->user()->canRateProduct($product))
-
-    @if ($product->alreadyRatedBySetChef(auth()->user()))
-    <span>Produit évalué</span>
-    @else
-    <form class="max-w-sm" method="POST" action="/products/{{ $product->id }}/rating">
-        @csrf
-
-        <label class="block">
-            <span class="text-gray-700">Note</span>
-            <select class="form-select block w-full mt-1" name="value">
-                @for ($i = 1; $i <= 10; $i++) <option>{{ $i }}</option>
-                    @endfor
-            </select>
-        </label>
-        <button class="bg-green-500 text-white px-4 py-2 mt-2 rounded hover:bg-green-400" type="submit">Evaluer</button>
-    </form>
-
-    @endif
-    @endif
-</div> --}}
 
 @endsection
