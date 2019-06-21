@@ -7,7 +7,6 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\Request;
 use App\Http\Middleware\Role;
-use Illuminate\Support\Facades\Auth;
 
 class RoleMiddlewareTest extends TestCase
 {
@@ -92,7 +91,7 @@ class RoleMiddlewareTest extends TestCase
 
         $middleware = new Role;
 
-        $response = $middleware->handle($request, function () { });
+        $response = $middleware->handle($request, function () { }, 'admin');
 
         $this->assertEquals($response->getStatusCode(), 302);
     }
@@ -106,7 +105,7 @@ class RoleMiddlewareTest extends TestCase
 
         $middleware = new Role;
 
-        $response = $middleware->handle($request, function () { });
+        $response = $middleware->handle($request, function () { }, 'admin');
 
         $this->assertEquals($response, null);
     }
@@ -120,7 +119,7 @@ class RoleMiddlewareTest extends TestCase
 
         $middleware = new Role;
 
-        $response = $middleware->handle($request, function () { });
+        $response = $middleware->handle($request, function () { }, 'admin');
 
         $this->assertEquals($response, null);
     }
