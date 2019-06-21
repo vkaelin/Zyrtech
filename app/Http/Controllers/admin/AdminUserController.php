@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Support\Facades\Hash;
+use App\Role;
 
 class AdminUserController extends Controller
 {
@@ -21,7 +22,9 @@ class AdminUserController extends Controller
 
     public function create()
     {
-        return view('admin.users.create');
+        $roles = Role::all();
+
+        return view('admin.users.create', compact('roles'));
     }
 
     public function store()
@@ -35,7 +38,9 @@ class AdminUserController extends Controller
 
     public function edit(User $user)
     {
-        return view('admin.users.edit', compact('user'));
+        $roles = Role::all();
+
+        return view('admin.users.edit', compact('user', 'roles'));
     }
 
     public function update(User $user)
@@ -70,7 +75,7 @@ class AdminUserController extends Controller
             'last_name' => 'required',
             'city' => 'required',
             'country' => 'required',
-            'email' => 'required',
+            'email' => 'required|email|unique:users',
             'password' => 'sometimes|min:8',
             'role_id' => 'required'
         ]);

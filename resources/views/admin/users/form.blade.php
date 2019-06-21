@@ -36,27 +36,15 @@
     <div class="mt-4">
         <span class="text-gray-700">Role</span>
         <div class="mt-2 sm:flex">
-            <div>
+            @foreach ($roles as $role)
+            <div class="{{ !$loop->first ? 'mt-2 sm:mt-0 sm:ml-4' : '' }}">
                 <label class="inline-flex items-center">
-                    <input type="radio" class="form-radio text-green-600 border-gray-400" name="role_id" value="3"
-                        {{ $user->role && $user->role->id === 3 ? 'checked' : '' }}>
-                    <span class="ml-2">Chef</span>
+                    <input type="radio" class="form-radio text-green-600 border-gray-400" name="role_id"
+                        value="{{ $role->id }}" {{ $user->role && $user->role->id === $role->id ? 'checked' : '' }}>
+                    <span class="ml-2">{{ ucfirst($role->name) }}</span>
                 </label>
             </div>
-            <div class="mt-2 sm:mt-0 sm:ml-4">
-                <label class="inline-flex items-center">
-                    <input type="radio" class="form-radio text-green-600 border-gray-400" name="role_id" value="2"
-                        {{ $user->role && $user->role->id === 2 ? 'checked' : '' }}>
-                    <span class="ml-2">Propriétaire</span>
-                </label>
-            </div>
-            <div class="mt-2 sm:mt-0 sm:ml-4">
-                <label class="inline-flex items-center">
-                    <input type="radio" class="form-radio text-green-600 border-gray-400" name="role_id" value="1"
-                        {{ $user->role && $user->role->id === 1 ? 'checked' : '' }}>
-                    <span class="ml-2">Admin</span>
-                </label>
-            </div>
+            @endforeach
         </div>
     </div>
 </div>
