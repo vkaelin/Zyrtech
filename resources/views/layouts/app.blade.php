@@ -28,21 +28,21 @@
                         <a class="font-bold text-base gem py-2 {{(request()->is('products')) ? 'text-green-500' : 'text-gray-800'}}"
                             href="/products">Nos produits</a>
                         @guest
-                        <a class="font-bold text-base gem ml-3 py-2 {{(request()->is('login')) ? 'text-green-500' : 'text-gray-800'}}"
+                        <a class="font-bold text-base gem ml-3 lg:ml-6 py-2 {{(request()->is('login')) ? 'text-green-500' : 'text-gray-800'}}"
                             href="{{ route('login') }}">{{ __('Se connecter') }}</a>
                         @if (Route::has('register'))
-                        <a class="font-bold text-base gem ml-3 py-2 {{(request()->is('register')) ? 'text-green-500' : 'text-gray-800'}}"
+                        <a class="font-bold text-base gem ml-3 lg:ml-6 py-2 {{(request()->is('register')) ? 'text-green-500' : 'text-gray-800'}}"
                             href="{{ route('register') }}">{{ __("S'inscrire") }}</a>
                         @endif
                         @else
                         @can('manage', auth()->user()->role)
-                        <a class="font-bold text-base gem ml-3 py-2 text-gray-800" href="/dashboard/chefs">Dashboard</a>
+                        <a class="font-bold text-base gem ml-3 lg:ml-6 py-2 text-gray-800" href="/dashboard/chefs">Dashboard</a>
                         @endcan
                         @can('evaluate', auth()->user()->role)
-                        <a class="font-bold text-base gem ml-3 py-2 {{(request()->is('sets')) ? 'text-green-500' : 'text-gray-800'}}"
+                        <a class="font-bold text-base gem ml-3 lg:ml-6 py-2 {{(request()->is('sets')) ? 'text-green-500' : 'text-gray-800'}}"
                             href="/sets">Evaluations</a>
                         @endcan
-                        <dropdown align="right" width="auto" class="inline-block ml-3">
+                        <dropdown align="right" width="auto" class="inline-block ml-3 lg:ml-6">
                             <template v-slot:trigger>
                                 <button
                                     class="flex items-center py-2 font-semibold text-gray-800 gem focus:outline-none">

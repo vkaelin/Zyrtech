@@ -111,7 +111,7 @@
         <div class=" mt-8">
             <h4 class="text-gray-800 font-bold text-xl italic">Les derniers commentaires</h4>
             <div class="comments-wrapper mt-4 w-full pb-12">
-                @forelse ($product->comments as $comment)
+                @forelse ($comments as $comment)
                 <div class="text-gray-800 comment bg-gray-200 rounded p-6 mt-6 shadow-lg">
                     <div class="comment-infos flex ">
                         <i class="fas fa-user"></i>
@@ -133,6 +133,7 @@
                 @empty
                 <p>Aucun commentaire sur ce produit.</p>
                 @endforelse
+                {{ $comments->links('partials.pagination') }}
             </div>
         </div>
     </div>
