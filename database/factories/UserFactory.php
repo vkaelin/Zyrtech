@@ -4,6 +4,7 @@
 use App\User;
 use Illuminate\Support\Str;
 use Faker\Generator as Faker;
+use App\Role;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,7 +25,7 @@ $factory->define(User::class, function (Faker $faker) {
         'country' => $faker->country,
         'group' => false,
         'email' => $faker->unique()->safeEmail,
-        'role_id' => 2,
+        'role_id' => Role::where('name', 'owner')->first()->id,
         'email_verified_at' => now(),
         'password' => bcrypt('12345678'),
         'remember_token' => Str::random(10),
