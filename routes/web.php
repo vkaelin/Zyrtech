@@ -3,9 +3,6 @@
 // Homepage
 Route::get('/', 'HomeController@index');
 
-// Login Chef
-Route::post('/login/chefs/', 'Auth\ChefLoginController@login');
-
 // Products 
 Route::resource('/products', 'ProductController');
 Route::post('/products/{product}/comment', 'CommentController@store');
