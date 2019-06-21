@@ -41,7 +41,7 @@
                 <label class="inline-flex items-center">
                     <input type="radio" class="form-radio text-green-600 border-gray-400" name="role_id"
                         value="{{ $role->id }}" {{ $user->role && $user->role->id === $role->id ? 'checked' : '' }}>
-                    <span class="ml-2">{{ ucfirst($role->name) }}</span>
+                    <span class="ml-2">{{ __("role.{$role->name}") }}</span>
                 </label>
             </div>
             @endforeach
