@@ -37,13 +37,10 @@
                         <td class="py-4 px-6 border-b border-gray-200">{{$type->name}}</td>
                         <td class="py-4 px-6 border-b border-gray-200">
                             <div class="flex">
-                                <form method="GET" action="/admin/products/attributes/types/{{$type->id}}/edit"
-                                    class="inline-block">
-                                    @csrf
-                                    <button class="inline-block font-bold btn-primary btn-sm">
-                                        Modifier
-                                    </button>
-                                </form>
+                                <a href="/admin/products/attributes/types/{{$type->id}}/edit"
+                                    class="inline-block font-bold btn-primary btn-sm">
+                                    Modifier
+                                </a>
                                 <form method="POST" action="/admin/products/attributes/types/{{$type->id}}"
                                     class="inline-block">
                                     @method('DELETE')
@@ -87,13 +84,10 @@
                         <td class="py-4 px-6 border-b border-gray-200">{{$period->name}}</td>
                         <td class="py-4 px-6 border-b border-gray-200">
                             <div class="flex">
-                                <form method="GET" action="/admin/products/attributes/periods/{{$period->id}}/edit"
-                                    class="inline-block">
-                                    @csrf
-                                    <button class="inline-block font-bold btn-primary btn-sm">
-                                        Modifier
-                                    </button>
-                                </form>
+                                <a href="/admin/products/attributes/periods/{{$period->id}}/edit"
+                                    class="inline-block font-bold btn-primary btn-sm">
+                                    Modifier
+                                </a>
                                 <form method="POST" action="/admin/products/attributes/periods/{{$period->id}}"
                                     class="inline-block">
                                     @method('DELETE')
@@ -137,13 +131,10 @@
                         <td class="py-4 px-6 border-b border-gray-200">{{$label->name}}</td>
                         <td class="py-4 px-6 border-b border-gray-200">
                             <div class="flex">
-                                <form method="GET" action="/admin/products/attributes/labels/{{$label->id}}/edit"
-                                    class="inline-block">
-                                    @csrf
-                                    <button class="inline-block font-bold btn-primary btn-sm">
-                                        Modifier
-                                    </button>
-                                </form>
+                                <a href="/admin/products/attributes/labels/{{$label->id}}/edit"
+                                    class="inline-block font-bold btn-primary btn-sm">
+                                    Modifier
+                                </a>
                                 <form method="POST" action="/admin/products/attributes/labels/{{$label->id}}"
                                     class="inline-block">
                                     @method('DELETE')
