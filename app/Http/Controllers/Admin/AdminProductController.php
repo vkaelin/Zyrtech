@@ -34,7 +34,7 @@ class AdminProductController extends Controller
             'description' => ['required', 'min:3'],
             'type_id' => ['required'],
             'period_id' => ['required'],
-            'video_link' => ['sometimes'],
+            'video_link' => ['regex:/^.*(youtu\.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/', 'nullable'],
             'image_src' => 'required|image|mimes:jpeg,png,jpg'
         ]);
 
@@ -75,7 +75,7 @@ class AdminProductController extends Controller
             'description' => ['required', 'min:3'],
             'type_id' => ['required'],
             'period_id' => ['required'],
-            'video_link' => ['sometimes'],
+            'video_link' => ['regex:/^.*(youtu\.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/', 'nullable'],
             'image_src' => 'image|mimes:jpeg,png,jpg'
         ]);
 
