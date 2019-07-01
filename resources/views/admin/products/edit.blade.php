@@ -100,7 +100,8 @@
                 <label class="block max-w-full mb-4">
                     <span class="text-gray-700">Lien Youtube</span>
                     <input class="form-input mt-1 block w-full" type="text" name="video_link"
-                        value="{{$product->video_link}}" placeholder="Tapez le lien complet ici...">
+                        value="{{$product->video_link !== null ? 'https://www.youtube.com/watch?v=' . $product->video_link : ''}}"
+                        placeholder="Tapez le lien complet ici...">
                 </label>
                 @if ($errors->has('video_link'))
                 <div class="text-red-500 text-xs italic my-4">
