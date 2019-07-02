@@ -36,7 +36,7 @@
     </div>
 
     {{-- Main Content --}}
-    <div class="w-full">
+    <div class="w-full min-w-0">
         {{-- Nav --}}
         <nav class="bg-gray-900 lg:bg-white py-4">
             {{-- Nav Desktop --}}
