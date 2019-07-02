@@ -48,7 +48,7 @@ class AdminUserController extends Controller
         $password = request('password');
         request()->request->remove('password');
 
-        $attributes = $this->validateRequest();
+        $attributes = $this->validateRequest($user);
 
         $user->update($attributes);
 
@@ -68,14 +68,14 @@ class AdminUserController extends Controller
         return redirect('/admin/users')->with('success', "L'utilisateur a bien été supprimé!");
     }
 
-    protected function validateRequest()
+    protected function validateRequest($user = null)
     {
         return request()->validate([
             'first_name' => 'required',
             'last_name' => 'required',
             'city' => 'required',
             'country' => 'required',
-            'email' => 'required|email|unique:users',
+            'email' => 'required|email|unique:users,email,' . ($user ? $user->id : ''), 
             'password' => 'sometimes|min:8',
             'role_id' => 'required'
         ]);
