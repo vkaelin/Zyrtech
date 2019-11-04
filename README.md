@@ -1,6 +1,8 @@
 # Zyrtech
 Fictional platform (school project) for product evaluations by individuals and restaurant managers.
 
+By Valentin Kaelin and Lazar Pavicevic
+
 ----------
 
 ## Installation
