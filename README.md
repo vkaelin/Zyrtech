@@ -1,5 +1,5 @@
 # Zyrtech
-Zyrtech SA web app.
+Fictional platform (school project) for product evaluations by individuals and restaurant managers.
 
 ----------
 
