@@ -10,7 +10,7 @@ By Valentin Kaelin and Lazar Pavicevic
 
 Clone the repository
 
-    git clone https://github.com/Kalaneee/Zyrtech.git
+    git clone https://github.com/vkaelin/Zyrtech.git
 
 Switch to the repo folder
 
